@@ -1,6 +1,7 @@
 -   config:
         name: testset description
-        parameters: []
+        parameters:
+        -   loginName-deviceNo: ${P(login.csv)}
         variables:
         -   currentTime: ${get_dataTime()}
         -   version: '1.220'
@@ -46,7 +47,7 @@
         name: /device/checkClinicDeviceNo
         request:
             data:
-                detail: '{"body":{"code":"","content":{},"param":{"sysVersion":"6.0.1","clientMac":"","brand":"SUNMI","branch":"t1host","ratio":"1920x1080","deviceType":"1","deviceNo":"T10116BD00018","deviceName":"t1host"},"synCode":""},"header":{"clinicId":"","currentTime":$currentTime,"doctorMainId":"","imei":"4fa256e1c5bcf010","type":"3","v":"1.220"}}'
+                detail: '{"body":{"code":"","content":{},"param":{"sysVersion":"6.0.1","clientMac":"","brand":"SUNMI","branch":"t1host","ratio":"1920x1080","deviceType":"1","deviceNo":"$deviceNo","deviceName":"t1host"},"synCode":""},"header":{"clinicId":"","currentTime":$currentTime,"doctorMainId":"","imei":"4fa256e1c5bcf010","type":"3","v":"$version"}}'
             headers:
 
             method: POST
@@ -64,7 +65,7 @@
         name: /login/login
         request:
             data:
-                detail: '{"body":{"code":"","content":{},"param":{"device":{"branch":"t1host","brand":"SUNMI","clientMac":"","deviceName":"t1host","deviceNo":"T10116BD00018","deviceType":"1","ratio":"1920x1080","sysVersion":"6.0.1"},"loginName":"13581755569","password":"e10adc3949ba59abbe56e057f20f883e"},"synCode":""},"header":{"clinicId":"402885815285e0df015285e3f29a0002","currentTime":$currentTime,"doctorMainId":"","imei":"4fa256e1c5bcf010","type":"3","v":"1.220"}}'
+                detail: '{"body":{"code":"","content":{},"param":{"device":{"branch":"t1host","brand":"SUNMI","clientMac":"","deviceName":"t1host","deviceNo":"$deviceNo","deviceType":"1","ratio":"1920x1080","sysVersion":"6.0.1"},"loginName":"$loginName","password":"e10adc3949ba59abbe56e057f20f883e"},"synCode":""},"header":{"clinicId":"402885815285e0df015285e3f29a0002","currentTime":$currentTime,"doctorMainId":"","imei":"4fa256e1c5bcf010","type":"3","v":"$version"}}'
             headers:
 
             method: POST
