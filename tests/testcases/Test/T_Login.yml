@@ -109,14 +109,11 @@
         -   eq:
             - status_code
             - 200
-        -   eq:
-            - headers.Content-Type
-            - application/json;charset=UTF-8
 -   test:
         name: /myinfo/youZhan/login
         request:
             data:
-                detail: '{"body":{"code":{},"content":{},"param":{"mac":"4fa256e1c5bcf010"},"synCode":""},"header":{"v":"1.220","doctorMainId":"8a990d915b1a679c015b1a96d567053b","userToken":"$userToken","clinicId":"8a990d915b1a679c015b1a95106503bd","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+                detail: '{"body":{"code":{},"content":{},"param":{"mac":"4fa256e1c5bcf010"},"synCode":""},"header":{"v":"$version","doctorMainId":"8a990d915b1a679c015b1a96d567053b","userToken":"$userToken","clinicId":"8a990d915b1a679c015b1a95106503bd","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
             headers:
 
             method: POST
@@ -125,9 +122,6 @@
         -   eq:
             - status_code
             - 200
-        -   eq:
-            - headers.Content-Type
-            - text/html;charset=UTF-8
 -   test:
         name: /myinfo/SysMonitor/uploadPosition
         request:
@@ -141,6 +135,3 @@
         -   eq:
             - status_code
             - 200
-        -   eq:
-            - headers.Content-Type
-            - text/html;charset=UTF-8
