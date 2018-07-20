@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="356eb2cd-b4ad-4d13-9e2d-edf7ef640cc8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/testcases/Test/T_Login.har" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/testcases/Test/T_Login.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testcases/Test/T_Login.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/testcases/Test/login.csv" beforeDir="false" afterPath="$PROJECT_DIR$/tests/testcases/Test/login.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-13-14-44-08.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-18-21-38-26.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-18-21-40-04.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-18-21-47-26.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-13-56-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-13-57-58.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-14-00-49.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-14-09-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-14-56-09.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-48-25.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-51-50.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-52-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-54-01.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-54-39.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-57-08.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-57-57.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-16-17-29.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-16-22-00.html" beforeDir="false" />
     </list>
     <ignored path="HttpRunner-master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +45,7 @@
       <file leaf-file-name="TestBegin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestBegin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
+            <state relative-caret-position="216">
               <caret line="10" column="98" selection-start-line="10" selection-start-column="98" selection-end-line="10" selection-end-column="98" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
@@ -43,7 +57,7 @@
       <file leaf-file-name="task.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/httprunner/task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
+            <state relative-caret-position="408">
               <caret line="25" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
@@ -52,7 +66,7 @@
       <file leaf-file-name="runner.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/httprunner/runner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3814">
+            <state relative-caret-position="4320">
               <caret line="184" selection-start-line="184" selection-end-line="184" />
             </state>
           </provider>
@@ -61,7 +75,7 @@
       <file leaf-file-name="runner.py" pinned="false" current-in-tab="false">
         <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/unittest/runner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-723">
+            <state relative-caret-position="3480">
               <caret line="150" column="8" selection-start-line="150" selection-start-column="8" selection-end-line="150" selection-end-column="8" />
             </state>
           </provider>
@@ -70,7 +84,7 @@
       <file leaf-file-name="context.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/httprunner/context.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
+            <state relative-caret-position="6144">
               <caret line="262" selection-start-line="262" selection-end-line="262" />
             </state>
           </provider>
@@ -79,7 +93,7 @@
       <file leaf-file-name="T_Login.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/testcases/Test/T_Login.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
+            <state relative-caret-position="1584">
               <caret line="66" column="61" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
             </state>
           </provider>
@@ -88,7 +102,7 @@
       <file leaf-file-name="smoketest.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/testcases/smoketest.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
+            <state relative-caret-position="432">
               <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
             </state>
           </provider>
@@ -97,7 +111,7 @@
       <file leaf-file-name="create_and_get.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/suite/create_and_get.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
+            <state relative-caret-position="624">
               <caret line="26" column="34" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="34" />
             </state>
           </provider>
@@ -105,9 +119,7 @@
       </file>
       <file leaf-file-name="setup.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/suite/setup.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-471" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="login.csv" pinned="false" current-in-tab="true">
@@ -188,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,6 +211,12 @@
               <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="HttpRunner-master" type="462c0819:PsiDirectoryNode" />
               <item name="reports" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HttpRunner-master" type="462c0819:PsiDirectoryNode" />
+              <item name="reports" type="462c0819:PsiDirectoryNode" />
+              <item name="reportTest" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
@@ -229,6 +246,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -354,7 +372,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32857144" />
       <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.5007153" side_tool="true" />
@@ -363,15 +380,15 @@
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.37285715" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32857144" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3190272" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32331902" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Coverage" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -379,7 +396,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,9 +556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -557,9 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -580,54 +591,52 @@
     </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/unittest/runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-723">
+        <state relative-caret-position="3480">
           <caret line="150" column="8" selection-start-line="150" selection-start-column="8" selection-end-line="150" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/httprunner/task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
+        <state relative-caret-position="408">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/httprunner/runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3814">
+        <state relative-caret-position="4320">
           <caret line="184" selection-start-line="184" selection-end-line="184" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/httprunner/context.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
+        <state relative-caret-position="6144">
           <caret line="262" selection-start-line="262" selection-end-line="262" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/testcases/smoketest.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
+        <state relative-caret-position="432">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/suite/setup.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-471" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/suite/create_and_get.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
+        <state relative-caret-position="624">
           <caret line="26" column="34" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestBegin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
+        <state relative-caret-position="216">
           <caret line="10" column="98" selection-start-line="10" selection-start-column="98" selection-end-line="10" selection-end-column="98" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
@@ -637,7 +646,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/testcases/Test/T_Login.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
+        <state relative-caret-position="1584">
           <caret line="66" column="61" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
         </state>
       </provider>
