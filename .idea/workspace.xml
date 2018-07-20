@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="356eb2cd-b4ad-4d13-9e2d-edf7ef640cc8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-13-14-44-08.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-18-21-38-26.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-18-21-40-04.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-18-21-47-26.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-13-56-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-13-57-58.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-14-00-49.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-14-09-10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-14-56-09.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-48-25.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-51-50.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-52-14.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-54-01.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-54-39.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-57-08.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-15-57-57.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-16-17-29.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/reportTest/reportTest-2018-07-19-16-22-00.html" beforeDir="false" />
-    </list>
+    <list default="true" id="356eb2cd-b4ad-4d13-9e2d-edf7ef640cc8" name="Default" comment="" />
     <ignored path="HttpRunner-master.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/TestBegin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="10" column="98" selection-start-line="10" selection-start-column="98" selection-end-line="10" selection-end-column="98" />
+              <caret line="12" column="178" selection-start-line="12" selection-start-column="178" selection-end-line="12" selection-end-column="178" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -93,8 +74,8 @@
       <file leaf-file-name="T_Login.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/testcases/Test/T_Login.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1584">
-              <caret line="66" column="61" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
+            <state relative-caret-position="1608">
+              <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -125,8 +106,8 @@
       <file leaf-file-name="login.csv" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/testcases/Test/login.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
+            <state relative-caret-position="240">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -210,37 +191,12 @@
             <path>
               <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="HttpRunner-master" type="462c0819:PsiDirectoryNode" />
-              <item name="reports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HttpRunner-master" type="462c0819:PsiDirectoryNode" />
-              <item name="reports" type="462c0819:PsiDirectoryNode" />
-              <item name="reportTest" type="462c0819:PsiDirectoryNode" />
+              <item name="httprunner" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="HttpRunner-master" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HttpRunner-master" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="suite" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HttpRunner-master" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="testcases" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HttpRunner-master" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HttpRunner-master" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="testcases" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -372,6 +328,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32857144" />
       <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.5007153" side_tool="true" />
@@ -380,7 +337,7 @@
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.37285715" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32857144" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32331902" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32331902" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -388,15 +345,29 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32331902" />
+      <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32857144" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.37285715" />
       <window_info anchor="bottom" id="Changes" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.5007153" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32857144" />
       <window_info anchor="right" id="Coverage" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +608,7 @@
     <entry file="file://$PROJECT_DIR$/TestBegin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="10" column="98" selection-start-line="10" selection-start-column="98" selection-end-line="10" selection-end-column="98" />
+          <caret line="12" column="178" selection-start-line="12" selection-start-column="178" selection-end-line="12" selection-end-column="178" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
@@ -646,15 +617,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/testcases/Test/T_Login.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="66" column="61" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
+        <state relative-caret-position="1608">
+          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/testcases/Test/login.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="58" selection-start-line="2" selection-start-column="58" selection-end-line="2" selection-end-column="58" />
+        <state relative-caret-position="240">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
