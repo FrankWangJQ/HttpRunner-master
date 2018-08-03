@@ -3,6 +3,7 @@
 import logging
 import sys
 
+
 from colorama import Back, Fore, Style, init
 from colorlog import ColoredFormatter
 
