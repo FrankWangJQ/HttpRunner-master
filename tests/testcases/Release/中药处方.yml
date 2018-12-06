@@ -1,0 +1,146 @@
+-   config:
+        name: 中药处方
+        request:
+            base_url: 'http://bt-workbench.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   todayDate: ${get_strftime()}
+        -   version: '1.231'
+        -   id1: ${gen_random_string(32)}
+        -   id2: ${gen_random_string(32)}
+        -   id3: ${gen_random_string(32)}
+        -   id4: ${gen_random_string(32)}
+        -   id5: ${gen_random_string(32)}
+        -   id6: ${gen_random_string(32)}
+        -   id7: ${gen_random_string(32)}
+        -   id8: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /prescription/findPrescriptionByPatient/获取患者健康档案(阿四)
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"pageNum":"5","patientId":"fbfcc8c411ac44a39f0bb3e034f84cbe","pageStart":"1"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/findPrescriptionByPatient
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /prescriptionChinese/createTempPrescription_v1/中药处方临时保存1
+        parameters:
+        #中药名称、中药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-patientName-patientId-code:
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+              -   ['','','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"List":[{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"4","commodityCode":"","commoditySource":"","commonUnit":"包","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"$id1","isSetMethod":"0","medDisId":"$medDisId1","minimumUnit":"片","orderNum":"1","otcId":"","priceUnit":"片","saleUnit":"min","saleUnitPrice":"96","showCommodityName":"$showCommodityName1","specifcations":"  ","totalNumber":"2","usage":"  ","useLevel":"2","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"共1剂；武火煎沸;一日1剂","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"$id2","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"2","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"2","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"$id3","isSetMethod":"0","medDisId":"$medDisId2","minimumUnit":"片","orderNum":"3","otcId":"","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"1200","showCommodityName":"$showCommodityName2","specifcations":"规格","totalNumber":"1","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"器械医嘱","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"$id4","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"4","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "}],"age":"","allergicHistory":"","birthday":"2017-09-21","bloodGlucose":"5.8","busiOrderNo":"","clinicServiceList":[],"complaint":"反复劳力性心前区疼痛一天一次","debtCost":"0","diagnose":"感冒","diagnoseDate":"$todayDate","diastolicPressure":"80","examOther":"无","flag":"1","height":"0","homeAddress":"北京市海淀区第一","id":"$id5","illHistory":"","isPrint":"0","medicineCost":"1392","otherCost":"0","outpatientNo":"","paidCost":"1392","patientId":"$patientId","patientName":"$patientName","payTime":"","payType":"0","phone":"13112344321","prescriptionFlag":"2","pulse":"65","realName":"汪克强","regiFlag":"","regiId":"","sex":"1","status":"0","systolicPressure":"120","taboo":"","temperature":"37.1","weight":"59"},"synCode":""},"header":{"v":"1.241","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescriptionChinese/createTempPrescription_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescriptionChinese/createPrescription_v1/中药处方生成收费单1
+        parameters:
+        #中药名称、中药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-patientName-patientId-code:
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"List":[{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"4","commodityCode":"","commoditySource":"","commonUnit":"包","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"$id1","isSetMethod":"0","medDisId":"$medDisId1","minimumUnit":"片","orderNum":"1","otcId":"","priceUnit":"片","saleUnit":"min","saleUnitPrice":"96","showCommodityName":"$showCommodityName1","specifcations":"  ","totalNumber":"2","usage":"  ","useLevel":"2","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"共1剂；武火煎沸;一日1剂","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"$id2","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"2","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"2","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"$id3","isSetMethod":"0","medDisId":"$medDisId2","minimumUnit":"片","orderNum":"3","otcId":"","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"1200","showCommodityName":"$showCommodityName2","specifcations":"规格","totalNumber":"1","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"器械医嘱","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"$id4","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"4","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "}],"age":"","allergicHistory":"","birthday":"2017-09-21","bloodGlucose":"5.8","busiOrderNo":"","clinicServiceList":[],"complaint":"反复劳力性心前区疼痛一天一次","debtCost":"0","diagnose":"感冒","diagnoseDate":"$todayDate","diastolicPressure":"80","examOther":"无","flag":"1","height":"0","homeAddress":"北京市海淀区第一","id":"$id5","illHistory":"","isPrint":"0","medicineCost":"1392","otherCost":"0","outpatientNo":"","paidCost":"1392","patientId":"$patientId","patientName":"$patientName","payTime":"","payType":"0","phone":"13112344321","prescriptionFlag":"2","pulse":"65","realName":"汪克强","regiFlag":"","regiId":"","sex":"1","status":"0","systolicPressure":"120","taboo":"","temperature":"37.1","weight":"59"},"synCode":""},"header":{"v":"1.241","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescriptionChinese/createPrescription_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescriptionChinese/pay4PrescriptionNew_v1/中药收费单处方去收费1
+        parameters:
+        #中药名称、中药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-patientName-patientId-code:
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2020201']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"List":[{"otcId":"$id1","saleUnitPrice":"96"},{"otcId":"$id3","saleUnitPrice":"1200"}],"amountMoney":"1392","chargeDate":"$todayDate","collectionMoney":"1392","debtsMoney":"185","diagnosisId":"$id5","discountMoney":"0","medicineCost":"1392","otherCost":"0","payType":"0","prescriptionFlag":"2","prescriptionMoney":"1392"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescriptionChinese/pay4PrescriptionNew_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescription/remove/删除中药处方1
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$id5"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/remove
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: prescriptionChinese/directToCharge_v1/生成中药处方直接收费2
+        parameters:
+        #中药名称、中药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-patientName-patientId-code:
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2020201']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"amountMoney":"1392","collectionMoney":"1392","debtsMoney":"0.0","discountMoney":"0","prescriptionMoney":"1392","List":[{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"4","commodityCode":"","commoditySource":"","commonUnit":"包","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"$id5","isSetMethod":"0","medDisId":"$medDisId1","minimumUnit":"片","orderNum":"1","otcId":"$id5","priceUnit":"片","saleUnit":"min","saleUnitPrice":"96","showCommodityName":"$showCommodityName1","specifcations":"  ","totalNumber":"2","usage":"  ","useLevel":"2","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"共1剂；武火煎沸;一日1剂","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"$id6","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"2","otcId":"$id6","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"2","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"$id7","isSetMethod":"0","medDisId":"$medDisId2","minimumUnit":"片","orderNum":"3","otcId":"$id7","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"1200","showCommodityName":"$showCommodityName2","specifcations":"规格","totalNumber":"1","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"器械医嘱","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"$id8","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"4","otcId":"$id8","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "}],"age":"","allergicHistory":"","birthday":"2017-09-21","bloodGlucose":"","busiOrderNo":"","clinicServiceList":[],"complaint":"反复劳力性心前区疼痛一天一次","debtCost":"0","diagnose":"感冒","diagnoseDate":"$todayDate","diastolicPressure":"","examOther":"","flag":"","height":"0","homeAddress":"北京市海淀区第一","id":"$id6","illHistory":"","isPrint":"0","medicineCost":"1392","otherCost":"0","outpatientNo":"","paidCost":"1392","patientId":"$patientId","patientName":"$patientName","payTime":"","payType":"0","phone":"13112344321","prescriptionFlag":"2","pulse":"","realName":"汪克强","regiFlag":"","regiId":"","sex":"1","status":"1","systolicPressure":"","taboo":"","temperature":"","weight":""},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescriptionChinese/directToCharge_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescription/invalid/作废中药处方2
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"reason":"患者对药物过敏","id":"$id6","remindPatient":"2"},"synCode":""},"header":{"v":"1.242","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/invalid
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

@@ -1,0 +1,128 @@
+-   config:
+        name: 药方设置相关
+        request:
+            base_url: 'http://bt-pharmacy.yunzhenshi.com.cn'
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   commodityName: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.231'
+        -   id: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+#添加供货商
+-   test:
+        name: /supplierEdit/addNewSupplier/添加供货商
+        parameters:
+        -   supplierName-phone-code:
+              - ['山东供货商','13212345678','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "address": "",
+            "linkman": "123",
+            "tel": "0312-8776543",
+            "id": "$id",
+            "supplierName": "$supplierName",
+            "phone": "$phone",
+            "isDelete": "0",
+            "aptitude": ""
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": " $version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236193996'
+            method: POST
+            url: /supplierEdit/addNewSupplier
+        extract:
+        -   gonghuoID: content.body.content.id
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+#修改供货商
+-   test:
+        name: /supplierEdit/changeSupplier/修改供货商
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "address": "河北保定",
+            "id": "$gonghuoID"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": " $version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236193996'
+            method: POST
+            url: /supplierEdit/changeSupplier
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+#删除供货商
+-   test:
+        name: /supplierEdit/deleteSupplier/删除改供货商
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "id": "$gonghuoID"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": " $version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236193996'
+            method: POST
+            url: /supplierEdit/deleteSupplier
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

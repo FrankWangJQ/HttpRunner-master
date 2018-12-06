@@ -1,0 +1,28 @@
+-   config:
+        name: 设置项
+        request:
+            base_url: ''
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.231'
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /promotion/getClinicIntegralDetailByPage/诊所积分
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"pageNum":"20","pageStart":"1"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: http://bt-dos.yunzhenshi.com/promotion/getClinicIntegralDetailByPage
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '0000'

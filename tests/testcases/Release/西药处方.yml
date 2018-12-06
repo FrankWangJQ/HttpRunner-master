@@ -1,0 +1,1448 @@
+-   config:
+        name: 西药处方
+        request:
+            base_url: 'http://bt-workbench.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   todayDate: ${get_strftime()}
+        -   version: '1.231'
+        -   id1: ${gen_random_string(32)}
+        -   id2: ${gen_random_string(32)}
+        -   id3: ${gen_random_string(32)}
+        -   id4: ${gen_random_string(32)}
+        -   id5: ${gen_random_string(32)}
+        -   id6: ${gen_random_string(32)}
+        -   id7: ${gen_random_string(32)}
+        -   id8: ${gen_random_string(32)}
+        -   id9: ${gen_random_string(32)}
+        -   id10: ${gen_random_string(32)}
+        -   id11: ${gen_random_string(32)}
+        -   id12: ${gen_random_string(32)}
+        -   id13: ${gen_random_string(32)}
+        -   id14: ${gen_random_string(32)}
+        -   id15: ${gen_random_string(32)}
+        -   id16: ${gen_random_string(32)}
+        -   id17: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /prescription/createTempPrescription_v1/西药处方临时保存1
+        parameters:
+        #注射液名称、注射液ID、西药名称、西药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-showCommodityName3-medDisId3-showCommodityName4-medDisId4-patientName-patientId-code:
+              -   ['板蓝根注射液','ff808081666625430166769667b803e0','重复药品','ff80808166f134b70166f36719e0019e','1105器械(1105)','ff80808166d372b80166e280999a045c','1105诊疗(1105)','ff808081668bc15d01668c143d0a0012','阿四的风格','fbfcc8c411ac44a39f0bb3e034f84cbe','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "List": [
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "袋",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0",
+                    "dosageFormId": "40288c2a5157239d015157360cc60a02",
+                    "dosageUnit": "ml",
+                    "frequency": "1天4次",
+                    "groupId": "0",
+                    "id": "$id1",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId1",
+                    "minimumUnit": "片",
+                    "orderNum": "1",
+                    "otcId": "",
+                    "priceUnit": "片",
+                    "saleUnit": "min",
+                    "saleUnitPrice": "25",
+                    "showCommodityName": "$showCommodityName1",
+                    "specifcations": "2ml",
+                    "totalNumber": "400",
+                    "usage": "静脉注射",
+                    "useLevel": "400",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "共1次；",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "0",
+                    "id": "$id2",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "2",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "瓶",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "40288c2a5157239d0151573466850000",
+                    "dosageUnit": "",
+                    "frequency": "一日4次",
+                    "groupId": "1",
+                    "id": "$id3",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId2",
+                    "minimumUnit": "片",
+                    "orderNum": "3",
+                    "otcId": "",
+                    "priceUnit": "瓶",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1200",
+                    "showCommodityName": "$showCommodityName2",
+                    "specifcations": "4片",
+                    "totalNumber": "1",
+                    "usage": "口服",
+                    "useLevel": "0",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "1",
+                    "id": "$id4",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "4",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "2",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "盒",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "2",
+                    "id": "$id5",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId3",
+                    "minimumUnit": "支",
+                    "orderNum": "5",
+                    "otcId": "",
+                    "priceUnit": "盒",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName3",
+                    "specifcations": "1105",
+                    "totalNumber": "1",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "2",
+                    "id": "$id6",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "6",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "3",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "次",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "3",
+                    "id": "$id7",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId4",
+                    "minimumUnit": "次",
+                    "orderNum": "7",
+                    "otcId": "",
+                    "priceUnit": "次",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName4",
+                    "specifcations": "  ",
+                    "totalNumber": "1",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "3",
+                    "id": "$id8",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "8",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                }
+            ],
+            "age": "",
+            "allergicHistory": "",
+            "birthday": "2010-11-05",
+            "bloodGlucose": "",
+            "busiOrderNo": "",
+            "clinicServiceList": [],
+            "complaint": "",
+            "debtCost": "0",
+            "diagnose": "",
+            "diagnoseDate": "$todayDate",
+            "diastolicPressure": "",
+            "examOther": "",
+            "flag": "1",
+            "height": "0",
+            "homeAddress": "你要好好看看书什么时候才知道这段路走在前面等你呢",
+            "id": "$id9",
+            "illHistory": "",
+            "isPrint": "0",
+            "medicineCost": "13200",
+            "otherCost": "0",
+            "outpatientNo": "",
+            "paidCost": "13200",
+            "patientId": "$patientId",
+            "patientName": "$patientName",
+            "payTime": "",
+            "payType": "0",
+            "phone": "13212312341",
+            "prescriptionFlag": "1",
+            "pulse": "",
+            "realName": "汪克强",
+            "regiFlag": "",
+            "regiId": "",
+            "sex": "1",
+            "status": "0",
+            "systolicPressure": "",
+            "taboo": "",
+            "temperature": "",
+            "weight": ""
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/createTempPrescription_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescription/createPrescription_v1/西药处方生成收费单1
+        parameters:
+        #注射液名称、注射液ID、西药名称、西药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-showCommodityName3-medDisId3-showCommodityName4-medDisId4-patientName-patientId-code:
+              -   ['板蓝根注射液','ff808081666625430166769667b803e0','重复药品','ff80808166f134b70166f36719e0019e','1105器械(1105)','ff80808166d372b80166e280999a045c','1105诊疗(1105)','ff808081668bc15d01668c143d0a0012','阿四的风格','fbfcc8c411ac44a39f0bb3e034f84cbe','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "List": [
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "袋",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0",
+                    "dosageFormId": "40288c2a5157239d015157360cc60a02",
+                    "dosageUnit": "ml",
+                    "frequency": "1天4次",
+                    "groupId": "0",
+                    "id": "$id1",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId1",
+                    "minimumUnit": "片",
+                    "orderNum": "1",
+                    "otcId": "",
+                    "priceUnit": "片",
+                    "saleUnit": "min",
+                    "saleUnitPrice": "25",
+                    "showCommodityName": "$showCommodityName1",
+                    "specifcations": "2ml",
+                    "totalNumber": "400",
+                    "usage": "静脉注射",
+                    "useLevel": "400",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "共1次；立即;一日2次",
+                    "dosage": "0.00",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "0",
+                    "id": "$id2",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "2",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "瓶",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "40288c2a5157239d0151573466850000",
+                    "dosageUnit": "",
+                    "frequency": "一日4次",
+                    "groupId": "1",
+                    "id": "$id3",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId2",
+                    "minimumUnit": "片",
+                    "orderNum": "3",
+                    "otcId": "",
+                    "priceUnit": "瓶",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1200",
+                    "showCommodityName": "$showCommodityName2",
+                    "specifcations": "4片",
+                    "totalNumber": "1",
+                    "usage": "口服",
+                    "useLevel": "0",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0.00",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "1",
+                    "id": "$id4",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "4",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "2",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "盒",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "2",
+                    "id": "$id5",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId3",
+                    "minimumUnit": "支",
+                    "orderNum": "5",
+                    "otcId": "",
+                    "priceUnit": "盒",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName3",
+                    "specifcations": "1105",
+                    "totalNumber": "1",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0.00",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "2",
+                    "id": "$id6",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "6",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "3",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "次",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "3",
+                    "id": "$id7",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId4",
+                    "minimumUnit": "次",
+                    "orderNum": "7",
+                    "otcId": "",
+                    "priceUnit": "次",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName4",
+                    "specifcations": "  ",
+                    "totalNumber": "1",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0.00",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "3",
+                    "id": "$id8",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "8",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                }
+            ],
+            "age": "",
+            "allergicHistory": "",
+            "base_version": "1542769926341",
+            "birthday": "2010-11-05",
+            "bloodGlucose": "4",
+            "busiOrderNo": "",
+            "clinicServiceList": [],
+            "complaint": "一天一次，发热尿少浮肿伴乏力",
+            "debtCost": "0",
+            "diagnose": "感冒，鼻炎",
+            "diagnoseDate": "$todayDate",
+            "diastolicPressure": "56",
+            "examOther": "",
+            "flag": "1",
+            "height": "0",
+            "homeAddress": "你要好好看看书什么时候才知道这段路走在前面等你呢",
+            "id": "$id9",
+            "illHistory": "",
+            "isPrint": "0",
+            "medicineCost": "13200",
+            "otherCost": "0",
+            "outpatientNo": "",
+            "paidCost": "13200",
+            "patientId": "$patientId",
+            "patientName": "$patientName",
+            "payTime": "",
+            "payType": "0",
+            "phone": "13212312341",
+            "prescriptionFlag": "1",
+            "pulse": "56",
+            "realName": "汪克强",
+            "regiFlag": "",
+            "regiId": "",
+            "sex": "1",
+            "status": "2",
+            "systolicPressure": "120",
+            "taboo": "",
+            "temperature": "37",
+            "weight": "68"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/createPrescription_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescriptionChinese/pay4PrescriptionNew_v1/西药收费单处方去收费1
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "List": [
+                {
+                    "otcId": "$id1",
+                    "saleUnitPrice": "25"
+                },
+                {
+                    "otcId": "$id2",
+                    "saleUnitPrice": "1200"
+                },
+                {
+                    "otcId": "$id3",
+                    "saleUnitPrice": "1000"
+                },
+                {
+                    "otcId": "$id4",
+                    "saleUnitPrice": "1000"
+                }
+            ],
+            "amountMoney": "13200",
+            "chargeDate": "$todayDate",
+            "collectionMoney": "13200",
+            "debtsMoney": "0.0",
+            "diagnosisId": "$id9",
+            "discountMoney": "0",
+            "medicineCost": "13200",
+            "otherCost": "0",
+            "payType": "0",
+            "prescriptionFlag": "1",
+            "prescriptionMoney": "13200"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/pay4PrescriptionNew_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /prescription/invalid/作废西药处方1
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "reason": "患者对药物过敏",
+            "id": "$id9",
+            "remindPatient": "2"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/invalid
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: prescription/directToCharge_v1/生成西药处方直接收费2
+        parameters:
+        #注射液名称、注射液ID、西药名称、西药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-showCommodityName3-medDisId3-showCommodityName4-medDisId4-patientName-patientId-code:
+              -   ['板蓝根注射液','ff808081666625430166769667b803e0','重复药品','ff80808166f134b70166f36719e0019e','1105器械(1105)','ff80808166d372b80166e280999a045c','1105诊疗(1105)','ff808081668bc15d01668c143d0a0012','阿四的风格','fbfcc8c411ac44a39f0bb3e034f84cbe','2000000']
+              -   ['板蓝根注射液','ff808081666625430166769667b803e0','重复药品','ff80808166f134b70166f36719e0019e','1105器械(1105)','ff80808166d372b80166e280999a045c','1105诊疗(1105)','ff808081668bc15d01668c143d0a0012','阿四的风格','fbfcc8c411ac44a39f0bb3e034f84cbe','2020201']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "amountMoney": "13200",
+            "collectionMoney": "13200",
+            "debtsMoney": "1050",
+            "discountMoney": "0",
+            "prescriptionMoney": "13200",
+            "List": [
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "袋",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0",
+                    "dosageFormId": "40288c2a5157239d015157360cc60a02",
+                    "dosageUnit": "ml",
+                    "frequency": "1天4次",
+                    "groupId": "0",
+                    "id": "$id9",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId1",
+                    "minimumUnit": "片",
+                    "orderNum": "1",
+                    "otcId": "$id9",
+                    "priceUnit": "片",
+                    "saleUnit": "min",
+                    "saleUnitPrice": "25",
+                    "showCommodityName": "$showCommodityName1",
+                    "specifcations": "2ml",
+                    "totalNumber": "400",
+                    "usage": "静脉注射",
+                    "useLevel": "400",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "共1次；立即;一日2次",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "0",
+                    "id": "$id10",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "2",
+                    "otcId": "$id10",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "瓶",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "40288c2a5157239d0151573466850000",
+                    "dosageUnit": "",
+                    "frequency": "一日4次",
+                    "groupId": "1",
+                    "id": "$id11",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId2",
+                    "minimumUnit": "片",
+                    "orderNum": "3",
+                    "otcId": "$id11",
+                    "priceUnit": "瓶",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1200",
+                    "showCommodityName": "$showCommodityName2",
+                    "specifcations": "4片",
+                    "totalNumber": "1",
+                    "usage": "口服",
+                    "useLevel": "0",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "1",
+                    "id": "$id12",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "4",
+                    "otcId": "$id12",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "2",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "盒",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "2",
+                    "id": "$id13",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId3",
+                    "minimumUnit": "支",
+                    "orderNum": "5",
+                    "otcId": "$id13",
+                    "priceUnit": "盒",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName3",
+                    "specifcations": "1105",
+                    "totalNumber": "1",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "2",
+                    "id": "$id14",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "6",
+                    "otcId": "$id14",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "3",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "次",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "3",
+                    "id": "$id15",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId4",
+                    "minimumUnit": "次",
+                    "orderNum": "7",
+                    "otcId": "$id15",
+                    "priceUnit": "次",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName4",
+                    "specifcations": "  ",
+                    "totalNumber": "1",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "3",
+                    "id": "$id16",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "8",
+                    "otcId": "$id16",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                }
+            ],
+            "age": "",
+            "allergicHistory": "",
+            "birthday": "2010-11-05",
+            "bloodGlucose": "",
+            "busiOrderNo": "",
+            "clinicServiceList": [],
+            "complaint": "一天一次，发热尿少浮肿伴乏力",
+            "debtCost": "10050",
+            "diagnose": "感冒，鼻炎",
+            "diagnoseDate": "$todayDate",
+            "diastolicPressure": "",
+            "examOther": "",
+            "flag": "",
+            "height": "0",
+            "homeAddress": "你要好好看看书什么时候才知道这段路走在前面等你呢",
+            "id": "$id17",
+            "illHistory": "",
+            "isPrint": "0",
+            "medicineCost": "13200",
+            "otherCost": "0",
+            "outpatientNo": "",
+            "paidCost": "13200",
+            "patientId": "$patientId",
+            "patientName": "$patientName",
+            "payTime": "",
+            "payType": "0",
+            "phone": "13212312341",
+            "prescriptionFlag": "1",
+            "pulse": "",
+            "realName": "汪克强",
+            "regiFlag": "",
+            "regiId": "",
+            "sex": "1",
+            "status": "1",
+            "systolicPressure": "",
+            "taboo": "",
+            "temperature": "",
+            "weight": ""
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/directToCharge_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescription/remove/删除西药处方2
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$id17"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/remove
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /prescription/createPrescription_v1/西药处方生成收费单3
+        parameters:
+        #注射液名称、注射液ID、西药名称、西药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-showCommodityName3-medDisId3-showCommodityName4-medDisId4-patientName-patientId-code:
+              -   ['板蓝根注射液','ff808081666625430166769667b803e0','重复药品','ff80808166f134b70166f36719e0019e','1105器械(1105)','ff80808166d372b80166e280999a045c','1105诊疗(1105)','ff808081668bc15d01668c143d0a0012','阿四的风格','fbfcc8c411ac44a39f0bb3e034f84cbe','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "List": [
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "袋",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0",
+                    "dosageFormId": "40288c2a5157239d015157360cc60a02",
+                    "dosageUnit": "ml",
+                    "frequency": "1天4次",
+                    "groupId": "0",
+                    "id": "$id2",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId1",
+                    "minimumUnit": "片",
+                    "orderNum": "1",
+                    "otcId": "",
+                    "priceUnit": "片",
+                    "saleUnit": "min",
+                    "saleUnitPrice": "25",
+                    "showCommodityName": "$showCommodityName1",
+                    "specifcations": "2ml",
+                    "totalNumber": "400",
+                    "usage": "静脉注射",
+                    "useLevel": "400",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "共1次；立即;一日2次",
+                    "dosage": "0.00",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "0",
+                    "id": "$id3",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "2",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "瓶",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "40288c2a5157239d0151573466850000",
+                    "dosageUnit": "",
+                    "frequency": "一日4次",
+                    "groupId": "1",
+                    "id": "$id4",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId2",
+                    "minimumUnit": "片",
+                    "orderNum": "3",
+                    "otcId": "",
+                    "priceUnit": "瓶",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1200",
+                    "showCommodityName": "$showCommodityName2",
+                    "specifcations": "4片",
+                    "totalNumber": "1",
+                    "usage": "口服",
+                    "useLevel": "0",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0.00",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "1",
+                    "id": "$id5",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "4",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "2",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "盒",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "2",
+                    "id": "$id6",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId3",
+                    "minimumUnit": "支",
+                    "orderNum": "5",
+                    "otcId": "",
+                    "priceUnit": "盒",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName3",
+                    "specifcations": "1105",
+                    "totalNumber": "1",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0.00",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "2",
+                    "id": "$id7",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "6",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "3",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "次",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "3",
+                    "id": "$id8",
+                    "isSetMethod": "0",
+                    "medDisId": "$medDisId4",
+                    "minimumUnit": "次",
+                    "orderNum": "7",
+                    "otcId": "",
+                    "priceUnit": "次",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName4",
+                    "specifcations": "  ",
+                    "totalNumber": "1",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                },
+                {
+                    "batchId": "",
+                    "clinicCommodityChineseId": "",
+                    "commodityCategory": "",
+                    "commodityCode": "",
+                    "commoditySource": "",
+                    "commonUnit": "",
+                    "diagnosisId": "",
+                    "docterOrder": "",
+                    "dosage": "0.00",
+                    "dosageFormId": "",
+                    "dosageUnit": "",
+                    "frequency": "  ",
+                    "groupId": "3",
+                    "id": "$id9",
+                    "isSetMethod": "0",
+                    "medDisId": "",
+                    "minimumUnit": "",
+                    "orderNum": "8",
+                    "otcId": "",
+                    "priceUnit": "",
+                    "saleUnit": "common",
+                    "saleUnitPrice": "0",
+                    "showCommodityName": "",
+                    "specifcations": "  ",
+                    "totalNumber": "0",
+                    "usage": "  ",
+                    "useLevel": "0",
+                    "useLevelUnit": "  "
+                }
+            ],
+            "age": "",
+            "allergicHistory": "",
+            "base_version": "1542769926341",
+            "birthday": "2010-11-05",
+            "bloodGlucose": "4",
+            "busiOrderNo": "",
+            "clinicServiceList": [],
+            "complaint": "一天一次，发热尿少浮肿伴乏力",
+            "debtCost": "0",
+            "diagnose": "感冒，鼻炎",
+            "diagnoseDate": "$todayDate",
+            "diastolicPressure": "56",
+            "examOther": "",
+            "flag": "1",
+            "height": "0",
+            "homeAddress": "你要好好看看书什么时候才知道这段路走在前面等你呢",
+            "id": "$id10",
+            "illHistory": "",
+            "isPrint": "0",
+            "medicineCost": "13200",
+            "otherCost": "0",
+            "outpatientNo": "",
+            "paidCost": "13200",
+            "patientId": "$patientId",
+            "patientName": "$patientName",
+            "payTime": "",
+            "payType": "0",
+            "phone": "13212312341",
+            "prescriptionFlag": "1",
+            "pulse": "56",
+            "realName": "汪克强",
+            "regiFlag": "",
+            "regiId": "",
+            "sex": "1",
+            "status": "2",
+            "systolicPressure": "120",
+            "taboo": "",
+            "temperature": "37",
+            "weight": "68"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/createPrescription_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescription/modifyPrescriptionStatus/取消西药待收费处方3
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "cancel": "3",
+            "id": "$id10"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/modifyPrescriptionStatus
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

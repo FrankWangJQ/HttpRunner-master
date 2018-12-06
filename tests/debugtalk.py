@@ -62,6 +62,17 @@ def get_account():
 
 SECRET_KEY = "DebugTalk"
 
+def get_random_sysUserId():
+    list_id = ['000000005b0a39fe015b0a7473bf000a',
+'000000005b0a39fe015b0d6035bc0024',
+'000000005b0fa36a015b13ada6fb001b',
+'000000005b0fa36a015b13ce97280022',
+'000000005b196386015b1a4fc4060004']
+    x = random(0,1,2,3,4)
+    print(x)
+    random_id = list_id[x]
+    return random_id
+
 def gen_random_string(str_len):
     random_char_list = []
     for _ in range(str_len):
@@ -75,8 +86,17 @@ def get_dataTime():
     t = time.time()
     return int(round(t*1000))
 
+def get_strftime():
+    return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
+def get_startTime():
+    return time.strftime("%Y-%m-%d",time.localtime())
+
 def setup_hook_add_kwargs(request):
     request["key"] = "value"
+
+def get_requestId():
+    return time.strftime("%Y%m%d%H%M%S",time.localtime())
+
 
 def setup_hook_remove_kwargs(request):
     request.pop("key")

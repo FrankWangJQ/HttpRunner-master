@@ -1,0 +1,97 @@
+-   config:
+        name: 西药处方
+        request:
+            base_url: 'http://bt-workbench.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.241'
+        -   id1: ${gen_random_string(32)}
+        -   id2: ${gen_random_string(32)}
+        -   id3: ${gen_random_string(32)}
+        -   id4: ${gen_random_string(32)}
+        -   id5: ${gen_random_string(32)}
+        -   id6: ${gen_random_string(32)}
+        -   id7: ${gen_random_string(32)}
+        -   id8: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /prescription/createTempPrescription_v1/西药处方临时保存
+        parameters:
+        #中药名称、中药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-patientName-patientId-code:
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"List":[{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"1","commodityCode":"","commoditySource":"0","commonUnit":"袋","diagnosisId":"","docterOrder":"","dosage":"0","dosageFormId":"40288c2a5157239d015157360cc60a02","dosageUnit":"ml","frequency":"1天4次","groupId":"0","id":"2bf554f3b5db4898bfbce5a93b2c51bc","isSetMethod":"0","medDisId":"ff808081666625430166769667b803e0","minimumUnit":"片","orderNum":"1","otcId":"","priceUnit":"片","saleUnit":"min","saleUnitPrice":"25","showCommodityName":"板蓝根注射液","specifcations":"2ml","totalNumber":"400","usage":"静脉注射","useLevel":"400","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"共1次；","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"5d05d707f7904ee28a28edb29f81f380","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"2","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"1","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"d8c61da47f8d11e5b31128936a597f70","dosageUnit":"","frequency":"1天3次","groupId":"1","id":"91d48b5d4ae44e0aa5378b46e6dc7dd6","isSetMethod":"0","medDisId":"ff8080815501cdd201550a320b370505","minimumUnit":"片","orderNum":"3","otcId":"","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"100","showCommodityName":"安宫降压丸","specifcations":"每丸重3克","totalNumber":"1","usage":"口服","useLevel":"1","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"饭后吃","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"b42ef5206be14ea99b2523c3edbe1407","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"4","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"2","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"2","id":"828e5d99fede408fb490f1a7810a5d09","isSetMethod":"0","medDisId":"ff808081668c383701668c3e9cba0011","minimumUnit":"片","orderNum":"5","otcId":"","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"1200","showCommodityName":"器械123(器械简称)","specifcations":"规格","totalNumber":"1","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"饭后吃","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"2","id":"5547d6807ce542eca4d7950000844269","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"6","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "}],"age":"","allergicHistory":"","birthday":"2017-09-21","bloodGlucose":"5.8","busiOrderNo":"","clinicServiceList":[],"complaint":"一天两次，口干多饮疲乏","debtCost":"0","diagnose":"感冒","diagnoseDate":"2018-10-29 22:39:34","diastolicPressure":"80","examOther":"","flag":"1","height":"0","homeAddress":"北京市海淀区第一","id":"141ee7e2a80a4970b7dd9ff5265a7c05","illHistory":"","isPrint":"0","medicineCost":"11300","otherCost":"0","outpatientNo":"","paidCost":"11300","patientId":"sAwXGRqtpNThkfoaovd56dKmbH9BdZRN","patientName":"重复患者","payTime":"","payType":"0","phone":"13112344321","prescriptionFlag":"1","pulse":"68","realName":"汪克强","regiFlag":"","regiId":"","sex":"1","status":"0","systolicPressure":"120","taboo":"","temperature":"36","weight":"58"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/createTempPrescription_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescription/createPrescription_v1/西药处方生成收费单
+        parameters:
+        #中药名称、中药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-patientName-patientId-code:
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"List":[{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"1","commodityCode":"","commoditySource":"0","commonUnit":"袋","diagnosisId":"","docterOrder":"","dosage":"0","dosageFormId":"40288c2a5157239d015157360cc60a02","dosageUnit":"ml","frequency":"1天4次","groupId":"0","id":"07bfa87d66d0424d8d2bc2fcf588e77a","isSetMethod":"0","medDisId":"ff808081666625430166769667b803e0","minimumUnit":"片","orderNum":"1","otcId":"","priceUnit":"片","saleUnit":"min","saleUnitPrice":"25.0","showCommodityName":"板蓝根注射液","specifcations":"2ml","totalNumber":"400","usage":"静脉注射","useLevel":"400","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"共1次；","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"26872ddba7c544259140d42b33392497","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"2","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"1","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"d8c61da47f8d11e5b31128936a597f70","dosageUnit":"","frequency":"1天3次","groupId":"1","id":"69c2a834ddb4433dba18390bb7b4bc19","isSetMethod":"0","medDisId":"ff8080815501cdd201550a320b370505","minimumUnit":"片","orderNum":"3","otcId":"","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"100.0","showCommodityName":"安宫降压丸","specifcations":"每丸重3克","totalNumber":"1","usage":"口服","useLevel":"1","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"饭后吃","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"a8a99b117629458a9983ca87eb7782ef","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"4","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"2","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"2","id":"53f4ca9a2a4544509bfd72d5a57e96f4","isSetMethod":"0","medDisId":"ff808081668c383701668c3e9cba0011","minimumUnit":"片","orderNum":"5","otcId":"","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"1200.0","showCommodityName":"器械123(器械简称)","specifcations":"规格","totalNumber":"1","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"饭后吃","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"2","id":"d32b6d9d384947d48752cde1d2d62ae9","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"6","otcId":"","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "}],"age":"","allergicHistory":"","birthday":"2017-09-21","bloodGlucose":"","busiOrderNo":"","clinicServiceList":[],"complaint":"一天两次，口干多饮疲乏","debtCost":"0","diagnose":"感冒","diagnoseDate":"2018-10-29 22:48:02","diastolicPressure":"","examOther":"","flag":"1","height":"0","homeAddress":"北京市海淀区第一","id":"f5582acdadc84ab89c89e3e5dbe45942","illHistory":"","isPrint":"0","medicineCost":"11300","otherCost":"0","outpatientNo":"","paidCost":"11300","patientId":"sAwXGRqtpNThkfoaovd56dKmbH9BdZRN","patientName":"重复患者","payTime":"","payType":"0","phone":"13112344321","prescriptionFlag":"1","pulse":"","realName":"汪克强","regiFlag":"","regiId":"","sex":"1","status":"2","systolicPressure":"","taboo":"","temperature":"","weight":""},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/createPrescription_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /prescription/pay4PrescriptionNew_v1/西药收费单处方去收费
+        parameters:
+        #中药名称、中药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-patientName-patientId-code:
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"List":[{"otcId":"07bfa87d66d0424d8d2bc2fcf588e77a","saleUnitPrice":"25"},{"otcId":"69c2a834ddb4433dba18390bb7b4bc19","saleUnitPrice":"100"},{"otcId":"53f4ca9a2a4544509bfd72d5a57e96f4","saleUnitPrice":"1200"}],"amountMoney":"11300","chargeDate":"2018-10-29 22:50:25","collectionMoney":"11300","debtsMoney":"0.0","diagnosisId":"f5582acdadc84ab89c89e3e5dbe45942","discountMoney":"0","medicineCost":"11300","otherCost":"0","payType":"0","prescriptionFlag":"1","prescriptionMoney":"11300"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/pay4PrescriptionNew_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: prescriptionChinese/directToCharge_v1/生成西药药处方直接收费
+        parameters:
+        #中药名称、中药ID、器械名称、器械ID、患者名称、患者ID、返回code码
+        -   showCommodityName1-medDisId1-showCommodityName2-medDisId2-patientName-patientId-code:
+              -   ['薄荷','ff808081665d889301665d8e91ec0054','器械123(器械简称)','ff808081668c383701668c3e9cba0011','重复患者','sAwXGRqtpNThkfoaovd56dKmbH9BdZRN','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"amountMoney":"11300","collectionMoney":"11300","debtsMoney":"1000","discountMoney":"0","prescriptionMoney":"11300","List":[{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"1","commodityCode":"","commoditySource":"0","commonUnit":"袋","diagnosisId":"","docterOrder":"","dosage":"0","dosageFormId":"40288c2a5157239d015157360cc60a02","dosageUnit":"ml","frequency":"1天4次","groupId":"0","id":"2bf554f3b5db4898bfbce5a93b2c51bc","isSetMethod":"0","medDisId":"ff808081666625430166769667b803e0","minimumUnit":"片","orderNum":"1","otcId":"2bf554f3b5db4898bfbce5a93b2c51bc","priceUnit":"片","saleUnit":"min","saleUnitPrice":"25","showCommodityName":"板蓝根注射液","specifcations":"2ml","totalNumber":"400","usage":"静脉注射","useLevel":"400","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"共1次；","dosage":"0.00","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"ff80808166bfbc360166c04641180138","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"2","otcId":"ff80808166bfbc360166c04641180138","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"1","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"d8c61da47f8d11e5b31128936a597f70","dosageUnit":"","frequency":"1天3次","groupId":"1","id":"91d48b5d4ae44e0aa5378b46e6dc7dd6","isSetMethod":"0","medDisId":"ff8080815501cdd201550a320b370505","minimumUnit":"片","orderNum":"3","otcId":"91d48b5d4ae44e0aa5378b46e6dc7dd6","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"100","showCommodityName":"安宫降压丸","specifcations":"每丸重3克","totalNumber":"1","usage":"口服","useLevel":"1","useLevelUnit":"片"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"饭后吃","dosage":"0.00","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"ff80808166bfbc360166c04641180139","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"4","otcId":"ff80808166bfbc360166c04641180139","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"2","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"2","id":"828e5d99fede408fb490f1a7810a5d09","isSetMethod":"0","medDisId":"ff808081668c383701668c3e9cba0011","minimumUnit":"片","orderNum":"5","otcId":"828e5d99fede408fb490f1a7810a5d09","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"1200","showCommodityName":"器械123(器械简称)","specifcations":"规格","totalNumber":"1","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","commonUnit":"","diagnosisId":"","docterOrder":"饭后吃","dosage":"0.00","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"2","id":"ff80808166bfbc360166c0464119013a","isSetMethod":"0","medDisId":"","minimumUnit":"","orderNum":"6","otcId":"ff80808166bfbc360166c0464119013a","priceUnit":"","saleUnit":"common","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "}],"age":"","allergicHistory":"","base_version":"1540824121619","birthday":"2017-09-21","bloodGlucose":"5.8","busiOrderNo":"","clinicServiceList":[],"complaint":"一天两次，口干多饮疲乏","debtCost":"1000","diagnose":"感冒","diagnoseDate":"2018-10-29 22:42:02","diastolicPressure":"80","examOther":"","flag":"","height":"0","homeAddress":"北京市海淀区第一","id":"141ee7e2a80a4970b7dd9ff5265a7c05","illHistory":"","isPrint":"0","medicineCost":"11300","otherCost":"0","outpatientNo":"","paidCost":"11300","patientId":"sAwXGRqtpNThkfoaovd56dKmbH9BdZRN","patientName":"重复患者","payTime":"","payType":"0","phone":"13112344321","prescriptionFlag":"1","pulse":"68","realName":"汪克强","regiFlag":"","regiId":"","sex":"1","status":"1","systolicPressure":"120","taboo":"","temperature":"36","weight":"58"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescriptionChinese/directToCharge_v1
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code

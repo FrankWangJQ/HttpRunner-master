@@ -1,0 +1,257 @@
+-   config:
+        name: 新增患者-开中药方-临时保存-收费-作废
+        request:
+            base_url: ''
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   rodemString: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.230'
+        -   medicineShortName: ${gen_random_string(2)}
+        -   userToken: "userCenter"
+        -   redom32: ${gen_random_string(32)}
+#添加患者（患者名称userName ）
+-   test:
+        name: /patientCenter/clinicPatient/save
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"allergicHistory":"","birthday":"2015-07-05","clinicId":"ff8080815698e63501569c762c29001f","deviceType":-1,"fingerPrint":0,"flag":"0","homeAddress":"","id":"dcef48c5c10e42cfbd124d33605b593f","idCardNo":"","illHistory":"","is_delete":"0","phone":"","sex":1,"shorthand":"","status":0,"totalArrears":0,"userName":"$rodemString"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536238866213'
+            method: POST
+            url: http://192.168.14.76:8080/patientCenter/clinicPatient/save
+        extract:
+        -   id: content.body.content.id
+        -   patientName: content.body.content.patientName
+        -   clinicId: content.header.clinicId
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /patientCenter/clinicPatient/syClinicPatient
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clientVersion":"1536238597944","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/patientCenter/clinicPatient/syClinicPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+#临时保存中药方（中药ID 器械ID 诊疗ID 诊所ID 返回值中的处方ID）
+-   test:
+        name: /workbench/prescriptionChinese/createTempPrescription_v1
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"List":[{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"4","commodityCode":"","commoditySource":"","commonUnit":"匡","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"d4d418aac3bc41f4bd7e342028772e7a","isSetMethod":"0","medDisId":"40288ecc657f4c8b01657f6699f10050","minimumUnit":"支","orderNum":"1","otcId":"","priceUnit":"支","saleUnit":"min","saleUnitPrice":"1250","showCommodityName":"001有条狗","specifcations":"偶就回去bhj","totalNumber":"2","usage":"烊化","useLevel":"2","useLevelUnit":"支"},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","diagnosisId":"","docterOrder":"共1剂；","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"0","id":"568709fed03740258a007a15015d3e00","isSetMethod":"0","medDisId":"","orderNum":"2","otcId":"","priceUnit":"","saleUnit":"min","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"2","commodityCode":"","commoditySource":"0","commonUnit":"瓶","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"a8ac7c60f0e5490f9b88eb91d92a70c5","isSetMethod":"0","medDisId":"40288ecc6589af3201658a0aa6d503a4","minimumUnit":"丸","orderNum":"3","otcId":"","priceUnit":"瓶","saleUnit":"common","saleUnitPrice":"5500","showCommodityName":"发个短信","specifcations":"  ","totalNumber":"1","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"1","id":"179c2181bd384f3caa17935de16066c1","isSetMethod":"0","medDisId":"","orderNum":"4","otcId":"","priceUnit":"","saleUnit":"min","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"3","commodityCode":"","commoditySource":"0","commonUnit":"盒","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"2","id":"20f47242858847f0a2d3af1e62a1f5e3","isSetMethod":"0","medDisId":"8a9b76d758947a6e01589917785a0689","minimumUnit":"片","orderNum":"5","otcId":"","priceUnit":"盒","saleUnit":"common","saleUnitPrice":"3000","showCommodityName":"肝功能检查","specifcations":"  ","totalNumber":"1","usage":"  ","useLevel":"0","useLevelUnit":"  "},{"batchId":"","clinicCommodityChineseId":"","commodityCategory":"","commodityCode":"","commoditySource":"","diagnosisId":"","docterOrder":"","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"  ","groupId":"2","id":"ee25f27d762a4adcb216f51087e07e15","isSetMethod":"0","medDisId":"","orderNum":"6","otcId":"","priceUnit":"","saleUnit":"min","saleUnitPrice":"0","showCommodityName":"","specifcations":"  ","totalNumber":"0","usage":"  ","useLevel":"0","useLevelUnit":"  "}],"age":"","allergicHistory":"","bloodGlucose":"","busiOrderNo":"","clinicServiceList":[],"complaint":"","debtCost":"0","diagnose":"","diagnoseDate":"2018-09-06
+                    21:01:07","diastolicPressure":"","examOther":"","flag":"1","height":"0","homeAddress":"","id":"$redom32","illHistory":"","isPrint":"0","medicineCost":"11000","otherCost":"0","outpatientNo":"","paidCost":"11000","patientId":"$id","patientName":"$patientName","payTime":"","payType":"0","phone":"","prescriptionFlag":"2","pulse":"","realName":"崔铁林","regiFlag":"","regiId":"","sex":"","status":"0","systolicPressure":"","taboo":"","temperature":"","weight":""},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536238915658'
+            method: POST
+            url: http://192.168.14.21:8080/workbench/prescriptionChinese/createTempPrescription_v1
+        extract:
+        -   patientId: content.body.params.patientId
+        validate:
+        -   eq:
+            - status_code
+            - 200
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"prescription":{"clientVersion":"1536281808536"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"registration":{"clientVersion":"1527572769996"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /zyPayServer/onlinePay/getClinicOnlinePayStatus
+        request:
+            data:
+                detail: p8flHJ3UTAminBn7LjyJnkH2Cxm8QgVxBn1du7yJ0Aa4xXy3k2g3RWhgdq28HkoqVMbVFXd60cFtdMPTipf0vKvYRLh9do1n8r6Ar2ZazDauO/t4cFKgdc0Hx7Iv6LTJfW+Nwd36TNs4wymW/wC4KEDl/1U55bPRaXGhQPEazbfWn1BKeOdxgl6JX8t3kqmvicBtqaE4iosIw6lWBsBMuKWtA/55pMxC3MxiR/u1m2H8O7LMSFUYKtUs+INc1Bzh36LzLyQI05x4h1PFHUF+lNXBZvKROyACe1TvYx7uVH7wM3ESDjEECtn8ox2xGhFax+ogdq390PZxUe8MBbc+kvihZ0wbbYqjJEXRlCDEq8nDD/puIaEcmNYNxQ09r34Q
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536238926671'
+            method: POST
+            url: http://payserver.zhiyiyunzhenshi.com/zyPayServer/onlinePay/getClinicOnlinePayStatus
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "0000"
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"registration":{"clientVersion":"1527572769996"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+#结算
+-   test:
+        name: /workbench/prescriptionChinese/pay4PrescriptionNew_v1
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"List":[{"otcId":"d4d418aac3bc41f4bd7e342028772e7a","saleUnitPrice":"1250"},{"otcId":"a8ac7c60f0e5490f9b88eb91d92a70c5","saleUnitPrice":"5500"},{"otcId":"20f47242858847f0a2d3af1e62a1f5e3","saleUnitPrice":"3000"}],"amountMoney":"11000","chargeDate":"2018-09-06
+                    21:02:15","collectionMoney":"11000","debtsMoney":"289","diagnosisId":"67b50b768b6e4d4ea888686aa600a72d","discountMoney":"0","medicineCost":"11000","otherCost":"0","payType":"0","prescriptionFlag":"2","prescriptionMoney":"11000"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536238935956'
+            method: POST
+            url: http://192.168.14.21:8080/workbench/prescriptionChinese/pay4PrescriptionNew_v1
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536238597976","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536238597976","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"prescription":{"clientVersion":"1536282120381"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"registration":{"clientVersion":"1527572769996"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+#作废中药方（处方ID 诊所ID）
+-   test:
+        name: /workbench/prescription/invalid
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"reason":"价格有误","id":"$patientId","remindPatient":"2"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536238946661'
+            method: POST
+            url: http://192.168.14.21:8080/workbench/prescription/invalid
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"prescription":{"clientVersion":"1536282131875"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - content.body.code
+            - "2000000"

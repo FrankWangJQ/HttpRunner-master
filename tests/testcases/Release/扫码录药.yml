@@ -1,0 +1,751 @@
+-   config:
+        name: testset description
+        request:
+            base_url: 'http://bt-pharmacy.yunzhenshi.com.cn'
+            headers:
+                User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 12_0_1 like Mac OS
+                    X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16A404 MicroMessenger/6.7.4(0x1607042c)
+                    NetType/WIFI Language/zh_CN
+        variables:
+        -   userId: N0E0QUY5QTdEN0MzOTRGODA0NTQ0MjlCNTNBMzBENDc1MzUyMzQ0OUMxM0M0MDc3MUQ4QzdFOEVEMThBMDk0MUY3ODZDNzlDNUYyREM3MUIxOEJEMzhGRjdCMjMxNzg5NTc3QkNFQzFGQkY1MkJBNjU4NDAzMTY1NjQxNDlFNzc=
+        -   commodityName1: ${gen_random_string(4)}
+        -   commodityName2: ${gen_random_string(6)}
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+        -   version: '1.243'
+-   test:
+        name: /RichScan/checkQRcodeTime----判断二维码失效
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                key: e5f35c9d1c92658068f0ba93b3795503
+            url: /RichScan/checkQRcodeTime
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8
+-   test:
+        name: /RichScan/bindClinic----扫码
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId:
+            url: /RichScan/bindClinic
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8
+-   test:
+        name: /Login/reLogin----登陆
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                userId: $userId
+            url: /Login/reLogin
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8
+-   test:
+        name: /clinic/clinicMedicinalShow---西药列表
+        request:
+            data:
+                clinicId: $clinicId
+                medicineType: xiyao
+                p: '1'
+                s: '10'
+                type: '1'
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/clinicMedicinalShow
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.medicineType
+            - xiyao
+        -   eq:
+            - content.message
+            - 成功
+-   test:
+        name: /clinic/clinicMedicinalShow----西药列表
+        request:
+            data:
+                clinicId: $clinicId
+                findTime: ''
+                keyword: ''
+                medicineType: xiyao
+                p: '1'
+                s: '10'
+                type: '1'
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/clinicMedicinalShow
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.medicineType
+            - xiyao
+        -   eq:
+            - content.message
+            - 成功
+-   test:
+        name: /clinic/clinicMedicinalShow----中药列表
+        request:
+            data:
+                clinicId: $clinicId
+                findTime: ''
+                keyword: ''
+                medicineType: zhongyao
+                p: '1'
+                s: '10'
+                type: '1'
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/clinicMedicinalShow
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.medicineType
+            - zhongyao
+        -   eq:
+            - content.message
+            - 成功
+-   test:
+        name: /clinic/clinicMedicinalShow----器械列表
+        request:
+            data:
+                clinicId: $clinicId
+                findTime: ''
+                keyword: ''
+                medicineType: qixie
+                p: '1'
+                s: '10'
+                type: '1'
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/clinicMedicinalShow
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.medicineType
+            - qixie
+        -   eq:
+            - content.message
+            - 成功
+-   test:
+        name: /clinic/getClinicEmploy----点击手动加药
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId: $userId
+            url: /clinic/getClinicEmploy
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.message
+            - 请求成功
+-   test:
+        name: /clinicsCommoditys/findClinicPackUnit----获取西药包装单位
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId: $userId
+            url: /clinicsCommoditys/findClinicPackUnit
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+-   test:
+        name: /clinicsCommoditys/findUsageAndDosage----获取西药用法用量
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId: $userId
+            url: /clinicsCommoditys/findUsageAndDosage
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.message
+            - 请求成功
+-   test:
+        name: /clinicsCommoditys/findDosageFrom----获取西药剂型
+        request:
+            data:
+                clinicId: $clinicId
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinicsCommoditys/findDosageFrom
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+-   test:
+        name: /clinicsCommoditys/addDrug----手动添加西药
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                activeTime: '2019-11-28'
+                approvalNumber: 国药1978
+                clinicId: $clinicId
+                commodityCode: '123456789'
+                commonUnit: 瓶
+                dosage: '0'
+                dosageName: d8c61da47f8d11e5b31128936a597f70
+                dosageUnit: 每次适量
+                drugId: ''
+                drugName: $commodityName1
+                drugType: xiyao
+                factory: 朗致药业
+                frequency: 1天3次
+                matrix: '2'
+                minUnit: 片
+                packPrice: '100'
+                smallPrice: '50'
+                specifcations: 1g
+                stockCommonNum: '500'
+                stockMinNum: '1'
+                threshold: '30'
+                thresholdUnit: 瓶
+                usage: 口服
+                userId: $userId
+            url: /clinicsCommoditys/addDrug
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.message
+            - 完成
+-   test:
+        name: /clinic/checkDrug----判断西药进入药品详情
+        request:
+            data:
+                clinicId: $clinicId
+                drugId: ff80808167583b190167596fc16a0074
+                drugType: xiyao
+                type: '1'
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/checkDrug
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.drugId
+            - ff80808167583b190167596fc16a0074
+        -   eq:
+            - content.message
+            - 请求成功
+-   test:
+        name: /clinic/findMedicinalInfo----点击西药进入药品详情
+        request:
+            data:
+                clinicCommodityId: ff80808167583b190167596fc16a0074
+                clinicId: $clinicId
+                medicineType: xiyao
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/findMedicinalInfo
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.medicineType
+            - xiyao
+        -   eq:
+            - content.message
+            - 成功
+-   test:
+        name: /clinicsCommoditys/addDrug----修改西药
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                activeTime: '2019-11-28'
+                approvalNumber: 国药1978
+                clinicId: $clinicId
+                commodityCode: '123456789'
+                commonUnit: 瓶
+                dosage: '0'
+                dosageName: sd9sdfga7f8d11e5sd1edr936a597fdd
+                dosageUnit: 每次适量
+                drugId: ff80808167583b190167596fc16a0074
+                drugName: commodityName1
+                drugType: xiyao
+                factory: 朗致药业
+                frequency: 1天3次
+                matrix: '2'
+                minUnit: 片
+                packPrice: '100'
+                smallPrice: '50'
+                specifcations: 2g
+                stockCommonNum: '500'
+                stockMinNum: '1'
+                threshold: '30'
+                thresholdUnit: 瓶
+                usage: 口服
+                userId: $userId
+            url: /clinicsCommoditys/addDrug
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.message
+            - 完成
+-   test:
+        name: /clinic/findClinicMedicinal----搜索药品
+        request:
+            data:
+                clinicId: $clinicId
+                keyword: 0
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/findClinicMedicinal
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.message
+            - 成功
+-   test:
+        name: /RichScan/lookForMedicine----扫码器判断药品类型为西药
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                medicineId: '6952764600399'
+                userId: $userId
+            url: /RichScan/lookForMedicine
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8
+-   test:
+        name: /clinicsCommoditys/addDrug---扫码添加西药
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                activeTime: '2019-11-28'
+                approvalNumber: ''
+                clinicId: $clinicId
+                commodityCode: '6952764600399'
+                commonUnit: 盒
+                dosage: '1'
+                dosageName: 40288c2a5157239d01515746516a0008
+                dosageUnit: 支
+                drugId: ''
+                drugName: 浦地蓝消炎口服液
+                drugType: xiyao
+                factory: 江苏济川制药有限公司
+                frequency: 一次3次
+                matrix: '6'
+                minUnit: 支
+                packPrice: '2'
+                smallPrice: '0.3333'
+                specifcations: 10ml
+                stockCommonNum: '50'
+                stockMinNum: '2'
+                threshold: '50'
+                thresholdUnit: 盒
+                usage: 口服
+                userId: $userId
+            url: /clinicsCommoditys/addDrug
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '2032006'
+        -   eq:
+            - content.message
+            - 该药品已存在
+-   test:
+        name: /clinic/getClinicEmploy----点击手动添加药品
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId: $userId
+            url: /clinic/getClinicEmploy
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.message
+            - 请求成功
+-   test:
+        name: /ClinicCommodityChinese/medicinalCatagoryList----获取中药标签
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId: $userId
+            url: /ClinicCommodityChinese/medicinalCatagoryList
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8
+-   test:
+        name: /clinicsCommoditys/findClinicPackUnit----获取中药包装单位
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId: $userId
+            url: /clinicsCommoditys/findClinicPackUnit
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+-   test:
+        name: /clinicCommodityChinese/commonUnitList
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId: $userId
+            url: /clinicCommodityChinese/commonUnitList
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8
+-   test:
+        name: /clinicCommodityChinese/commonUnitList
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                clinicId: $clinicId
+                userId: $userId
+            url: /clinicCommodityChinese/commonUnitList
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8
+-   test:
+        name: /ClinicCommodityChinese/saveOrUpdate---手动添加中药
+        request:
+            data:
+                activeTime: '2019-11-29'
+                announcements: 别喝水
+                approvalNumber: 国药准字123
+                clinicId: $clinicId
+                commodityChineseId: ''
+                commodityCode: '123456'
+                commodityName: $commodityName2
+                commoditySimpleName: 别名
+                commonPrice: '15'
+                commonUnit: 袋
+                defaultDosage: '10'
+                defaultDosageUnit: 粒
+                drugType: zhongyao
+                factory: 河北师范大学
+                indication: 肠胃不适
+                labels: '[{"labelId":"8a9b76d75a65d836015a65db23843ce1","labelName":"外用药（忌内服）"}]'
+                level: 特级
+                matrix: '10'
+                medicinalEffect: 功效美白
+                medicinalEffectLocation: 胃
+                minPrice: '1.5'
+                minUnit: 粒
+                natureSmell: 微苦
+                specifcations: 12g
+                stockCommonNum: '1000'
+                stockMinNum: '0'
+                stockUnit: g
+                threshold: '10'
+                thresholdUnit: 袋
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /ClinicCommodityChinese/saveOrUpdate
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8
+-   test:
+        name: /clinic/checkDrug----返回中药列表
+        request:
+            data:
+                clinicId: $clinicId
+                drugId: ff80808167583b1901675d5003c7032c
+                drugType: zhongyao
+                type: '1'
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/checkDrug
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.drugId
+            - ff80808167583b1901675d5003c7032c
+        -   eq:
+            - content.message
+            - 请求成功
+-   test:
+        name: /clinic/findMedicinalInfo---进入中药详情
+        request:
+            data:
+                clinicCommodityId: ff80808167583b1901675d5003c7032c
+                clinicId: $clinicId
+                medicineType: zhongyao
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinic/findMedicinalInfo
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.code
+            - '0000'
+        -   eq:
+            - content.medicineType
+            - zhongyao
+        -   eq:
+            - content.message
+            - 成功
+-   test:
+        name: /ClinicCommodityChinese/saveOrUpdate--修改中药
+        request:
+            data:
+                activeTime: '2019-11-29'
+                announcements: 别喝水
+                approvalNumber: 国药准字123
+                clinicId: $clinicId
+                commodityChineseId: ff80808167583b1901675d5003c7032c
+                commodityCode: '123456'
+                commodityName: $commodityName2
+                commoditySimpleName: 别名
+                commonPrice: '15'
+                commonUnit: 瓶
+                defaultDosage: '20'
+                defaultDosageUnit: 片
+                drugType: zhongyao
+                factory: 河北师范大学
+                indication: 肠胃不适
+                labels: '[]'
+                level: 初级
+                matrix: '9'
+                medicinalEffect: 功效美白
+                medicinalEffectLocation: 胃
+                minPrice: '1.6666'
+                minUnit: 片
+                natureSmell: 微苦
+                specifcations: 10g
+                stockCommonNum: '1111'
+                stockMinNum: '1'
+                stockUnit: 袋
+                threshold: '10'
+                thresholdUnit: 瓶
+                userId: $userId
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /ClinicCommodityChinese/saveOrUpdate
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=UTF-8

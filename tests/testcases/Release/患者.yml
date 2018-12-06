@@ -1,0 +1,198 @@
+-   config:
+        name: 患者信息
+        request:
+            base_url: 'http://bt-patientcenter.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   commodityName: ${gen_random_string(6)}
+        -   commodityNames: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.231'
+        -   idN: ${gen_random_string(32)}
+        -   idY: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+#新建患者错误类型
+-   test:
+        name: /clinicPatient/save/新增患者错误类型
+        parameters:
+        -   userName-sex-homeAddress-idCardNo-phone-birthday-code:
+              - ['重复患者','1','北京市海淀区第一','','13112344321','2017-09-21','2040101']
+              - ['','1','北京市海淀区第一','','13112344321','2017-09-21','2222222']
+              - ['$commodityNames','','北京市海淀区第一','','13112344321','2017-09-21','3333333']
+              - ['$commodityNames','1','北京市海淀区第一','','13112344321','','2222222']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"allergicHistory":"","birthday":"$birthday","clinicId":"$clinicId","deviceType":-1,"fingerPrint":0,"flag":"0","homeAddress":"$homeAddress","id":"$idN","idCardNo":"$idCardNo","illHistory":"","is_delete":"0","phone":"$phone","sex":$sex,"shorthand":"MZ","status":0,"totalArrears":0,"userName":"$userName"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicPatient/save
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+#新建患者成功类型
+-   test:
+        name: /clinicPatient/save/新增患者正确类型
+        parameters:
+        -   userName-sex-homeAddress-idCardNo-phone-birthday-code:
+              - ['','1','北京市海淀区第一','','13112344321','2017-09-21','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"allergicHistory":"","birthday":"$birthday","clinicId":"$clinicId","deviceType":-1,"fingerPrint":0,"flag":"0","homeAddress":"$homeAddress","id":"$idY","idCardNo":"$idCardNo","illHistory":"","is_delete":"0","phone":"$phone","sex":$sex,"shorthand":"MZ","status":0,"totalArrears":0,"userName":"$commodityName"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicPatient/save
+        extract:
+        -   patientId: content.body.content.id
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+#修改患者信息
+-   test:
+        name: /clinicPatient/update/修改患者信息
+        parameters:
+        -   sex-homeAddress-idCardNo-phone-birthday-sicknessHistory-allergyHistory-code:
+              - ['1','北京市海淀区第一','510722199210038152','13112344321','2017-09-21','','青霉素过敏','2000000']
+              - ['2','北京市海淀区第一','510722199210038152','13112344321','2000-10-21','高血压','','2000000']
+              - ['1','北京市海淀区第一','','13112344321','1977-09-21','高血压','青霉素过敏','2000000']
+              - ['2','北京市海淀区第一','','','2018-09-21','高血压','青霉素过敏','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "allergyHistory": "$allergyHistory",
+            "idCardNo": "",
+            "sicknessHistory": "$sicknessHistory",
+            "homeAddress": "$homeAddress",
+            "patientName": "$commodityName",
+            "shorthand": "$commodityName",
+            "id": "$patientId",
+            "phone": "$phone",
+            "birthday": "$birthday",
+            "sex": "$sex"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicPatient/update
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+#欠款明细（患者 阿四的风格）
+-   test:
+        name: /clinicPatientDebt/getList/-----查询患者欠款明细
+        parameters:
+        -   ASiId-code:
+              - ['fbfcc8c411ac44a39f0bb3e034f84cbe','2000000']
+
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "patientId": "$ASiId",
+            "pageNo": "1",
+            "pageSize": "20"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicPatientDebt/getList
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+#补缴欠款（患者 阿四的风格）
+-   test:
+        name: /clinicPatientDebt/toPayTheArrears/-----补缴欠款
+        parameters:
+        -   ASiId-code:
+              - ['fbfcc8c411ac44a39f0bb3e034f84cbe','2000000']
+
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "patientId": "$ASiId",
+            "amountMoney": "150"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicPatientDebt/toPayTheArrears
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+#删除患者
+-   test:
+        name: /prescription/clinicPatient/delete/删除患者
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$patientId","isDelete":"1"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicPatient/delete
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

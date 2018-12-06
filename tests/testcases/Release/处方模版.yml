@@ -1,0 +1,74 @@
+-   config:
+        name: 处方模版
+        request:
+            base_url: 'http://bt-usercenter.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   name: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.231'
+        -   id1: ${gen_random_string(32)}
+        -   id2: ${gen_random_string(32)}
+        -   id3: ${gen_random_string(32)}
+        -   id4: ${gen_random_string(32)}
+        -   id5: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /prescriptionTemplate/updatePrescriptionTemplateName/点击新建模版
+        parameters:
+        -   prescriptionFlag:
+        #西药模版
+              - [{"prescriptionType":"1"}]
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"name":"$name","type":"0","id":"$id4","prescriptionFlag":"1"},"synCode":""},"header":{"v":"1.241","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescriptionTemplate/updatePrescriptionTemplateName
+        extract:
+        -   id: content.body.content.id
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /prescriptionTemplate/savePrescriptionTemplate/创建西药模版
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$id","templateDetailsList":[{"commodityCategory":"1","commodityId":"ff808081666625430166769667b803e0","commonUnit":"盒","commonUnitPrice":"10000","docterOrder":"","dosage":"0","dosageFormId":"40288c2a5157239d015157360cc60a02","dosageUnit":"ml","frequency":"1天1次","groupId":"0","id":"$id1","isBlank":"0","is_Change":false,"is_Delete":"1","minUnit":"支","minUnitPrice":"20","orderNum":"1","showAni":0,"showCommodityName":"板蓝根注射液","specifcations":"2ml","templateId":"$id","totalNumber":"1","unitType":"min","usages":"肌肉注射","useLevel":"500","useLevelUnit":"支"},{"commodityCategory":"","commodityId":"","commonUnit":"","commonUnitPrice":"","docterOrder":"共1次；","dosage":"","dosageFormId":"","dosageUnit":"","frequency":"","groupId":"0","id":"$id2","isBlank":"1","is_Change":false,"is_Delete":"1","minUnit":"","minUnitPrice":"","orderNum":"2","showAni":0,"showCommodityName":"","specifcations":"","templateId":"$id","totalNumber":"0","unitType":"common","usages":"","useLevel":"0","useLevelUnit":""}]},"synCode":""},"header":{"v":"1.241","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescriptionTemplate/savePrescriptionTemplate
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /prescriptionTemplate/deletePrescriptionTemplate/删除处方模版
+        parameters:
+        -   prescriptionFlag:
+        #西药模版
+              - [{"prescriptionType":"1"}]
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$id"},"synCode":""},"header":{"v":"1.241","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescriptionTemplate/deletePrescriptionTemplate
+        extract:
+        -   id: content.body.content.id
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

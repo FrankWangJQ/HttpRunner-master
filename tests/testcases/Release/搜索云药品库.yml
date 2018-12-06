@@ -1,0 +1,45 @@
+-   config:
+        name: 搜索云药品库西药
+        request:
+            base_url: 'http://bt-pharmacy.yunzhenshi.com.cn'
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.231'
+        -   userToken: "userCenter"
+        -   rodemString: ${gen_random_string(6)}
+-   test:
+        name: /pharmacy/medicinal/inquireDrugsWarehouse/搜索云药品库西药
+        parameters:
+        -   medicineShortName-code:
+              - ['w','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"pageNum":"10","pageStart":"1","medicineShortName":"$medicineShortName"},"synCode":""},"header":{"v":"1.233","doctorMainId":"ff80808165e65f2a01660ea896a5374a","userToken":"$userToken","clinicId":"ff80808165e65f2a01660ea769223648","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536216464239'
+            method: POST
+            url: /medicinal/inquireDrugsWarehouse
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /pharmacy/ClinicCommodityChinese/showChineseMedicinalList/搜索云药品库中药
+        parameters:
+        -   medicineShortName-code:
+              - ['w','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"pageNum":"10","pageStart":"1","medicineShortName":"$medicineShortName"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236579413'
+            method: POST
+            url: /ClinicCommodityChinese/showChineseMedicinalList
+        validate:
+        -   eq:
+            - content.body.code
+            - $code

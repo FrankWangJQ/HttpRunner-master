@@ -1,0 +1,174 @@
+-   config:
+        name: 预约挂号
+        request:
+            base_url: 'http://bt-workbench.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   todayDate: ${get_strftime()}
+        -   version: '1.242'
+        -   id1: ${gen_random_string(32)}
+        -   id2: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /registration/findRegistrationByPage/----获取预约挂号患者订单
+        parameters:
+        #诊所ID、挂号状态码、患者搜索信息、返回code码
+        -   status-patientInfo-code:
+              -   ['1,2,3,4','','2000000']
+              -   ['1,2,3,4','18511086263','2000000']
+              -   ['1,2,3,4','1','2000000']
+              -   ['1,2,3,4','信任','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "status": "$status",
+            "registrationId": "",
+            "patientInfo": "$patientInfo",
+            "sysUserIdRegi": "$doctorMainId"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /registration/findRegistrationByPage
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /registration/savePatientAndRegistration/----手动添加待就诊患者
+        parameters:
+        #患者姓名、返回code码
+        -   userName-code:
+              -   ['${gen_random_string(3)}','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "idCardNo": "",
+            "userShortName": "DJZ",
+            "homeAddress": "",
+            "id": "$id1",
+            "phone": "",
+            "userName": "$userName",
+            "sex": "1",
+            "birthday": "2017-11-26",
+            "sysUserIdRegi": "$doctorMainId"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /registration/savePatientAndRegistration
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /synchronizeData/synchronizeData/----同步待就诊患者列表
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "registration": {
+                "clientVersion": "$currentTime"
+            }
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /synchronizeData/synchronizeData
+        extract:
+        -   id: '"id":"(.*?)","sysUserId"'
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /registration/changeStatus/----作废待就诊处方
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "registrationId": "$id",
+            "targetStatus": "4"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /registration/changeStatus
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

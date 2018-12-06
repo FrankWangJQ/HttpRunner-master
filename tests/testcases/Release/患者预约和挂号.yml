@@ -1,0 +1,140 @@
+-   config:
+        name: 预约和挂号
+        request:
+            base_url: ''
+            headers:
+                User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 11_4_1 like Mac OS
+                    X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15G77 MicroMessenger/6.7.3(0x16070321)
+                    NetType/WIFI Language/zh_CN
+        variables:
+        -   commodityName: ${gen_random_string(6)}
+        -   preTime: {get_strftime()}
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.231'
+        -   id: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /clinicpe/zyCloudClinic/addPatient/添加健康成员
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                verify: False
+                patientBir: '2010-01-01'
+                patientName: $commodityName
+                patientSex: '0'
+                relation: 我自己
+                sysUserId: 8a9ac41c614723c70161473284e7005e
+            url: https://download.zhiyijiankang.com/clinicpe/zyCloudClinic/addPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+-   test:
+        name: /clinicpe/zyCloudClinic/allPatient/获取用户名下关联的所有注册患者
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                verify: False
+                sysUserId: 8a9ac41c614723c70161473284e7005e
+            url: https://download.zhiyijiankang.com/clinicpe/zyCloudClinic/allPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+-   test:
+        name: /clinicpe/zyCloudClinic/isAttention/判断患者是否已经预约
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                verify: False
+                sysUserId: 8a9ac41c614723c70161473284e7005e
+            url: https://download.zhiyijiankang.com/clinicpe/zyCloudClinic/isAttention
+        validate:
+        -   eq:
+            - status_code
+            - 200
+-   test:
+        name: /clinicpe/zyCloudClinic/clinicInfo/选择医生
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                verify: False
+                doctorId: ff80808165d543560165d54a031d0003
+                sysUserId: 8a9ac41c614723c70161473284e7005e
+            url: https://download.zhiyijiankang.com/clinicpe/zyCloudClinic/clinicInfo
+        validate:
+        -   eq:
+            - status_code
+            - 200
+-   test:
+        name: /clinicpe/zyCloudClinic/getDoctorInfoByClinicId/获取医生排班
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                verify: False
+                besStatus: '1'
+                doctorId: ff80808165d543560165d54a031d0003
+            url: https://download.zhiyijiankang.com/clinicpe/zyCloudClinic/getDoctorInfoByClinicId
+        validate:
+        -   eq:
+            - status_code
+            - 200
+-   test:
+        name: /clinicpe/zyCloudClinic/allSymptom/获取所有默认主诉
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            url: https://download.zhiyijiankang.com/clinicpe/zyCloudClinic/allSymptom
+        validate:
+        -   eq:
+            - status_code
+            - 200
+-   test:
+        name: /clinicpe/zyCloudClinic/allPatient/选择家庭成员
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                verify: False
+                sysUserId: 8a9ac41c614723c70161473284e7005e
+            url: https://download.zhiyijiankang.com/clinicpe/zyCloudClinic/allPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+-   test:
+        name: /clinicpe/zyCloudClinic/appoint/提交预约挂号
+        request:
+            headers:
+                Content-Type: application/json
+            method: GET
+            params:
+                verify: False
+                address: 排队等着
+                doctorId: ff80808165d543560165d54a031d0003
+                etId: ff80808165d543560165d54a050e0031
+                formId: 6eb304599e234ac2c3aff32562b466f9
+                patientInfoId: 8a9ac41c672c2c5b01672f3e35d41df1
+                phone: '18511086263'
+                preTime: $preTime
+                symptomDescribe: 流鼻涕
+                sysUserId: 8a9ac41c614723c70161473284e7005e
+            url: https://download.zhiyijiankang.com/clinicpe/zyCloudClinic/appoint
+        validate:
+        -   eq:
+            - status_code
+            - 200

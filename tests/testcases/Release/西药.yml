@@ -1,0 +1,483 @@
+-   config:
+        name: 新增西药
+        request:
+            base_url: 'http://bt-pharmacy.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   commodityName: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   requestId: ${get_requestId()}1342450682036224
+        -   startDate: ${get_startTime()}
+        -   version: '1.231'
+        -   id: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药
+        parameters:
+        #药品名称、剂型、规格、换算量、大价格、小价格、大单位、小单位、用法、频次、用量、库存阈值、阈值单位、返回code码
+        -   commodityNames-medicinalFormId-specifcations-matrix-commonPrice-minPrice-commonUnit-minUnit-direction-rate-quantum-threshold-thresholdUnit-code:
+              - ['重复药品','40288c2a5157239d0151573466850000','4片','10','1200','120','瓶','片','口服','一日4次','0','800','瓶','2032006']
+              - ['','40288c2a5157239d0151573466850000','4片','10','1200','120','瓶','片','口服','一日4次','0','800','瓶','2030103']
+              - ['qwertyuioiuytresdfghjkjhgfdsdfghjkmnbvcxdfghyudssdfghgfxcvb','40288c2a5157239d015157360cc60a01','5支','10','1200','150','盒','支','注射','一日5次','0','800','盒','2030103']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"approvalNumber":"","batches":[{"amount":"10002","baseVersion":"","batchNo":"56","commodityId":"","commonCnt":"","createTime":"","id":"","isDelete":"","purchasePrice":"785","remark":"","status":"","stockUnit":"","supplierId":"","supplierName":"","validityDate":"2019-10-09","warehouseDate":"2018-10-09"}],"commodityCode":"6933743792380","commodityName":"$commodityNames","commoditySimpleName":"","commoditySimpleSpell":"","commoditySpell":"0ACJP","commodityType":"1","commonPrice":"$commonPrice","commonUnit":"$commonUnit","direction":"$direction","factory":"广东南国药业有限公司","id":"$id","labels":[{"labelId":"ff80808165e65f2a01660ea7744336df"}],"matrix":"$matrix","medicinalFormId":"$medicinalFormId","medicinalNo":"11172440","minPrice":"$minPrice","minUnit":"$minUnit","quantum":"$quantum","quantumUnit":"片","rate":"$rate","remark":"","specifcations":"$specifcations","threshold":"$threshold","thresholdUnit":"$thresholdUnit"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicCommodity/createClinicCommodityAndBatches
+        extract:
+        #-   commodityId: content.body.content.commodityId
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药
+        parameters:
+        #剂型、规格、换算量、大价格、小价格、大单位、小单位、用法、频次、用量、库存阈值、阈值单位、返回code码
+        -   medicinalFormId-specifcations-matrix-commonPrice-minPrice-commonUnit-minUnit-direction-rate-quantum-threshold-thresholdUnit-code:
+              - ['40288c2a5157239d0151573466850000','1片','5','0','0','','','','','','','','2032016']
+              - ['40288c2a5157239d0151573466850000','2片','12','1200','120','','','口服','一日2次','0.1','','','2032016']
+              - ['40288c2a5157239d0151573466850000','3片','10','1200','120','瓶','片','','','','800','瓶','2032002']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"approvalNumber":"","batches":[{"amount":"10002","baseVersion":"","batchNo":"56","commodityId":"","commonCnt":"","createTime":"","id":"","isDelete":"","purchasePrice":"785","remark":"","status":"","stockUnit":"","supplierId":"","supplierName":"","validityDate":"2019-10-09","warehouseDate":"2018-10-09"}],"commodityCode":"6933743792380","commodityName":"$commodityName","commoditySimpleName":"","commoditySimpleSpell":"","commoditySpell":"0ACJP","commodityType":"1","commonPrice":"$commonPrice","commonUnit":"$commonUnit","direction":"$direction","factory":"广东南国药业有限公司","id":"$id","labels":[{"labelId":"ff80808165e65f2a01660ea7744336df"}],"matrix":"$matrix","medicinalFormId":"$medicinalFormId","medicinalNo":"11172440","minPrice":"$minPrice","minUnit":"$minUnit","quantum":"$quantum","quantumUnit":"片","rate":"$rate","remark":"","specifcations":"$specifcations","threshold":"$threshold","thresholdUnit":"$thresholdUnit"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicCommodity/createClinicCommodityAndBatches
+        extract:
+        #-   commodityId: content.body.content.commodityId
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药
+        parameters:
+        #剂型、规格、换算量、大价格、小价格、大单位、小单位、用法、频次、用量、库存阈值、阈值单位、返回code码
+        -   medicinalFormId-specifcations-matrix-commonPrice-minPrice-commonUnit-minUnit-direction-rate-quantum-threshold-thresholdUnit-code:
+              - ['40288c2a5157239d0151573466850000','4片','10','1200','120','瓶','片','口服','一日4次','0','800','瓶','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"approvalNumber":"","batches":[{"amount":"10002","baseVersion":"","batchNo":"56","commodityId":"","commonCnt":"","createTime":"","id":"","isDelete":"","purchasePrice":"785","remark":"","status":"","stockUnit":"","supplierId":"","supplierName":"","validityDate":"2019-10-09","warehouseDate":"2018-10-09"}],"commodityCode":"6933743792380","commodityName":"$commodityName","commoditySimpleName":"","commoditySimpleSpell":"","commoditySpell":"0ACJP","commodityType":"1","commonPrice":"$commonPrice","commonUnit":"$commonUnit","direction":"$direction","factory":"广东南国药业有限公司","id":"$id","labels":[{"labelId":"ff80808165e65f2a01660ea7744336df"}],"matrix":"$matrix","medicinalFormId":"$medicinalFormId","medicinalNo":"11172440","minPrice":"$minPrice","minUnit":"$minUnit","quantum":"$quantum","quantumUnit":"片","rate":"$rate","remark":"","specifcations":"$specifcations","threshold":"$threshold","thresholdUnit":"$thresholdUnit"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicCommodity/createClinicCommodityAndBatches
+        extract:
+        -   commodityId: content.body.content.commodityId
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+#库存预占回退
+-   test:
+        name: /workbench/commodityStockHold/药品预占库存
+        request:
+            data:
+                detail: '{
+  "header": {
+        "clinicId": "$clinicId",
+        "currentTime": "$currentTime",
+        "doctorMainId": "$doctorMainId",
+        "imei": "b344e429c323b136",
+        "type": "2",
+        "userToken": "$userToken",
+        "v": "$version"
+  },
+  "body": {
+        "code": "",
+        "content": null,
+        "param": {
+            "commodityList": [
+                {
+                    "amount": 1,
+                    "clinicCommodityId": "$commodityId",
+                    "clinicId": "$clinicId",
+                    "commodityType": 0,
+                    "prescriptionRetailId": "",
+                    "prescriptionRetailType": "0",
+                    "requestId": "$requestId",
+                    "stockUnit": "g"
+                }
+            ],
+            "commodityStockRegList": [],
+            "stockDeductList": []
+        }
+  }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236193996'
+            method: POST
+            url: /workbench/commodityStockHold
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"
+#修改西药扩展信息
+-   test:
+        name: /clinicCommodity/modifyClinicCommodityEx/----修改西药扩展信息
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "rate": "一日4次",
+            "thresholdUnit": "瓶",
+            "threshold": "50",
+            "quantumUnit": "片",
+            "quantum": "0",
+            "id": "$commodityId",
+            "direction": "口服"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237142489'
+            method: POST
+            url: /clinicCommodity/modifyClinicCommodityEx
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+#修改西药信息
+-   test:
+        name: /clinicCommodity/modifyClinicCommodity/----修改西药信息
+        parameters:
+        #药名、规格、生产企业、库存阈值、价格、返回code码
+        -   commodityName-specifcations-factory-commonPrice-code:
+              -   ['修改西药','4g','朗致药业','3000','2000000']
+              -   ['修改西药','5g','朗致药业1','4000','2000000']
+              -   ['修改西药','6g','朗致药业2','5000','2000000']
+              -   ['修改西药','7g','朗致药业3','6000','2000000']
+              -   ['修改西药','8g','朗致药业4','7000','2000000']
+              -   ['修改西药','9g','朗致药业5','8000','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "medicinalFormId": "d8c61da47f8d11e5b31128936a597f70",
+            "remark": "备注",
+            "commodityCode": "123693374370",
+            "minUnit": "片",
+            "medicinalCategory": "1",
+            "commoditySimpleSpell": "X",
+            "id": "$commodityId",
+            "commoditySpell": "XG",
+            "commodityType": "1",
+            "commonPrice": "$commonPrice",
+            "matrix": "10",
+            "specifcations": "$specifcations",
+            "commonUnit": "瓶",
+            "factory": "$factory",
+            "commoditySimpleName": "休",
+            "direction": "口服",
+            "minPrice": "100",
+            "commodityName": "$commodityName",
+            "approvalNumber": "国字123",
+            "activeTime": "2019-10-09"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237142489'
+            method: POST
+            url: /clinicCommodity/modifyClinicCommodity
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+#西药采购入库
+-   test:
+        name: /batches/createStock/-----西药采购入库
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "commodityType": "0",
+            "batches": [
+                {
+                    "amount": "1001",
+                    "commodityId": "$commodityId",
+                    "supplierId": "68ff2acf2c034e22b7ff9b0b4dc329d0",
+                    "batchNo": "123",
+                    "supplierName": "供应商1",
+                    "remark": "备注",
+                    "purchasePrice": "1200",
+                    "validityDate": "2019-12-26",
+                    "warehouseDate": "$startDate"
+                }
+            ]
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237151488'
+            method: POST
+            url: /batches/createStock
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"
+#西药库存批次列表
+-   test:
+        name: /batches/getBatches/----获取西药批次列表
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "commodityType": "0",
+            "commodityId": "$commodityId"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237151488'
+            method: POST
+            url: /batches/getBatches
+        extract:
+        -   ID: '"validityDate":"2019-12-26","id":"(.*?)","batchStatus"'
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"
+#修改西药批次信息
+-   test:
+        name: /batches/updateBatches/----修改西药批次信息
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "commodityType": "0",
+            "batches": [
+                {
+                    "amount": "1184",
+                    "supplierId": "68ff2acf2c034e22b7ff9b0b4dc329d0",
+                    "batchNo": "123",
+                    "id": "$ID",
+                    "supplierName": "供应商1",
+                    "remark": "无损坏",
+                    "purchasePrice": "1050",
+                    "validityDate": "2019-10-23",
+                    "warehouseDate": "$startDate"
+                }
+            ]
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237151488'
+            method: POST
+            url: /batches/updateBatches
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"
+#西药报损
+-   test:
+        name: /batches/reportedLoss/----西药报损库存
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "commodityType": "0",
+            "batches": [
+                {
+                    "amount": "10",
+                    "id": "$ID"
+                }
+            ]
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237151488'
+            method: POST
+            url: /batches/reportedLoss
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"
+#西药核对库存
+-   test:
+        name: /batches/checkStock/----西药核对库存
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "commodityType": "0",
+            "batches": [
+                {
+                    "amount": "1001",
+                    "id": "$ID"
+                }
+            ]
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237151488'
+            method: POST
+            url: /batches/checkStock
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"
+#修改西药包装单位及换算量
+-   test:
+        name: /clinicCommodity/modifyPackaging/----修改西药包装单位及换算量
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "commonUnit": "袋",
+            "matrix": "5",
+            "minUnit": "片",
+            "id": "$commodityId"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237151488'
+            method: POST
+            url: /clinicCommodity/modifyPackaging
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"
+#删除西药
+-   test:
+        name: /pharmacy/clinicCommodity/modifyCommodityStatus/----删除西药
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$commodityId","status":"0"},"synCode":""},"header":{"v":"version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicCommodity/modifyCommodityStatus
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

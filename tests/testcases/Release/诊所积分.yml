@@ -1,0 +1,66 @@
+-   config:
+        name: testset description
+        request:
+            base_url: 'http://bt-dos.yunzhenshi.com'
+            headers:
+                User-Agent: Mozilla/5.0 (Linux; Android 6.0.1; t1host Build/S100;
+                    wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.73
+                    Safari/537.36 agentweb/4.0.2  UCBrowser/11.6.4.950
+        variables:
+        -   commodityName: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.231'
+        -   id: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /integralStrategy/integralStrategy.html----诊所积分页面
+        request:
+            headers:
+                X-Requested-With: com.hospital.Trial
+            method: GET
+            params:
+                clinicId: $clinicId
+                clinicName: 汪克强卫生室
+                time: '$currentTime'
+            url: /integralStrategy/integralStrategy.html
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html; charset=utf-8
+-   test:
+        name: /promotion/getClinicIntegralDetailByPage---诊所积分详情列表
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                detail: '{"body":{"code":{},"content":{},"param":{"pageNum":"10","pageStart":"1"},"synCode":""},"header":{"v":"","doctorMainId":"","userToken":"","clinicId":"$clinicId","imei":"","currentTime":"","type":""}}'
+            url: /promotion/getClinicIntegralDetailByPage
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /promotion/getSurplus----计算诊所积分总分
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                detail: '{"body":{"code":{},"content":{},"param":{"pageNum":"10","pageStart":"1"},"synCode":""},"header":{"v":"","doctorMainId":"","userToken":"","clinicId":"$clinicId","imei":"","currentTime":"","type":""}}'
+            url: /promotion/getSurplus
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8

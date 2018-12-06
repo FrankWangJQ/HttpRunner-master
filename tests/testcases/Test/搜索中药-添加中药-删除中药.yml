@@ -1,0 +1,135 @@
+-   config:
+        name: 搜索中药-添加中药-删除中药
+        request:
+            base_url: ''
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.230'
+        -   medicineShortName: ${gen_random_string(1)}
+        -   userToken: "userCenter"
+        -   rodemString: ${gen_random_string(6)}
+#添加中药页面搜索中药（搜索首拼音）
+-   test:
+        name: /pharmacy/ClinicCommodityChinese/showChineseMedicinalList
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"pageNum":"10","pageStart":"1","medicineShortName":"$medicineShortName"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236579413'
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/ClinicCommodityChinese/showChineseMedicinalList
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+#添加中药(药品名称commodityName 批次ID-supplierId 标签ID-labelId 诊所ID-clinicId 返回结果中的药品ID)
+-   test:
+        name: /pharmacy/clinicCommodityChinese/addClinicCommodityChinese
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"amount":"0","announcements":"注意事项","approvalNumber":"批准文号","batches":[{"amount":"145","baseVersion":"","batchNo":"123","commodityId":"","commonCnt":"","createTime":"","id":"","isDelete":"","purchasePrice":"200","remark":"备注\n","status":"","stockUnit":"","supplierId":"a218499f2830436bb370da4a1ae5ea52","supplierName":"供货商","validityDate":"2019-09-06","warehouseDate":"2018-09-06"},{"amount":"290","baseVersion":"","batchNo":"234","commonCnt":"","createTime":"","id":"","isDelete":"","purchasePrice":"1200","remark":"备注\n","status":"","stockUnit":"","supplierId":"a218499f2830436bb370da4a1ae5ea52","supplierName":"供货商","validityDate":"2018-11-06","warehouseDate":"2018-09-06"}],"commodityCode":"123456789","commodityName":"$rodemString","commodityRemark":"备注","commoditySimpleName":"别名","commoditySimpleSpell":"BM","commoditySpell":"1ZY","commonPrice":"899.9","commonUnit":"瓶","defaultDosage":"2","defaultDosageUnit":"丸","factory":"生产企业","id":"","indication":"","labels":[{"labelId":"8a9b76d75a65d836015a65da9eee2065"}],"level":"等级","matrix":"12","medicinalCatagory":"","medicinalEffect":"功效","medicinalEffectLocation":"归经","medicinalNo":"11000000","minPrice":"75","minUnit":"丸","natureSmell":"性味","specifcations":"规格","threshold":"360","thresholdUnit":"瓶"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237142489'
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/clinicCommodityChinese/addClinicCommodityChinese
+        extract:
+        -   commodityId: content.body.content.commodityId
+        -   clinicId： content.header.clinicId
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"sysLableDetail":{"clientVersion":"1536224611634"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.13:8080/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"chineseCommodity":"1536119666399","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+#删除中药（中药ID 诊所ID）
+-   test:
+        name: /pharmacy/clinicCommodityChinese/deleteClinicCommodityChinese
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"40288ecc65aec7100165aede47c500d9","status":"0"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536237151488'
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/clinicCommodityChinese/deleteClinicCommodityChinese
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"chineseCommodity":"1536237127621","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"

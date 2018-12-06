@@ -1,0 +1,278 @@
+-   config:
+        name: 账号管理
+        request:
+            base_url: 'http://bt-usercenter.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   name: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   id: ${gen_random_string(32)}
+        -   version: '1.243'
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /clinicLabel/createLabel/----新建患者分类
+        parameters:
+        #新建患者分类
+        -   parentId:
+              - ['40288c8451339424015133aa8fc80007']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"base_version":"1111111111111","clinicId":"$clinicId","code":"HLB","id":"","isedit":false,"islast_add":false,"islongclick":false,"itemType":0,"name":"$name","orderNum":1,"parentId":"$parentId","status":0},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabel/createLabel
+        extract:
+        -   huanzheID: content.body.content.id
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+#患者选择分组（groupObjId是患者id）
+-   test:
+        name: /clinicLabelGroup/createLabelGroupBatch/----患者选择分组
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "list1": [
+                {
+                    "groupObjId": "dcfc8353a4984c01af83c0751529315f",
+                    "labelId": "$huanzheID",
+                    "orderNum": "3",
+                    "parentId": "40288c8451339424015133aa8fc80007",
+                    "sort": "1"
+                }
+            ]
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabelGroup/createLabelGroupBatch
+        extract:
+        -   listId: '"id":"(.*?)"}'
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+#患者取消分组
+-   test:
+        name: /clinicLabelGroup/deleteLabelGroupBatch/----患者取消分组
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "idList": [
+                {
+                    "id": "$listId"
+                }
+            ]
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabelGroup/deleteLabelGroupBatch
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabel/createLabel/----新建西药单位分类
+        parameters:
+        #新建药品单位分类
+        -   parentId:
+              - ['40288c8451339424015133b0b13a0009']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"base_version":"1111111111111","clinicId":"$clinicId","code":"HLB","id":"","isedit":false,"islast_add":false,"islongclick":false,"itemType":0,"name":"$name","orderNum":1,"parentId":"$parentId","status":0},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabel/createLabel
+        extract:
+        -   danweiID: content.body.content.id
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabel/createLabel/----新建西药标签分类
+        parameters:
+        -   parentId:
+        #新建药品分类
+              - ['40288c8451339424015133aa8fc80008']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"base_version":"1111111111111","clinicId":"$clinicId","code":"HLB","id":"","isedit":false,"islast_add":false,"islongclick":false,"itemType":0,"name":"$name","orderNum":1,"parentId":"$parentId","status":0},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabel/createLabel
+        extract:
+        -   yaopinID: content.body.content.id
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabelGroup/createLabelGroupBatch/----为西药添加标签分类
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"list1":[{"groupObjId":"ff80808166bf108f0166c3eb8ac313de","labelId":"$yaopinID","orderNum":"3","parentId":"40288c8451339424015133aa8fc80008","sort":"1"}]},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinicLabelGroup/createLabelGroupBatch
+        extract:
+        -   listId: '"id":"(.*?)"}'
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabelGroup/deleteLabelGroupBatch/----取消西药选择的标签分类
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"idList":[{"id":"$listId"}]},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /clinicLabelGroup/deleteLabelGroupBatch
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabel/createLabel/新建疾病分类
+        parameters:
+        #新建疾病分类
+        -   parentId:
+              - ['f794117a7f8d11e5b31128936a597r00']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"base_version":"1111111111111","clinicId":"$clinicId","code":"HLB","id":"","isedit":false,"islast_add":false,"islongclick":false,"itemType":0,"name":"$name","orderNum":1,"parentId":"$parentId","status":0},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabel/createLabel
+        extract:
+        -   jibingID: content.body.content.id
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabel/deleteLabel/----删除药品单位分类
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$danweiID","isedit":false,"islast_add":false,"islongclick":false,"itemType":0,"parentId":"40288c8451339424015133aa8fc80007","status":0},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabel/deleteLabel
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabel/deleteLabel/----删除患者分类
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$huanzheID","isedit":false,"islast_add":false,"islongclick":false,"itemType":0,"parentId":"40288c8451339424015133aa8fc80007","status":0},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabel/deleteLabel
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabel/deleteLabel/----删除药品分类
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$yaopinID","isedit":false,"islast_add":false,"islongclick":false,"itemType":0,"parentId":"40288c8451339424015133aa8fc80007","status":0},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabel/deleteLabel
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicLabel/deleteLabel/----删除疾病分类
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$jibingID","isedit":false,"islast_add":false,"islongclick":false,"itemType":0,"parentId":"40288c8451339424015133aa8fc80007","status":0},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicLabel/deleteLabel
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /qrcode/getQrcodeOfClinic/----获取诊所二维码（三码合一）
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"doctorMainId":"$doctorMainId"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /qrcode/getQrcodeOfClinic
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

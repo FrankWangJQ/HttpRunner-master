@@ -1,0 +1,96 @@
+-   config:
+        name: 添加诊疗后删除
+        request:
+            base_url: ''
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   rodemString: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.230'
+        -   medicineShortName: ${gen_random_string(2)}
+        -   userToken: "userCenter"
+#添加诊疗（诊疗名称-commodityName  诊所ID）
+-   test:
+        name: /pharmacy/clinicCommodity/createClinicCommodityList
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"medicineList":[{"activeTime":"","amount":"0","banned":"1","commodityCategory":"1","commodityCode":"","commodityName":"$rodemString","commoditySimpleName":"简称","commoditySimpleSpell":"JC","commoditySpell":"ZL","commodityType":"3","commonPrice":"199.99","commonUnit":"次","enterpriseName":"","i":"1","labels":[],"matrix":"1","medicinalId":"","medicinalNo":"11000000","minPrice":"199.99","minUnit":"次","purchasePrice":"0","r":"
+                    ","remark":"备注","s":" ","specs":"","t":"1","u":" ","validityDate":"2099-12-31"}],"purchase":"1","supplier":""},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236433490'
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/clinicCommodity/createClinicCommodityList
+        extract:
+        -   commodityId: content.body.content.commodityId
+        -   clinicId： content.header.clinicId
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536236198645","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+#删除诊疗（诊疗ID 诊所ID）
+-   test:
+        name: /pharmacy/clinicCommodity/modifyCommodityStatus
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"40288ecc65aec7100165aed3757600cb","status":"0"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236439390'
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/clinicCommodity/modifyCommodityStatus
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536236418423","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"

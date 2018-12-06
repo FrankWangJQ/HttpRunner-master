@@ -1,0 +1,498 @@
+-   config:
+        name: 零售卖药
+        request:
+            base_url: 'http://bt-workbench.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   todayDate: ${get_strftime()}
+        -   version: '1.242'
+        -   id1: ${gen_random_string(32)}
+        -   id2: ${gen_random_string(32)}
+        -   id3: ${gen_random_string(32)}
+        -   id4: ${gen_random_string(32)}
+        -   id5: ${gen_random_string(32)}
+        -   id6: ${gen_random_string(32)}
+        -   id7: ${gen_random_string(32)}
+        -   id8: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /retailSell/getClinicRetail/----订单生成收费单
+        parameters:
+        #搜索字段、搜索内容、返回code码
+        -   patientName-code:
+              -   ['阿四的风格','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"patientName":"$patientName","pageSize":"20","pageNo":"1"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /retailSell/getClinicRetail
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /retailSell/getClinicRetail/----订单生成收费单
+        parameters:
+        #搜索字段、搜索内容、返回code码
+        -   outpatientNo-code:
+              -   ['20181127S00002','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"outpatientNo":"$outpatientNo","pageSize":"20","pageNo":"1"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /retailSell/getClinicRetail
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /retailSell/addOrupdateRetail/----订单生成收费单
+        parameters:
+        #患者ID、注射液名称、注射液ID、西药名称、西药ID、器械名称、器械ID、返回code码
+        -   patientId-showCommodityName1-medDisId1-showCommodityName2-medDisId2-showCommodityName3-medDisId3-code:
+              -   ['fbfcc8c411ac44a39f0bb3e034f84cbe','板蓝根注射液','ff808081666625430166769667b803e0','重复药品','ff80808166f134b70166f36719e0019e','1105器械','ff80808166d372b80166e280999a045c','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "payType": "0",
+            "patientId": "$patientId",
+            "receiveCost": "11200.0",
+            "status": "1",
+            "list": [
+                {
+                    "batchId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "6933743787454",
+                    "commoditySource": "0",
+                    "commonUnit": "袋",
+                    "docterOrder": "",
+                    "dosageFormId": "40288c2a5157239d015157360cc60a02",
+                    "factory": "广东南国药业有限公司",
+                    "frequency": "1天4次",
+                    "id": "$id1",
+                    "is_delete": "1",
+                    "medDisId": "$medDisId1",
+                    "minimumUnit": "片",
+                    "orderNum": "1",
+                    "prescriptionPrice1": "10000",
+                    "prescriptionPrice2": "25",
+                    "priceUnit": "袋",
+                    "retailId": "$id2",
+                    "saleUnitPrice": "10000",
+                    "showCommodityName": "$showCommodityName1",
+                    "specifcations": "2ml",
+                    "totalNumber": "1",
+                    "usage": "静脉注射",
+                    "useLevel": "400",
+                    "useLevelUnit": "粒",
+                    "validityDate": "2018-11-21"
+                },
+                {
+                    "batchId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "6933743792380",
+                    "commoditySource": "0",
+                    "commonUnit": "瓶",
+                    "docterOrder": "",
+                    "dosageFormId": "40288c2a5157239d0151573466850000",
+                    "factory": "广东南国药业有限公司",
+                    "frequency": "1天2次",
+                    "id": "$id3",
+                    "is_delete": "1",
+                    "medDisId": "$medDisId2",
+                    "minimumUnit": "片",
+                    "orderNum": "2",
+                    "prescriptionPrice1": "200",
+                    "prescriptionPrice2": "100",
+                    "priceUnit": "瓶",
+                    "retailId": "$id4",
+                    "saleUnitPrice": "200",
+                    "showCommodityName": "$showCommodityName2",
+                    "specifcations": "4片",
+                    "totalNumber": "1",
+                    "usage": "口服",
+                    "useLevel": "0",
+                    "useLevelUnit": "片",
+                    "validityDate": ""
+                },
+                {
+                    "batchId": "",
+                    "commodityCategory": "2",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "盒",
+                    "docterOrder": "",
+                    "dosageFormId": "",
+                    "factory": "好了、在乎",
+                    "frequency": " ",
+                    "id": "$id5",
+                    "is_delete": "1",
+                    "medDisId": "$medDisId3",
+                    "minimumUnit": "支",
+                    "orderNum": "3",
+                    "prescriptionPrice1": "1000",
+                    "prescriptionPrice2": "100",
+                    "priceUnit": "盒",
+                    "retailId": "$id6",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName3",
+                    "specifcations": "1105",
+                    "totalNumber": "1",
+                    "usage": " ",
+                    "useLevel": "1",
+                    "useLevelUnit": "支",
+                    "validityDate": "2018-12-05"
+                }
+            ],
+            "discount": "350.0",
+            "paidCost": "10000",
+            "id": "$id7",
+            "debtCost": "850",
+            "retailDate": "$todayDate",
+            "outpatientNo": ""
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /retailSell/addOrupdateRetail
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /retailSell/addOrupdateRetail/----结算待收费订单
+        parameters:
+        #患者ID、注射液名称、注射液ID、西药名称、西药ID、器械名称、器械ID、返回code码
+        -   patientId-showCommodityName1-medDisId1-showCommodityName2-medDisId2-showCommodityName3-medDisId3-code:
+              -   ['fbfcc8c411ac44a39f0bb3e034f84cbe','板蓝根注射液','ff808081666625430166769667b803e0','重复药品','ff80808166f134b70166f36719e0019e','1105器械','ff80808166d372b80166e280999a045c','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "payType": "0",
+            "patientId": "$patientId",
+            "receiveCost": "11200.0",
+            "status": "2",
+            "list": [
+                {
+                    "batchId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "袋",
+                    "docterOrder": "",
+                    "dosageFormId": "40288c2a5157239d015157360cc60a02",
+                    "factory": "广东南国药业有限公司",
+                    "frequency": "1天4次",
+                    "id": "$id1",
+                    "is_delete": "0",
+                    "medDisId": "$medDisId1",
+                    "minimumUnit": "片",
+                    "orderNum": "1",
+                    "prescriptionPrice1": "",
+                    "prescriptionPrice2": "",
+                    "priceUnit": "袋",
+                    "retailId": "$id2",
+                    "saleUnitPrice": "10000",
+                    "showCommodityName": "$showCommodityName1",
+                    "specifcations": "2ml",
+                    "totalNumber": "1",
+                    "usage": "静脉注射",
+                    "useLevel": "400",
+                    "useLevelUnit": "粒"
+                },
+                {
+                    "batchId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "瓶",
+                    "docterOrder": "",
+                    "dosageFormId": "40288c2a5157239d0151573466850000",
+                    "factory": "广东南国药业有限公司",
+                    "frequency": "1天2次",
+                    "id": "$id3",
+                    "is_delete": "0",
+                    "medDisId": "$medDisId2",
+                    "minimumUnit": "片",
+                    "orderNum": "2",
+                    "prescriptionPrice1": "",
+                    "prescriptionPrice2": "",
+                    "priceUnit": "瓶",
+                    "retailId": "$id4",
+                    "saleUnitPrice": "200",
+                    "showCommodityName": "$showCommodityName2",
+                    "specifcations": "4片",
+                    "totalNumber": "1",
+                    "usage": "口服",
+                    "useLevel": "0",
+                    "useLevelUnit": "片"
+                },
+                {
+                    "batchId": "",
+                    "commodityCategory": "2",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "盒",
+                    "docterOrder": "",
+                    "dosageFormId": "",
+                    "factory": "好了、在乎",
+                    "frequency": " ",
+                    "id": "$id5",
+                    "is_delete": "0",
+                    "medDisId": "$medDisId3",
+                    "minimumUnit": "支",
+                    "orderNum": "3",
+                    "prescriptionPrice1": "",
+                    "prescriptionPrice2": "",
+                    "priceUnit": "盒",
+                    "retailId": "$id6",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName3",
+                    "specifcations": "1105",
+                    "totalNumber": "1",
+                    "usage": " ",
+                    "useLevel": "1",
+                    "useLevelUnit": "支"
+                }
+            ],
+            "discount": "350.0",
+            "paidCost": "10000",
+            "id": "$id7",
+            "debtCost": "850",
+            "retailDate": "2018-11-22 15:54:24",
+            "outpatientNo": "20181122S00001"
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /retailSell/addOrupdateRetail
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /retailSell/addOrupdateRetail/----结算待收费订单
+        parameters:
+        #患者ID、注射液名称、注射液ID、西药名称、西药ID、器械名称、器械ID、返回code码
+        -   patientId-showCommodityName1-medDisId1-showCommodityName2-medDisId2-showCommodityName3-medDisId3-code:
+              -   ['fbfcc8c411ac44a39f0bb3e034f84cbe','板蓝根注射液','ff808081666625430166769667b803e0','重复药品','ff80808166f134b70166f36719e0019e','1105器械','ff80808166d372b80166e280999a045c','2000000']
+        request:
+            data:
+                detail: '{
+    "body": {
+        "code": {},
+        "content": {},
+        "param": {
+            "payType": "0",
+            "patientId": "$patientId",
+            "receiveCost": "11200.0",
+            "status": "2",
+            "list": [
+                {
+                    "batchId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "袋",
+                    "docterOrder": "",
+                    "dosageFormId": "40288c2a5157239d015157360cc60a02",
+                    "factory": "广东南国药业有限公司",
+                    "frequency": "1天4次",
+                    "id": "$id1",
+                    "is_delete": "1",
+                    "medDisId": "$medDisId1",
+                    "minimumUnit": "片",
+                    "orderNum": "1",
+                    "prescriptionPrice1": "10000",
+                    "prescriptionPrice2": "25",
+                    "priceUnit": "袋",
+                    "retailId": "$id2",
+                    "saleUnitPrice": "10000",
+                    "showCommodityName": "$showCommodityName1",
+                    "specifcations": "2ml",
+                    "totalNumber": "1",
+                    "usage": "静脉注射",
+                    "useLevel": "400",
+                    "useLevelUnit": "粒",
+                    "validityDate": ""
+                },
+                {
+                    "batchId": "",
+                    "commodityCategory": "1",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "瓶",
+                    "docterOrder": "",
+                    "dosageFormId": "40288c2a5157239d0151573466850000",
+                    "factory": "广东南国药业有限公司",
+                    "frequency": "1天2次",
+                    "id": "$id3",
+                    "is_delete": "1",
+                    "medDisId": "$medDisId2",
+                    "minimumUnit": "片",
+                    "orderNum": "2",
+                    "prescriptionPrice1": "1200",
+                    "prescriptionPrice2": "120",
+                    "priceUnit": "瓶",
+                    "retailId": "$id4",
+                    "saleUnitPrice": "200",
+                    "showCommodityName": "$showCommodityName2",
+                    "specifcations": "4片",
+                    "totalNumber": "1",
+                    "usage": "口服",
+                    "useLevel": "0",
+                    "useLevelUnit": "片",
+                    "validityDate": ""
+                },
+                {
+                    "batchId": "",
+                    "commodityCategory": "2",
+                    "commodityCode": "",
+                    "commoditySource": "0",
+                    "commonUnit": "盒",
+                    "docterOrder": "",
+                    "dosageFormId": "",
+                    "factory": "好了、在乎",
+                    "frequency": " ",
+                    "id": "$id5",
+                    "is_delete": "1",
+                    "medDisId": "$medDisId3",
+                    "minimumUnit": "支",
+                    "orderNum": "3",
+                    "prescriptionPrice1": "1000",
+                    "prescriptionPrice2": "100",
+                    "priceUnit": "盒",
+                    "retailId": "$id6",
+                    "saleUnitPrice": "1000",
+                    "showCommodityName": "$showCommodityName3",
+                    "specifcations": "1105",
+                    "totalNumber": "1",
+                    "usage": " ",
+                    "useLevel": "1",
+                    "useLevelUnit": "支",
+                    "validityDate": ""
+                }
+            ],
+            "discount": "850.0",
+            "paidCost": "10000",
+            "id": "$id8",
+            "debtCost": "350",
+            "retailDate": "2018-11-22 18:23:45",
+            "outpatientNo": ""
+        },
+        "synCode": ""
+    },
+    "header": {
+        "v": "$version",
+        "doctorMainId": "$doctorMainId",
+        "userToken": "$userToken",
+        "clinicId": "$clinicId",
+        "imei": "4fa256e1c5bcf010",
+        "currentTime": $currentTime,
+        "type": "3"
+    }
+}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /retailSell/addOrupdateRetail
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /retailSell/invalidRetail/---作废订单
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"doctorMainId":"$doctorMainId","reason":"患者对药物过敏","id":"$id7","clinicId":"$clinicId"},"synCode":""},"header":{"v":"1.242","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /retailSell/invalidRetail
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /retailSell/deleteRetail/----删除订单
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"doctorMainId":"$doctorMainId","reason":"患者对药物过敏","id":"$id8","clinicId":"$clinicId"},"synCode":""},"header":{"v":"1.242","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /retailSell/deleteRetail
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /prescription/findPrescriptionByPatient/----患者详情页门诊日志（阿四）
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"pageNum":"20","patientId":"fbfcc8c411ac44a39f0bb3e034f84cbe","pageStart":"1"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /prescription/findPrescriptionByPatient
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

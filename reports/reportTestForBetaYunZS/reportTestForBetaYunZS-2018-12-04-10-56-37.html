@@ -1,0 +1,4155 @@
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reportTestForBetaYunZS - TestReport</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0 auto;
+      width: 960px;
+    }
+    #summary, #details {
+      width: 960px;
+      margin-bottom: 20px;
+    }
+    #summary th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #summary td {
+      background-color: lightblue;
+      text-align: center;
+      padding: 4px 8px;
+    }
+    #details th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #details td {
+      background-color: lightblue;
+      padding: 5px 12px;
+    }
+    #details .detail {
+      background-color: lightgrey;
+      font-size: smaller;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    #details .success {
+      background-color: greenyellow;
+    }
+    #details .error {
+      background-color: red;
+    }
+    #details .failure {
+      background-color: salmon;
+    }
+    #details .skipped {
+      background-color: gray;
+    }
+
+    .button {
+      font-size: 1em;
+      padding: 6px;
+      width: 4em;
+      text-align: center;
+      background-color: #06d85f;
+      border-radius: 20px/50px;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    a.button{
+      color: gray;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #2cffbd;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      width: 50%;
+      position: relative;
+      transition: all 3s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06d85f;
+    }
+    .popup .content {
+      max-height: 80%;
+      overflow: auto;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+      .popup {
+        width: 70%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Test Report: reportTestForBetaYunZS</h1>
+
+  <h2>Summary</h2>
+  <table id="summary">
+
+    <tr>
+      <th>START AT</th>
+      <td colspan="4">2018-12-04 10:56:37</td>
+    </tr>
+    <tr>
+      <th>DURATION</th>
+      <td colspan="4">7.011 seconds</td>
+    </tr>
+    <tr>
+      <th>PLATFORM</th>
+      <td>HttpRunner 1.4.8 </td>
+      <td>CPython 3.6.6 </td>
+      <td colspan="2">Darwin-18.0.0-x86_64-i386-64bit</td>
+    </tr>
+    <tr>
+      <th>TOTAL</th>
+      <th>SUCCESS</th>
+      <th>FAILED</th>
+      <th>ERROR</th>
+      <th>SKIPPED</th>
+      <!-- <th>ExpectedFailure</th>
+      <th>UnexpectedSuccess</th> -->
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>21</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <!-- <td>0</td>
+      <td>0</td> -->
+    </tr>
+  </table>
+
+  <h2>Details</h2>
+  <table id="details">
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Response Time</th>
+      <th>Detail</th>
+    </tr>
+    
+      <tr id="record_1">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药</td>
+        <td style="text-align:center;width:6em;">137.0 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_1">log</a>
+          <div id="popup_log_1" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_1">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 2004
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22approvalNumber%22%3A%22%22%2C%22batches%22%3A%5B%7B%22amount%22%3A%2210002%22%2C%22baseVersion%22%3A%22%22%2C%22batchNo%22%3A%2256%22%2C%22commodityId%22%3A%22%22%2C%22commonCnt%22%3A%22%22%2C%22createTime%22%3A%22%22%2C%22id%22%3A%22%22%2C%22isDelete%22%3A%22%22%2C%22purchasePrice%22%3A%22785%22%2C%22remark%22%3A%22%22%2C%22status%22%3A%22%22%2C%22stockUnit%22%3A%22%22%2C%22supplierId%22%3A%22%22%2C%22supplierName%22%3A%22%22%2C%22validityDate%22%3A%222019-10-09%22%2C%22warehouseDate%22%3A%222018-10-09%22%7D%5D%2C%22commodityCode%22%3A%226933743792380%22%2C%22commodityName%22%3A%22%E9%87%8D%E5%A4%8D%E8%8D%AF%E5%93%81%22%2C%22commoditySimpleName%22%3A%22%22%2C%22commoditySimpleSpell%22%3A%22%22%2C%22commoditySpell%22%3A%220ACJP%22%2C%22commodityType%22%3A%221%22%2C%22commonPrice%22%3A%221200%22%2C%22commonUnit%22%3A%22%E7%93%B6%22%2C%22direction%22%3A%22%E5%8F%A3%E6%9C%8D%22%2C%22factory%22%3A%22%E5%B9%BF%E4%B8%9C%E5%8D%97%E5%9B%BD%E8%8D%AF%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%22%2C%22id%22%3A%22kFCvmbED2Q8FVQoDg8vtNl1CoRvsOkWy%22%2C%22labels%22%3A%5B%7B%22labelId%22%3A%22ff80808165e65f2a01660ea7744336df%22%7D%5D%2C%22matrix%22%3A%2210%22%2C%22medicinalFormId%22%3A%2240288c2a5157239d0151573466850000%22%2C%22medicinalNo%22%3A%2211172440%22%2C%22minPrice%22%3A%22120%22%2C%22minUnit%22%3A%22%E7%89%87%22%2C%22quantum%22%3A%220%22%2C%22quantumUnit%22%3A%22%E7%89%87%22%2C%22rate%22%3A%22%E4%B8%80%E6%97%A54%E6%AC%A1%22%2C%22remark%22%3A%22%22%2C%22specifcations%22%3A%224%E7%89%87%22%2C%22threshold%22%3A%22800%22%2C%22thresholdUnit%22%3A%22%E7%93%B6%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%221.231%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543892197568%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:37 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2032006",
+    "content": null,
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>281</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>137.0</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>123.861</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_2">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药</td>
+        <td style="text-align:center;width:6em;">59.8 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_2">log</a>
+          <div id="popup_log_2" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_2">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1968
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22approvalNumber%22%3A%22%22%2C%22batches%22%3A%5B%7B%22amount%22%3A%2210002%22%2C%22baseVersion%22%3A%22%22%2C%22batchNo%22%3A%2256%22%2C%22commodityId%22%3A%22%22%2C%22commonCnt%22%3A%22%22%2C%22createTime%22%3A%22%22%2C%22id%22%3A%22%22%2C%22isDelete%22%3A%22%22%2C%22purchasePrice%22%3A%22785%22%2C%22remark%22%3A%22%22%2C%22status%22%3A%22%22%2C%22stockUnit%22%3A%22%22%2C%22supplierId%22%3A%22%22%2C%22supplierName%22%3A%22%22%2C%22validityDate%22%3A%222019-10-09%22%2C%22warehouseDate%22%3A%222018-10-09%22%7D%5D%2C%22commodityCode%22%3A%226933743792380%22%2C%22commodityName%22%3A%22%22%2C%22commoditySimpleName%22%3A%22%22%2C%22commoditySimpleSpell%22%3A%22%22%2C%22commoditySpell%22%3A%220ACJP%22%2C%22commodityType%22%3A%221%22%2C%22commonPrice%22%3A%221200%22%2C%22commonUnit%22%3A%22%E7%93%B6%22%2C%22direction%22%3A%22%E5%8F%A3%E6%9C%8D%22%2C%22factory%22%3A%22%E5%B9%BF%E4%B8%9C%E5%8D%97%E5%9B%BD%E8%8D%AF%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%22%2C%22id%22%3A%22kFCvmbED2Q8FVQoDg8vtNl1CoRvsOkWy%22%2C%22labels%22%3A%5B%7B%22labelId%22%3A%22ff80808165e65f2a01660ea7744336df%22%7D%5D%2C%22matrix%22%3A%2210%22%2C%22medicinalFormId%22%3A%2240288c2a5157239d0151573466850000%22%2C%22medicinalNo%22%3A%2211172440%22%2C%22minPrice%22%3A%22120%22%2C%22minUnit%22%3A%22%E7%89%87%22%2C%22quantum%22%3A%220%22%2C%22quantumUnit%22%3A%22%E7%89%87%22%2C%22rate%22%3A%22%E4%B8%80%E6%97%A54%E6%AC%A1%22%2C%22remark%22%3A%22%22%2C%22specifcations%22%3A%224%E7%89%87%22%2C%22threshold%22%3A%22800%22%2C%22thresholdUnit%22%3A%22%E7%93%B6%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%221.231%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543892197568%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:37 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2030103",
+    "content": null,
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>281</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>59.8</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>57.138</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_3">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药</td>
+        <td style="text-align:center;width:6em;">583.88 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_3">log</a>
+          <div id="popup_log_3" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_3">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 2027
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22approvalNumber%22%3A%22%22%2C%22batches%22%3A%5B%7B%22amount%22%3A%2210002%22%2C%22baseVersion%22%3A%22%22%2C%22batchNo%22%3A%2256%22%2C%22commodityId%22%3A%22%22%2C%22commonCnt%22%3A%22%22%2C%22createTime%22%3A%22%22%2C%22id%22%3A%22%22%2C%22isDelete%22%3A%22%22%2C%22purchasePrice%22%3A%22785%22%2C%22remark%22%3A%22%22%2C%22status%22%3A%22%22%2C%22stockUnit%22%3A%22%22%2C%22supplierId%22%3A%22%22%2C%22supplierName%22%3A%22%22%2C%22validityDate%22%3A%222019-10-09%22%2C%22warehouseDate%22%3A%222018-10-09%22%7D%5D%2C%22commodityCode%22%3A%226933743792380%22%2C%22commodityName%22%3A%22qwertyuioiuytresdfghjkjhgfdsdfghjkmnbvcxdfghyudssdfghgfxcvb%22%2C%22commoditySimpleName%22%3A%22%22%2C%22commoditySimpleSpell%22%3A%22%22%2C%22commoditySpell%22%3A%220ACJP%22%2C%22commodityType%22%3A%221%22%2C%22commonPrice%22%3A%221200%22%2C%22commonUnit%22%3A%22%E7%9B%92%22%2C%22direction%22%3A%22%E6%B3%A8%E5%B0%84%22%2C%22factory%22%3A%22%E5%B9%BF%E4%B8%9C%E5%8D%97%E5%9B%BD%E8%8D%AF%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%22%2C%22id%22%3A%22kFCvmbED2Q8FVQoDg8vtNl1CoRvsOkWy%22%2C%22labels%22%3A%5B%7B%22labelId%22%3A%22ff80808165e65f2a01660ea7744336df%22%7D%5D%2C%22matrix%22%3A%2210%22%2C%22medicinalFormId%22%3A%2240288c2a5157239d015157360cc60a01%22%2C%22medicinalNo%22%3A%2211172440%22%2C%22minPrice%22%3A%22150%22%2C%22minUnit%22%3A%22%E6%94%AF%22%2C%22quantum%22%3A%220%22%2C%22quantumUnit%22%3A%22%E7%89%87%22%2C%22rate%22%3A%22%E4%B8%80%E6%97%A55%E6%AC%A1%22%2C%22remark%22%3A%22%22%2C%22specifcations%22%3A%225%E6%94%AF%22%2C%22threshold%22%3A%22800%22%2C%22thresholdUnit%22%3A%22%E7%9B%92%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%221.231%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543892197568%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:37 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2030103",
+    "content": null,
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>281</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>583.88</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>581.189</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_4">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药</td>
+        <td style="text-align:center;width:6em;">58.17 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_4">log</a>
+          <div id="popup_log_4" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_4">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1891
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22approvalNumber%22%3A%22%22%2C%22batches%22%3A%5B%7B%22amount%22%3A%2210002%22%2C%22baseVersion%22%3A%22%22%2C%22batchNo%22%3A%2256%22%2C%22commodityId%22%3A%22%22%2C%22commonCnt%22%3A%22%22%2C%22createTime%22%3A%22%22%2C%22id%22%3A%22%22%2C%22isDelete%22%3A%22%22%2C%22purchasePrice%22%3A%22785%22%2C%22remark%22%3A%22%22%2C%22status%22%3A%22%22%2C%22stockUnit%22%3A%22%22%2C%22supplierId%22%3A%22%22%2C%22supplierName%22%3A%22%22%2C%22validityDate%22%3A%222019-10-09%22%2C%22warehouseDate%22%3A%222018-10-09%22%7D%5D%2C%22commodityCode%22%3A%226933743792380%22%2C%22commodityName%22%3A%22Iaya6I%22%2C%22commoditySimpleName%22%3A%22%22%2C%22commoditySimpleSpell%22%3A%22%22%2C%22commoditySpell%22%3A%220ACJP%22%2C%22commodityType%22%3A%221%22%2C%22commonPrice%22%3A%220%22%2C%22commonUnit%22%3A%22%22%2C%22direction%22%3A%22%22%2C%22factory%22%3A%22%E5%B9%BF%E4%B8%9C%E5%8D%97%E5%9B%BD%E8%8D%AF%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%22%2C%22id%22%3A%22kFCvmbED2Q8FVQoDg8vtNl1CoRvsOkWy%22%2C%22labels%22%3A%5B%7B%22labelId%22%3A%22ff80808165e65f2a01660ea7744336df%22%7D%5D%2C%22matrix%22%3A%225%22%2C%22medicinalFormId%22%3A%2240288c2a5157239d0151573466850000%22%2C%22medicinalNo%22%3A%2211172440%22%2C%22minPrice%22%3A%220%22%2C%22minUnit%22%3A%22%22%2C%22quantum%22%3A%22%22%2C%22quantumUnit%22%3A%22%E7%89%87%22%2C%22rate%22%3A%22%22%2C%22remark%22%3A%22%22%2C%22specifcations%22%3A%221%E7%89%87%22%2C%22threshold%22%3A%22%22%2C%22thresholdUnit%22%3A%22%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%221.231%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543892197568%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:38 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2032016",
+    "content": null,
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>281</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>58.17</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>55.175</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_5">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药</td>
+        <td style="text-align:center;width:6em;">58.96 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_5">log</a>
+          <div id="popup_log_5" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_5">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1946
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22approvalNumber%22%3A%22%22%2C%22batches%22%3A%5B%7B%22amount%22%3A%2210002%22%2C%22baseVersion%22%3A%22%22%2C%22batchNo%22%3A%2256%22%2C%22commodityId%22%3A%22%22%2C%22commonCnt%22%3A%22%22%2C%22createTime%22%3A%22%22%2C%22id%22%3A%22%22%2C%22isDelete%22%3A%22%22%2C%22purchasePrice%22%3A%22785%22%2C%22remark%22%3A%22%22%2C%22status%22%3A%22%22%2C%22stockUnit%22%3A%22%22%2C%22supplierId%22%3A%22%22%2C%22supplierName%22%3A%22%22%2C%22validityDate%22%3A%222019-10-09%22%2C%22warehouseDate%22%3A%222018-10-09%22%7D%5D%2C%22commodityCode%22%3A%226933743792380%22%2C%22commodityName%22%3A%22Iaya6I%22%2C%22commoditySimpleName%22%3A%22%22%2C%22commoditySimpleSpell%22%3A%22%22%2C%22commoditySpell%22%3A%220ACJP%22%2C%22commodityType%22%3A%221%22%2C%22commonPrice%22%3A%221200%22%2C%22commonUnit%22%3A%22%22%2C%22direction%22%3A%22%E5%8F%A3%E6%9C%8D%22%2C%22factory%22%3A%22%E5%B9%BF%E4%B8%9C%E5%8D%97%E5%9B%BD%E8%8D%AF%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%22%2C%22id%22%3A%22kFCvmbED2Q8FVQoDg8vtNl1CoRvsOkWy%22%2C%22labels%22%3A%5B%7B%22labelId%22%3A%22ff80808165e65f2a01660ea7744336df%22%7D%5D%2C%22matrix%22%3A%2212%22%2C%22medicinalFormId%22%3A%2240288c2a5157239d0151573466850000%22%2C%22medicinalNo%22%3A%2211172440%22%2C%22minPrice%22%3A%22120%22%2C%22minUnit%22%3A%22%22%2C%22quantum%22%3A%220.1%22%2C%22quantumUnit%22%3A%22%E7%89%87%22%2C%22rate%22%3A%22%E4%B8%80%E6%97%A52%E6%AC%A1%22%2C%22remark%22%3A%22%22%2C%22specifcations%22%3A%222%E7%89%87%22%2C%22threshold%22%3A%22%22%2C%22thresholdUnit%22%3A%22%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%221.231%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543892197568%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:38 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2032016",
+    "content": null,
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>281</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>58.96</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>56.279</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_6">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药</td>
+        <td style="text-align:center;width:6em;">59.0 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_6">log</a>
+          <div id="popup_log_6" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_6">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1927
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22approvalNumber%22%3A%22%22%2C%22batches%22%3A%5B%7B%22amount%22%3A%2210002%22%2C%22baseVersion%22%3A%22%22%2C%22batchNo%22%3A%2256%22%2C%22commodityId%22%3A%22%22%2C%22commonCnt%22%3A%22%22%2C%22createTime%22%3A%22%22%2C%22id%22%3A%22%22%2C%22isDelete%22%3A%22%22%2C%22purchasePrice%22%3A%22785%22%2C%22remark%22%3A%22%22%2C%22status%22%3A%22%22%2C%22stockUnit%22%3A%22%22%2C%22supplierId%22%3A%22%22%2C%22supplierName%22%3A%22%22%2C%22validityDate%22%3A%222019-10-09%22%2C%22warehouseDate%22%3A%222018-10-09%22%7D%5D%2C%22commodityCode%22%3A%226933743792380%22%2C%22commodityName%22%3A%22Iaya6I%22%2C%22commoditySimpleName%22%3A%22%22%2C%22commoditySimpleSpell%22%3A%22%22%2C%22commoditySpell%22%3A%220ACJP%22%2C%22commodityType%22%3A%221%22%2C%22commonPrice%22%3A%221200%22%2C%22commonUnit%22%3A%22%E7%93%B6%22%2C%22direction%22%3A%22%22%2C%22factory%22%3A%22%E5%B9%BF%E4%B8%9C%E5%8D%97%E5%9B%BD%E8%8D%AF%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%22%2C%22id%22%3A%22kFCvmbED2Q8FVQoDg8vtNl1CoRvsOkWy%22%2C%22labels%22%3A%5B%7B%22labelId%22%3A%22ff80808165e65f2a01660ea7744336df%22%7D%5D%2C%22matrix%22%3A%2210%22%2C%22medicinalFormId%22%3A%2240288c2a5157239d0151573466850000%22%2C%22medicinalNo%22%3A%2211172440%22%2C%22minPrice%22%3A%22120%22%2C%22minUnit%22%3A%22%E7%89%87%22%2C%22quantum%22%3A%22%22%2C%22quantumUnit%22%3A%22%E7%89%87%22%2C%22rate%22%3A%22%22%2C%22remark%22%3A%22%22%2C%22specifcations%22%3A%223%E7%89%87%22%2C%22threshold%22%3A%22800%22%2C%22thresholdUnit%22%3A%22%E7%93%B6%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%221.231%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543892197568%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:38 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2032002",
+    "content": null,
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>281</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>59.0</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>56.223</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_7">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增西药</td>
+        <td style="text-align:center;width:6em;">434.92 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_7">log</a>
+          <div id="popup_log_7" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_7">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1974
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22approvalNumber%22%3A%22%22%2C%22batches%22%3A%5B%7B%22amount%22%3A%2210002%22%2C%22baseVersion%22%3A%22%22%2C%22batchNo%22%3A%2256%22%2C%22commodityId%22%3A%22%22%2C%22commonCnt%22%3A%22%22%2C%22createTime%22%3A%22%22%2C%22id%22%3A%22%22%2C%22isDelete%22%3A%22%22%2C%22purchasePrice%22%3A%22785%22%2C%22remark%22%3A%22%22%2C%22status%22%3A%22%22%2C%22stockUnit%22%3A%22%22%2C%22supplierId%22%3A%22%22%2C%22supplierName%22%3A%22%22%2C%22validityDate%22%3A%222019-10-09%22%2C%22warehouseDate%22%3A%222018-10-09%22%7D%5D%2C%22commodityCode%22%3A%226933743792380%22%2C%22commodityName%22%3A%22Iaya6I%22%2C%22commoditySimpleName%22%3A%22%22%2C%22commoditySimpleSpell%22%3A%22%22%2C%22commoditySpell%22%3A%220ACJP%22%2C%22commodityType%22%3A%221%22%2C%22commonPrice%22%3A%221200%22%2C%22commonUnit%22%3A%22%E7%93%B6%22%2C%22direction%22%3A%22%E5%8F%A3%E6%9C%8D%22%2C%22factory%22%3A%22%E5%B9%BF%E4%B8%9C%E5%8D%97%E5%9B%BD%E8%8D%AF%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%22%2C%22id%22%3A%22kFCvmbED2Q8FVQoDg8vtNl1CoRvsOkWy%22%2C%22labels%22%3A%5B%7B%22labelId%22%3A%22ff80808165e65f2a01660ea7744336df%22%7D%5D%2C%22matrix%22%3A%2210%22%2C%22medicinalFormId%22%3A%2240288c2a5157239d0151573466850000%22%2C%22medicinalNo%22%3A%2211172440%22%2C%22minPrice%22%3A%22120%22%2C%22minUnit%22%3A%22%E7%89%87%22%2C%22quantum%22%3A%220%22%2C%22quantumUnit%22%3A%22%E7%89%87%22%2C%22rate%22%3A%22%E4%B8%80%E6%97%A54%E6%AC%A1%22%2C%22remark%22%3A%22%22%2C%22specifcations%22%3A%224%E7%89%87%22%2C%22threshold%22%3A%22800%22%2C%22thresholdUnit%22%3A%22%E7%93%B6%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%221.231%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543892197568%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:38 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "commodityId": "ff808081676350fb0167772564bf0373",
+      "labels": [
+        {
+          "clinicId": "402885815285e0df015285e33bb80000",
+          "clinicLabelId": "ff80808165e65f2a01660ea7744336df",
+          "groupObjId": "ff808081676350fb0167772564bf0373",
+          "labelId": "ff80808165e65f2a01660ea7744336df",
+          "baseVersion": "1543892198638",
+          "isDelete": 0,
+          "clickNum": 0,
+          "orderNum": null,
+          "id": "2c92e0f3677443370167772564ee0007",
+          "status": null
+        }
+      ]
+    },
+    "param": null,
+    "synCode": "commondity,sysLableDetail"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>679</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>434.92</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>429.76</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_8">
+        <th class="error" style="width:5em;">error</td>
+        <td>/workbench/commodityStockHold/药品预占库存</td>
+        <td style="text-align:center;width:6em;">65.56 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_8">log</a>
+          <div id="popup_log_8" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_8">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/workbench/commodityStockHold</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536236193996
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 920
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22header%22%3A+%7B+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22currentTime%22%3A+%221543892197568%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22imei%22%3A+%22b344e429c323b136%22%2C+%22type%22%3A+%222%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22v%22%3A+%221.231%22+%7D%2C+%22body%22%3A+%7B+%22code%22%3A+%22%22%2C+%22content%22%3A+null%2C+%22param%22%3A+%7B+%22commodityList%22%3A+%5B+%7B+%22amount%22%3A+1%2C+%22clinicCommodityId%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22commodityType%22%3A+0%2C+%22prescriptionRetailId%22%3A+%22%22%2C+%22prescriptionRetailType%22%3A+%220%22%2C+%22requestId%22%3A+%22201812041056371342450682036224%22%2C+%22stockUnit%22%3A+%22g%22+%7D+%5D%2C+%22commodityStockRegList%22%3A+%5B%5D%2C+%22stockDeductList%22%3A+%5B%5D+%7D+%7D%2C+%22code%22%3A+%7B%7D+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:39 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "3333333",
+    "content": "格式错误",
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": null,
+    "currentTime": null,
+    "doctorMainId": null,
+    "imei": null,
+    "type": null,
+    "userToken": null,
+    "v": null
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>196</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>65.56</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>62.647</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+            <a class="button" href="#popup_attachment_8">traceback</a>
+            <div id="popup_attachment_8" class="overlay">
+              <div class="popup">
+                <h2>Traceback Message</h2>
+                <a class="close" href="#record_8">&times;</a>
+                <div class="content"><pre>Traceback (most recent call last):
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/context.py", line 240, in do_validation
+    validate_func(validator_dict["check_value"], validator_dict["expect"])
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/built_in.py", line 60, in equals
+    assert check_value == expect_value
+AssertionError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/task.py", line 26, in runTest
+    self.test_runner.run_test(self.testcase_dict)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/runner.py", line 185, in run_test
+    self.context.validate(validators, resp_obj)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/context.py", line 260, in validate
+    self.do_validation(validator_dict)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/context.py", line 248, in do_validation
+    raise exception.ValidationError(err_msg)
+httprunner.exception.ValidationError: 
+	check item name: content.body.code;
+	check item value: 3333333 (str);
+	comparator: equals;
+	expected value: 2000000 (str).
+</pre></div>
+              </div>
+            </div>
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_9">
+        <th class="success" style="width:5em;">success</td>
+        <td>/clinicCommodity/modifyClinicCommodityEx/----修改西药扩展信息</td>
+        <td style="text-align:center;width:6em;">435.98 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_9">log</a>
+          <div id="popup_log_9" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_9">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyClinicCommodityEx</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237142489
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 744
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22rate%22%3A+%22%E4%B8%80%E6%97%A54%E6%AC%A1%22%2C+%22thresholdUnit%22%3A+%22%E7%93%B6%22%2C+%22threshold%22%3A+%2250%22%2C+%22quantumUnit%22%3A+%22%E7%89%87%22%2C+%22quantum%22%3A+%220%22%2C+%22id%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22direction%22%3A+%22%E5%8F%A3%E6%9C%8D%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:39 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "approvalNumber": null,
+      "batches": null,
+      "clinicCommodityId": "ff808081676350fb0167772564bf0373",
+      "clinicId": "402885815285e0df015285e33bb80000",
+      "commodityCode": null,
+      "commodityName": null,
+      "commodityRemark": null,
+      "commoditySimpleName": null,
+      "commoditySimpleSpell": null,
+      "commoditySpell": null,
+      "commonPrice": null,
+      "commonUnit": null,
+      "direction": "口服",
+      "factory": null,
+      "id": "ff808081676350fb0167772564bf0373",
+      "labels": null,
+      "matrix": null,
+      "medicinalNo": null,
+      "minPrice": null,
+      "minUnit": null,
+      "quantum": 0.0,
+      "quantumUnit": "片",
+      "rate": "一日4次",
+      "specifcations": null,
+      "status": null,
+      "threshold": 50.0,
+      "thresholdUnit": "瓶"
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>885</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>435.98</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>433.734</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_10">
+        <th class="success" style="width:5em;">success</td>
+        <td>/clinicCommodity/modifyClinicCommodity/----修改西药信息</td>
+        <td style="text-align:center;width:6em;">407.81 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_10">log</a>
+          <div id="popup_log_10" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_10">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyClinicCommodity</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237142489
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1335
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22medicinalFormId%22%3A+%22d8c61da47f8d11e5b31128936a597f70%22%2C+%22remark%22%3A+%22%E5%A4%87%E6%B3%A8%22%2C+%22commodityCode%22%3A+%22123693374370%22%2C+%22minUnit%22%3A+%22%E7%89%87%22%2C+%22medicinalCategory%22%3A+%221%22%2C+%22commoditySimpleSpell%22%3A+%22X%22%2C+%22id%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22commoditySpell%22%3A+%22XG%22%2C+%22commodityType%22%3A+%221%22%2C+%22commonPrice%22%3A+%223000%22%2C+%22matrix%22%3A+%2210%22%2C+%22specifcations%22%3A+%224g%22%2C+%22commonUnit%22%3A+%22%E7%93%B6%22%2C+%22factory%22%3A+%22%E6%9C%97%E8%87%B4%E8%8D%AF%E4%B8%9A%22%2C+%22commoditySimpleName%22%3A+%22%E4%BC%91%22%2C+%22direction%22%3A+%22%E5%8F%A3%E6%9C%8D%22%2C+%22minPrice%22%3A+%22100%22%2C+%22commodityName%22%3A+%22%E4%BF%AE%E6%94%B9%E8%A5%BF%E8%8D%AF%22%2C+%22approvalNumber%22%3A+%22%E5%9B%BD%E5%AD%97123%22%2C+%22activeTime%22%3A+%222019-10-09%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:39 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "id": "ff808081676350fb0167772564bf0373",
+      "activeTime": "2019-10-08T16:00:00Z",
+      "approvalNumber": "国字123",
+      "baseVersion": "1543892199540",
+      "clinicId": "402885815285e0df015285e33bb80000",
+      "commodityCode": "123693374370",
+      "commodityName": "修改西药",
+      "commodityRemark": "备注",
+      "commoditySimpleName": "休",
+      "commoditySimpleSpell": "X",
+      "commoditySource": 0,
+      "commoditySpell": "XG",
+      "commodityType": 1,
+      "commonPrice": 3000.0,
+      "commonUnit": "瓶",
+      "dateCreated": "2018-12-04T02:56:39Z",
+      "dose": null,
+      "factory": "朗致药业",
+      "factorySpell": null,
+      "formUnitId": null,
+      "instrumentId": null,
+      "lastUpdated": "2018-12-04T02:56:39Z",
+      "matrix": 10.0,
+      "medicinalCategory": 1,
+      "medicinalFormId": "d8c61da47f8d11e5b31128936a597f70",
+      "medicinalId": null,
+      "medicinalNo": "11172440",
+      "medicinalType": 1,
+      "minPrice": 100.0,
+      "minUnit": "片",
+      "partnerCommodityId": null,
+      "priceLastUpdated": "2018-12-04T02:56:39Z",
+      "reserveAmount": null,
+      "scope": null,
+      "specifcations": "4g",
+      "status": 1
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1198</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>407.81</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>404.59</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_11">
+        <th class="success" style="width:5em;">success</td>
+        <td>/clinicCommodity/modifyClinicCommodity/----修改西药信息</td>
+        <td style="text-align:center;width:6em;">408.52 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_11">log</a>
+          <div id="popup_log_11" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_11">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyClinicCommodity</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237142489
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1336
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22medicinalFormId%22%3A+%22d8c61da47f8d11e5b31128936a597f70%22%2C+%22remark%22%3A+%22%E5%A4%87%E6%B3%A8%22%2C+%22commodityCode%22%3A+%22123693374370%22%2C+%22minUnit%22%3A+%22%E7%89%87%22%2C+%22medicinalCategory%22%3A+%221%22%2C+%22commoditySimpleSpell%22%3A+%22X%22%2C+%22id%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22commoditySpell%22%3A+%22XG%22%2C+%22commodityType%22%3A+%221%22%2C+%22commonPrice%22%3A+%224000%22%2C+%22matrix%22%3A+%2210%22%2C+%22specifcations%22%3A+%225g%22%2C+%22commonUnit%22%3A+%22%E7%93%B6%22%2C+%22factory%22%3A+%22%E6%9C%97%E8%87%B4%E8%8D%AF%E4%B8%9A1%22%2C+%22commoditySimpleName%22%3A+%22%E4%BC%91%22%2C+%22direction%22%3A+%22%E5%8F%A3%E6%9C%8D%22%2C+%22minPrice%22%3A+%22100%22%2C+%22commodityName%22%3A+%22%E4%BF%AE%E6%94%B9%E8%A5%BF%E8%8D%AF%22%2C+%22approvalNumber%22%3A+%22%E5%9B%BD%E5%AD%97123%22%2C+%22activeTime%22%3A+%222019-10-09%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:40 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "id": "ff808081676350fb0167772564bf0373",
+      "activeTime": "2019-10-08T16:00:00Z",
+      "approvalNumber": "国字123",
+      "baseVersion": "1543892199949",
+      "clinicId": "402885815285e0df015285e33bb80000",
+      "commodityCode": "123693374370",
+      "commodityName": "修改西药",
+      "commodityRemark": "备注",
+      "commoditySimpleName": "休",
+      "commoditySimpleSpell": "X",
+      "commoditySource": 0,
+      "commoditySpell": "XG",
+      "commodityType": 1,
+      "commonPrice": 4000.0,
+      "commonUnit": "瓶",
+      "dateCreated": "2018-12-04T02:56:39Z",
+      "dose": null,
+      "factory": "朗致药业1",
+      "factorySpell": null,
+      "formUnitId": null,
+      "instrumentId": null,
+      "lastUpdated": "2018-12-04T02:56:39Z",
+      "matrix": 10.0,
+      "medicinalCategory": 1,
+      "medicinalFormId": "d8c61da47f8d11e5b31128936a597f70",
+      "medicinalId": null,
+      "medicinalNo": "11172440",
+      "medicinalType": 1,
+      "minPrice": 100.0,
+      "minUnit": "片",
+      "partnerCommodityId": null,
+      "priceLastUpdated": "2018-12-04T02:56:39Z",
+      "reserveAmount": null,
+      "scope": null,
+      "specifcations": "5g",
+      "status": 1
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1199</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>408.52</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>405.743</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_12">
+        <th class="success" style="width:5em;">success</td>
+        <td>/clinicCommodity/modifyClinicCommodity/----修改西药信息</td>
+        <td style="text-align:center;width:6em;">407.17 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_12">log</a>
+          <div id="popup_log_12" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_12">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyClinicCommodity</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237142489
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1336
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22medicinalFormId%22%3A+%22d8c61da47f8d11e5b31128936a597f70%22%2C+%22remark%22%3A+%22%E5%A4%87%E6%B3%A8%22%2C+%22commodityCode%22%3A+%22123693374370%22%2C+%22minUnit%22%3A+%22%E7%89%87%22%2C+%22medicinalCategory%22%3A+%221%22%2C+%22commoditySimpleSpell%22%3A+%22X%22%2C+%22id%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22commoditySpell%22%3A+%22XG%22%2C+%22commodityType%22%3A+%221%22%2C+%22commonPrice%22%3A+%225000%22%2C+%22matrix%22%3A+%2210%22%2C+%22specifcations%22%3A+%226g%22%2C+%22commonUnit%22%3A+%22%E7%93%B6%22%2C+%22factory%22%3A+%22%E6%9C%97%E8%87%B4%E8%8D%AF%E4%B8%9A2%22%2C+%22commoditySimpleName%22%3A+%22%E4%BC%91%22%2C+%22direction%22%3A+%22%E5%8F%A3%E6%9C%8D%22%2C+%22minPrice%22%3A+%22100%22%2C+%22commodityName%22%3A+%22%E4%BF%AE%E6%94%B9%E8%A5%BF%E8%8D%AF%22%2C+%22approvalNumber%22%3A+%22%E5%9B%BD%E5%AD%97123%22%2C+%22activeTime%22%3A+%222019-10-09%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:40 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "id": "ff808081676350fb0167772564bf0373",
+      "activeTime": "2019-10-08T16:00:00Z",
+      "approvalNumber": "国字123",
+      "baseVersion": "1543892200361",
+      "clinicId": "402885815285e0df015285e33bb80000",
+      "commodityCode": "123693374370",
+      "commodityName": "修改西药",
+      "commodityRemark": "备注",
+      "commoditySimpleName": "休",
+      "commoditySimpleSpell": "X",
+      "commoditySource": 0,
+      "commoditySpell": "XG",
+      "commodityType": 1,
+      "commonPrice": 5000.0,
+      "commonUnit": "瓶",
+      "dateCreated": "2018-12-04T02:56:39Z",
+      "dose": null,
+      "factory": "朗致药业2",
+      "factorySpell": null,
+      "formUnitId": null,
+      "instrumentId": null,
+      "lastUpdated": "2018-12-04T02:56:40Z",
+      "matrix": 10.0,
+      "medicinalCategory": 1,
+      "medicinalFormId": "d8c61da47f8d11e5b31128936a597f70",
+      "medicinalId": null,
+      "medicinalNo": "11172440",
+      "medicinalType": 1,
+      "minPrice": 100.0,
+      "minUnit": "片",
+      "partnerCommodityId": null,
+      "priceLastUpdated": "2018-12-04T02:56:40Z",
+      "reserveAmount": null,
+      "scope": null,
+      "specifcations": "6g",
+      "status": 1
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1199</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>407.17</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>403.944</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_13">
+        <th class="success" style="width:5em;">success</td>
+        <td>/clinicCommodity/modifyClinicCommodity/----修改西药信息</td>
+        <td style="text-align:center;width:6em;">407.28 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_13">log</a>
+          <div id="popup_log_13" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_13">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyClinicCommodity</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237142489
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1336
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22medicinalFormId%22%3A+%22d8c61da47f8d11e5b31128936a597f70%22%2C+%22remark%22%3A+%22%E5%A4%87%E6%B3%A8%22%2C+%22commodityCode%22%3A+%22123693374370%22%2C+%22minUnit%22%3A+%22%E7%89%87%22%2C+%22medicinalCategory%22%3A+%221%22%2C+%22commoditySimpleSpell%22%3A+%22X%22%2C+%22id%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22commoditySpell%22%3A+%22XG%22%2C+%22commodityType%22%3A+%221%22%2C+%22commonPrice%22%3A+%226000%22%2C+%22matrix%22%3A+%2210%22%2C+%22specifcations%22%3A+%227g%22%2C+%22commonUnit%22%3A+%22%E7%93%B6%22%2C+%22factory%22%3A+%22%E6%9C%97%E8%87%B4%E8%8D%AF%E4%B8%9A3%22%2C+%22commoditySimpleName%22%3A+%22%E4%BC%91%22%2C+%22direction%22%3A+%22%E5%8F%A3%E6%9C%8D%22%2C+%22minPrice%22%3A+%22100%22%2C+%22commodityName%22%3A+%22%E4%BF%AE%E6%94%B9%E8%A5%BF%E8%8D%AF%22%2C+%22approvalNumber%22%3A+%22%E5%9B%BD%E5%AD%97123%22%2C+%22activeTime%22%3A+%222019-10-09%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:41 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "id": "ff808081676350fb0167772564bf0373",
+      "activeTime": "2019-10-08T16:00:00Z",
+      "approvalNumber": "国字123",
+      "baseVersion": "1543892200771",
+      "clinicId": "402885815285e0df015285e33bb80000",
+      "commodityCode": "123693374370",
+      "commodityName": "修改西药",
+      "commodityRemark": "备注",
+      "commoditySimpleName": "休",
+      "commoditySimpleSpell": "X",
+      "commoditySource": 0,
+      "commoditySpell": "XG",
+      "commodityType": 1,
+      "commonPrice": 6000.0,
+      "commonUnit": "瓶",
+      "dateCreated": "2018-12-04T02:56:39Z",
+      "dose": null,
+      "factory": "朗致药业3",
+      "factorySpell": null,
+      "formUnitId": null,
+      "instrumentId": null,
+      "lastUpdated": "2018-12-04T02:56:40Z",
+      "matrix": 10.0,
+      "medicinalCategory": 1,
+      "medicinalFormId": "d8c61da47f8d11e5b31128936a597f70",
+      "medicinalId": null,
+      "medicinalNo": "11172440",
+      "medicinalType": 1,
+      "minPrice": 100.0,
+      "minUnit": "片",
+      "partnerCommodityId": null,
+      "priceLastUpdated": "2018-12-04T02:56:40Z",
+      "reserveAmount": null,
+      "scope": null,
+      "specifcations": "7g",
+      "status": 1
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1199</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>407.28</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>404.331</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_14">
+        <th class="success" style="width:5em;">success</td>
+        <td>/clinicCommodity/modifyClinicCommodity/----修改西药信息</td>
+        <td style="text-align:center;width:6em;">408.2 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_14">log</a>
+          <div id="popup_log_14" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_14">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyClinicCommodity</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237142489
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1336
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22medicinalFormId%22%3A+%22d8c61da47f8d11e5b31128936a597f70%22%2C+%22remark%22%3A+%22%E5%A4%87%E6%B3%A8%22%2C+%22commodityCode%22%3A+%22123693374370%22%2C+%22minUnit%22%3A+%22%E7%89%87%22%2C+%22medicinalCategory%22%3A+%221%22%2C+%22commoditySimpleSpell%22%3A+%22X%22%2C+%22id%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22commoditySpell%22%3A+%22XG%22%2C+%22commodityType%22%3A+%221%22%2C+%22commonPrice%22%3A+%227000%22%2C+%22matrix%22%3A+%2210%22%2C+%22specifcations%22%3A+%228g%22%2C+%22commonUnit%22%3A+%22%E7%93%B6%22%2C+%22factory%22%3A+%22%E6%9C%97%E8%87%B4%E8%8D%AF%E4%B8%9A4%22%2C+%22commoditySimpleName%22%3A+%22%E4%BC%91%22%2C+%22direction%22%3A+%22%E5%8F%A3%E6%9C%8D%22%2C+%22minPrice%22%3A+%22100%22%2C+%22commodityName%22%3A+%22%E4%BF%AE%E6%94%B9%E8%A5%BF%E8%8D%AF%22%2C+%22approvalNumber%22%3A+%22%E5%9B%BD%E5%AD%97123%22%2C+%22activeTime%22%3A+%222019-10-09%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:41 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "id": "ff808081676350fb0167772564bf0373",
+      "activeTime": "2019-10-08T16:00:00Z",
+      "approvalNumber": "国字123",
+      "baseVersion": "1543892201179",
+      "clinicId": "402885815285e0df015285e33bb80000",
+      "commodityCode": "123693374370",
+      "commodityName": "修改西药",
+      "commodityRemark": "备注",
+      "commoditySimpleName": "休",
+      "commoditySimpleSpell": "X",
+      "commoditySource": 0,
+      "commoditySpell": "XG",
+      "commodityType": 1,
+      "commonPrice": 7000.0,
+      "commonUnit": "瓶",
+      "dateCreated": "2018-12-04T02:56:39Z",
+      "dose": null,
+      "factory": "朗致药业4",
+      "factorySpell": null,
+      "formUnitId": null,
+      "instrumentId": null,
+      "lastUpdated": "2018-12-04T02:56:41Z",
+      "matrix": 10.0,
+      "medicinalCategory": 1,
+      "medicinalFormId": "d8c61da47f8d11e5b31128936a597f70",
+      "medicinalId": null,
+      "medicinalNo": "11172440",
+      "medicinalType": 1,
+      "minPrice": 100.0,
+      "minUnit": "片",
+      "partnerCommodityId": null,
+      "priceLastUpdated": "2018-12-04T02:56:41Z",
+      "reserveAmount": null,
+      "scope": null,
+      "specifcations": "8g",
+      "status": 1
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1199</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>408.2</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>405.767</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_15">
+        <th class="success" style="width:5em;">success</td>
+        <td>/clinicCommodity/modifyClinicCommodity/----修改西药信息</td>
+        <td style="text-align:center;width:6em;">407.28 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_15">log</a>
+          <div id="popup_log_15" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_15">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyClinicCommodity</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237142489
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1336
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22medicinalFormId%22%3A+%22d8c61da47f8d11e5b31128936a597f70%22%2C+%22remark%22%3A+%22%E5%A4%87%E6%B3%A8%22%2C+%22commodityCode%22%3A+%22123693374370%22%2C+%22minUnit%22%3A+%22%E7%89%87%22%2C+%22medicinalCategory%22%3A+%221%22%2C+%22commoditySimpleSpell%22%3A+%22X%22%2C+%22id%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22commoditySpell%22%3A+%22XG%22%2C+%22commodityType%22%3A+%221%22%2C+%22commonPrice%22%3A+%228000%22%2C+%22matrix%22%3A+%2210%22%2C+%22specifcations%22%3A+%229g%22%2C+%22commonUnit%22%3A+%22%E7%93%B6%22%2C+%22factory%22%3A+%22%E6%9C%97%E8%87%B4%E8%8D%AF%E4%B8%9A5%22%2C+%22commoditySimpleName%22%3A+%22%E4%BC%91%22%2C+%22direction%22%3A+%22%E5%8F%A3%E6%9C%8D%22%2C+%22minPrice%22%3A+%22100%22%2C+%22commodityName%22%3A+%22%E4%BF%AE%E6%94%B9%E8%A5%BF%E8%8D%AF%22%2C+%22approvalNumber%22%3A+%22%E5%9B%BD%E5%AD%97123%22%2C+%22activeTime%22%3A+%222019-10-09%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:41 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "id": "ff808081676350fb0167772564bf0373",
+      "activeTime": "2019-10-08T16:00:00Z",
+      "approvalNumber": "国字123",
+      "baseVersion": "1543892201591",
+      "clinicId": "402885815285e0df015285e33bb80000",
+      "commodityCode": "123693374370",
+      "commodityName": "修改西药",
+      "commodityRemark": "备注",
+      "commoditySimpleName": "休",
+      "commoditySimpleSpell": "X",
+      "commoditySource": 0,
+      "commoditySpell": "XG",
+      "commodityType": 1,
+      "commonPrice": 8000.0,
+      "commonUnit": "瓶",
+      "dateCreated": "2018-12-04T02:56:39Z",
+      "dose": null,
+      "factory": "朗致药业5",
+      "factorySpell": null,
+      "formUnitId": null,
+      "instrumentId": null,
+      "lastUpdated": "2018-12-04T02:56:41Z",
+      "matrix": 10.0,
+      "medicinalCategory": 1,
+      "medicinalFormId": "d8c61da47f8d11e5b31128936a597f70",
+      "medicinalId": null,
+      "medicinalNo": "11172440",
+      "medicinalType": 1,
+      "minPrice": 100.0,
+      "minUnit": "片",
+      "partnerCommodityId": null,
+      "priceLastUpdated": "2018-12-04T02:56:41Z",
+      "reserveAmount": null,
+      "scope": null,
+      "specifcations": "9g",
+      "status": 1
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1199</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>407.28</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>404.789</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_16">
+        <th class="success" style="width:5em;">success</td>
+        <td>/batches/createStock/-----西药采购入库</td>
+        <td style="text-align:center;width:6em;">407.97 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_16">log</a>
+          <div id="popup_log_16" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_16">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/batches/createStock</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237151488
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 928
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22commodityType%22%3A+%220%22%2C+%22batches%22%3A+%5B+%7B+%22amount%22%3A+%221001%22%2C+%22commodityId%22%3A+%22ff808081676350fb0167772564bf0373%22%2C+%22supplierId%22%3A+%2268ff2acf2c034e22b7ff9b0b4dc329d0%22%2C+%22batchNo%22%3A+%22123%22%2C+%22supplierName%22%3A+%22%E4%BE%9B%E5%BA%94%E5%95%861%22%2C+%22remark%22%3A+%22%E5%A4%87%E6%B3%A8%22%2C+%22purchasePrice%22%3A+%221200%22%2C+%22validityDate%22%3A+%222019-12-26%22%2C+%22warehouseDate%22%3A+%222018-12-04%22+%7D+%5D+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:42 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "amount": 11003.0,
+      "validityDate": "2019-10-09"
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>332</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>407.97</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>405.266</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_17">
+        <th class="success" style="width:5em;">success</td>
+        <td>/batches/getBatches/----获取西药批次列表</td>
+        <td style="text-align:center;width:6em;">64.72 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_17">log</a>
+          <div id="popup_log_17" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_17">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/batches/getBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237151488
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 547
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22commodityType%22%3A+%220%22%2C+%22commodityId%22%3A+%22ff808081676350fb0167772564bf0373%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:42 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "batches": [
+        {
+          "supplierName": "",
+          "warehouseAmount": 10002.0,
+          "base_version": "1543892198610",
+          "batchNo": "56",
+          "amount": 10002.0,
+          "supplierId": "",
+          "remark": "",
+          "commodityId": "ff808081676350fb0167772564bf0373",
+          "purchasePrice": 785.0,
+          "warehouseDate": "2018-10-09",
+          "is_delete": 0,
+          "createTime": "2018-12-04 10:56:39",
+          "validityDate": "2019-10-09",
+          "id": "ff808081676350fb0167772564d10376",
+          "batchStatus": 0
+        },
+        {
+          "supplierName": "供应商1",
+          "warehouseAmount": 1001.0,
+          "base_version": "1543892201993",
+          "batchNo": "123",
+          "amount": 1001.0,
+          "supplierId": "68ff2acf2c034e22b7ff9b0b4dc329d0",
+          "remark": "备注",
+          "commodityId": "ff808081676350fb0167772564bf0373",
+          "purchasePrice": 1200.0,
+          "warehouseDate": "2018-12-04",
+          "is_delete": 0,
+          "createTime": "2018-12-04 10:56:42",
+          "validityDate": "2019-12-26",
+          "id": "ff808081676350fb0167772572090377",
+          "batchStatus": 0
+        }
+      ]
+    },
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1080</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>64.72</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>62.769</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_18">
+        <th class="success" style="width:5em;">success</td>
+        <td>/batches/updateBatches/----修改西药批次信息</td>
+        <td style="text-align:center;width:6em;">405.44 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_18">log</a>
+          <div id="popup_log_18" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_18">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/batches/updateBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237151488
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 928
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22commodityType%22%3A+%220%22%2C+%22batches%22%3A+%5B+%7B+%22amount%22%3A+%221184%22%2C+%22supplierId%22%3A+%2268ff2acf2c034e22b7ff9b0b4dc329d0%22%2C+%22batchNo%22%3A+%22123%22%2C+%22id%22%3A+%22ff808081676350fb0167772572090377%22%2C+%22supplierName%22%3A+%22%E4%BE%9B%E5%BA%94%E5%95%861%22%2C+%22remark%22%3A+%22%E6%97%A0%E6%8D%9F%E5%9D%8F%22%2C+%22purchasePrice%22%3A+%221050%22%2C+%22validityDate%22%3A+%222019-10-23%22%2C+%22warehouseDate%22%3A+%222018-12-04%22+%7D+%5D+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:42 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "amount": 11186.0,
+      "validityDate": "2019-10-09"
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>332</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>405.44</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>402.765</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_19">
+        <th class="success" style="width:5em;">success</td>
+        <td>/batches/reportedLoss/----西药报损库存</td>
+        <td style="text-align:center;width:6em;">445.95 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_19">log</a>
+          <div id="popup_log_19" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_19">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/batches/reportedLoss</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237151488
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 599
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22commodityType%22%3A+%220%22%2C+%22batches%22%3A+%5B+%7B+%22amount%22%3A+%2210%22%2C+%22id%22%3A+%22ff808081676350fb0167772572090377%22+%7D+%5D+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:43 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "amount": 11176.0,
+      "validityDate": "2019-10-09"
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>332</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>445.95</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>442.736</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_20">
+        <th class="success" style="width:5em;">success</td>
+        <td>/batches/checkStock/----西药核对库存</td>
+        <td style="text-align:center;width:6em;">511.56 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_20">log</a>
+          <div id="popup_log_20" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_20">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/batches/checkStock</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237151488
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 601
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22commodityType%22%3A+%220%22%2C+%22batches%22%3A+%5B+%7B+%22amount%22%3A+%221001%22%2C+%22id%22%3A+%22ff808081676350fb0167772572090377%22+%7D+%5D+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:43 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "amount": 11003.0,
+      "validityDate": "2019-10-09"
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>332</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>511.56</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>508.965</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_21">
+        <th class="success" style="width:5em;">success</td>
+        <td>/clinicCommodity/modifyPackaging/----修改西药包装单位及换算量</td>
+        <td style="text-align:center;width:6em;">407.98 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_21">log</a>
+          <div id="popup_log_21" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_21">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyPackaging</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536237151488
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 606
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%7B%7D%2C+%22content%22%3A+%7B%7D%2C+%22param%22%3A+%7B+%22commonUnit%22%3A+%22%E8%A2%8B%22%2C+%22matrix%22%3A+%225%22%2C+%22minUnit%22%3A+%22%E7%89%87%22%2C+%22id%22%3A+%22ff808081676350fb0167772564bf0373%22+%7D%2C+%22synCode%22%3A+%22%22+%7D%2C+%22header%22%3A+%7B+%22v%22%3A+%221.231%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22imei%22%3A+%224fa256e1c5bcf010%22%2C+%22currentTime%22%3A+1543892197568%2C+%22type%22%3A+%223%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:44 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "amount": 11003.0,
+      "packaging": "2200袋3.0片"
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>331</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>407.98</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>405.386</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_22">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/modifyCommodityStatus/----删除西药</td>
+        <td style="text-align:center;width:6em;">343.23 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_22">log</a>
+          <div id="popup_log_22" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_22">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/modifyCommodityStatus</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 499
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22id%22%3A%22ff808081676350fb0167772564bf0373%22%2C%22status%22%3A%220%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%22version%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543892197568%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 04 Dec 2018 02:56:44 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "id": "ff808081676350fb0167772564bf0373",
+      "activeTime": "2019-10-08T16:00:00Z",
+      "approvalNumber": "国字123",
+      "baseVersion": "1543892204241",
+      "clinicId": "402885815285e0df015285e33bb80000",
+      "commodityCode": "123693374370",
+      "commodityName": "修改西药",
+      "commodityRemark": "备注",
+      "commoditySimpleName": "休",
+      "commoditySimpleSpell": "X",
+      "commoditySource": 0,
+      "commoditySpell": "XG",
+      "commodityType": 1,
+      "commonPrice": 8000.0,
+      "commonUnit": "袋",
+      "dateCreated": "2018-12-04T02:56:39Z",
+      "dose": null,
+      "factory": "朗致药业5",
+      "factorySpell": null,
+      "formUnitId": null,
+      "instrumentId": null,
+      "lastUpdated": "2018-12-04T02:56:44Z",
+      "matrix": 5.0,
+      "medicinalCategory": 1,
+      "medicinalFormId": "d8c61da47f8d11e5b31128936a597f70",
+      "medicinalId": null,
+      "medicinalNo": "11172440",
+      "medicinalType": 1,
+      "minPrice": 100.0,
+      "minUnit": "片",
+      "partnerCommodityId": null,
+      "priceLastUpdated": "2018-12-04T02:56:42Z",
+      "reserveAmount": null,
+      "scope": null,
+      "specifcations": "9g",
+      "status": 0
+    },
+    "param": null,
+    "synCode": "commondity"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543892197568",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "version"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1200</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>343.23</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>340.585</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+  </table>
+</body>

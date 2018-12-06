@@ -1,0 +1,389 @@
+-   config:
+        name: 零售卖药订单结算后作废
+        request:
+            base_url: ''
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.230'
+        -   userToken: "userCenter"
+        -   redom32: ${gen_random_string(32)}
+        -   rodemString: ${gen_random_string(6)}
+#订单点击去结算
+-   test:
+        name: /zyPayServer/onlinePay/getClinicOnlinePayStatus
+        request:
+            data:
+                detail: p8flHJ3UTAminBn7LjyJnkH2Cxm8QgVxBn1du7yJ0Aa4xXy3k2g3RWhgdq28HkoqVMbVFXd60cFtdMPTipf0vKvYRLh9do1n8r6Ar2ZazDauO/t4cFKgdc0Hx7Iv6LTJfW+Nwd36TNs4wymW/wC4KEDl/1U55bPRaXGhQPEazbfWn1BKeOdxgl6JX8t3kqmvicBtqaE4iosIw6lWBsBMuKWtA/55pMxC3MxiR/u1m2H8O7LMSFUYKtUs+INc1Bzh36LzLyQI05x4h1PFHUF+lNXBZvKROyACe1TvYx7uVH7wM3ESDjEECtn8ox2xGhFax+ogdq390PZxUe8MBbc+knR3zq+5Q79YKBweMJjFA+zDD/puIaEcmNYNxQ09r34Q
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536374113959'
+            method: POST
+            url: http://payserver.zhiyiyunzhenshi.com/zyPayServer/onlinePay/getClinicOnlinePayStatus
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+#订单收费(患者ID-patientId 订单id  )
+-   test:
+        name: /workbench/retailSell/addOrupdateRetail
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"payType":"0","patientId":"3e6e7e6cee834244a9861cb326adb0e7","receiveCost":"3000.0","status":"2","list":[{"batchId":"","commodityCategory":"1","commodityCode":"6921880211093","commoditySource":"0","commonUnit":"盒","docterOrder":"","dosageFormId":"","factory":"","frequency":"一日3次","id":"ff1d09222fc847858032aeba6d79529b","is_delete":"1","medDisId":"40288ecc658e03ae01658e3347ab0029","minimumUnit":"支","orderNum":"1","prescriptionPrice1":"0","prescriptionPrice2":"0","priceUnit":"盒","retailId":"3b8edb87045a4dcb984f8eb395e74e01","saleUnitPrice":"0.0","showCommodityName":"01阿归养血糖浆","specifcations":"15ml","totalNumber":"1","unitType":"common","usage":"口服","useLevel":"1","useLevelUnit":"支","validityDate":"2018-09-07"},{"batchId":"","commodityCategory":"2","commodityCode":"6933890700146","commoditySource":"0","commonUnit":"盒","docterOrder":"","dosageFormId":"","factory":"","frequency":"一日3次","id":"f6bef36b42484f2a86a2304b6f768633","is_delete":"1","medDisId":"8a9b779a58d9648a0158d965f230001c","minimumUnit":"片","orderNum":"2","prescriptionPrice1":"3000","prescriptionPrice2":"100","priceUnit":"盒","retailId":"3b8edb87045a4dcb984f8eb395e74e01","saleUnitPrice":"3000.0","showCommodityName":"创可贴","specifcations":"0.4g","totalNumber":"1","unitType":"common","usage":"口服","useLevel":"1","useLevelUnit":"贴","validityDate":""}],"discount":"2370.0","paidCost":"580","id":"$redom32","debtCost":"50","retailDate":"2018-09-08
+                    10:34:49","outpatientNo":""},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536374115078'
+            method: POST
+            url: http://192.168.14.21:8080/workbench/retailSell/addOrupdateRetail
+        extract:
+        -   clinicRetailId: content.body.content.clinicRetailId
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"retail":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"retail":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"retail":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"retail":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"retail":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"retail":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"chineseCommodity":"1536325490654","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536374010014","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /patientCenter/clinicPatient/syClinicPatient
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clientVersion":"1536374010033","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/patientCenter/clinicPatient/syClinicPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /patientCenter/clinicPatient/syClinicPatient
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clientVersion":"1536374010033","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/patientCenter/clinicPatient/syClinicPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536374010014","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"retail":{"clientVersion":"1536417310480"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"chineseCommodity":"1536325490654","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536374010014","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /patientCenter/clinicPatient/syClinicPatient
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clientVersion":"1536374010033","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/patientCenter/clinicPatient/syClinicPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+#作废订单(取生成订单接口的订单id-clinicRetailId)
+-   test:
+        name: /workbench/retailSell/invalidRetail
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"doctorMainId":"ff8080815698e63501569c7751220022","reason":"患者对药物过敏","id":"$clinicRetailId","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536374125626'
+            method: POST
+            url: http://192.168.14.21:8080/workbench/retailSell/invalidRetail
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"retail":{"clientVersion":"1536417310480"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /patientCenter/clinicPatient/syClinicPatient
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clientVersion":"1536374099890","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/patientCenter/clinicPatient/syClinicPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /patientCenter/clinicPatient/syClinicPatient
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clientVersion":"1536374099890","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/patientCenter/clinicPatient/syClinicPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"chineseCommodity":"1536325490654","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536374099991","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8

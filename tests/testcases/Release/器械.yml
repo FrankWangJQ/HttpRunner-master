@@ -1,0 +1,61 @@
+-   config:
+        name: 添加器械后删除
+        request:
+            base_url: 'http://bt-pharmacy.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   commodityName: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.231'
+        -   id: ${gen_random_string(32)}
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+#添加器械
+-   test:
+        name: /pharmacy/clinicCommodity/createClinicCommodityAndBatches/添加器械
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"approvalNumber":"批准文号","batches":[{"amount":"122","baseVersion":"","batchNo":"123","commodityId":"","commonCnt":"","createTime":"","id":"","isDelete":"","purchasePrice":"1000","remark":"","status":"","stockUnit":"","supplierId":"68ff2acf2c034e22b7ff9b0b4dc329d0","supplierName":"供应商1","validityDate":"2018-11-19","warehouseDate":"2018-10-19"}],"commodityCode":"123456","commodityName":"$commodityName","commoditySimpleName":"器械简称","commoditySimpleSpell":"QXJC","commoditySpell":"QX123","commodityType":"2","commonPrice":"1200","commonUnit":"盒","direction":" ","factory":"生产企业","id":"f3060a993a2b4f519bb8d14345143123","labels":[],"matrix":"12","medicinalFormId":"","medicinalNo":"11000000","minPrice":"100","minUnit":"片","quantum":"1","quantumUnit":" ","rate":" ","remark":"备注","specifcations":"规格","threshold":"120","thresholdUnit":"盒"},"synCode":""},"header":{"v":"1.24","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236193996'
+            method: POST
+            url: /clinicCommodity/createClinicCommodityAndBatches
+        extract:
+        -   commodityId: content.body.content.commodityId
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/clinicCommodity/createClinicCommodityAndBatches/重复添加器械
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"approvalNumber":"批准文号","batches":[{"amount":"122","baseVersion":"","batchNo":"123","commodityId":"","commonCnt":"","createTime":"","id":"","isDelete":"","purchasePrice":"1000","remark":"","status":"","stockUnit":"","supplierId":"68ff2acf2c034e22b7ff9b0b4dc329d0","supplierName":"供应商1","validityDate":"2018-11-19","warehouseDate":"2018-10-19"}],"commodityCode":"123456","commodityName":"$commodityName","commoditySimpleName":"器械简称","commoditySimpleSpell":"QXJC","commoditySpell":"QX123","commodityType":"2","commonPrice":"1200","commonUnit":"盒","direction":" ","factory":"生产企业","id":"f3060a993a2b4f519bb8d14345143123","labels":[],"matrix":"12","medicinalFormId":"","medicinalNo":"11000000","minPrice":"100","minUnit":"片","quantum":"1","quantumUnit":" ","rate":" ","remark":"备注","specifcations":"规格","threshold":"120","thresholdUnit":"盒"},"synCode":""},"header":{"v":"1.24","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236193996'
+            method: POST
+            url: /clinicCommodity/createClinicCommodityAndBatches
+        validate:
+        -   eq:
+            - content.body.code
+            - "2032006"
+#删除器械（器械ID 诊所ID）
+-   test:
+        name: /pharmacy/clinicCommodity/modifyCommodityStatus/删除器械
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"$commodityId","status":"0"},"synCode":""},"header":{"v":"1.230","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536236213735'
+            method: POST
+            url: /clinicCommodity/modifyCommodityStatus
+        validate:
+        -   eq:
+            - content.body.code
+            - "2000000"

@@ -1,0 +1,209 @@
+-   config:
+        name: 登陆
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.230'
+        -   medicineShortName: ${gen_random_string(2)}
+        -   userToken: "userCenter"
+        -   rodemString: ${gen_random_string(6)}
+        request:
+            base_url: ''
+            headers:
+                User-Agent: okhttp/3.8.0
+                Content-Type: application/x-www-form-urlencoded
+                date: '1531291984605'
+        setup_hooks:
+            - ${hook_print(setup)}
+        teardown_hooks:
+            - ${hook_print(teardown)}
+-   test:
+        name: /login/beforeLogin
+        request:
+            data:
+                detail: '{"body":{"code":"","content":{},"param":{},"synCode":""},"header":{"clinicId":"","currentTime":"$currentTime","doctorMainId":"","imei":"4fa256e1c5bcf010","type":"3","v":"$version"}}'
+            headers:
+            method: POST
+            url: http://usersystem.zhiyiyunzhenshi.com/login/beforeLogin
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.header
+            - null
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /updateVersion/findNewVersion
+        request:
+            data:
+                detail: '{"body":{"code":"","content":{},"param":{},"synCode":""},"header":{"clinicId":"",currentTime:"$currentTime","doctorMainId":"","imei":"4fa256e1c5bcf010","type":"3","v":"$version"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.13:8080/updateVersion/findNewVersion
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /device/checkClinicDeviceNo
+        parameters:
+        -   deviceNo: ${P(login.csv)}
+        request:
+            data:
+                detail: '{"body":{"code":"","content":{},"param":{"sysVersion":"6.0.1","clientMac":"","brand":"SUNMI","branch":"t1host","ratio":"1920x1080","deviceType":"1","deviceNo":"$deviceNo","deviceName":"t1host"},"synCode":""},"header":{"clinicId":"","currentTime":"$currentTime","doctorMainId":"","imei":"4fa256e1c5bcf010","type":"3","v":"$version"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.13:8080/device/checkClinicDeviceNo
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /login/login
+        parameters:
+        -   loginName-password-deviceNo-code: ${P(login.csv)}
+        request:
+            data:
+                detail: '{"body":{"code":"","content":{},"param":{"device":{"branch":"t1host","brand":"SUNMI","clientMac":"","deviceName":"t1host","deviceNo":"$deviceNo","deviceType":"1","ratio":"1920x1080","sysVersion":"6.0.1"},"loginName":"$loginName","password":"$password"},"synCode":""},"header":{"clinicId":"ff808081658ecd5001658ee7f4180000","currentTime":"$currentTime","doctorMainId":"","imei":"4fa256e1c5bcf010","type":"3","v":"$version"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.13:8080/login/login
+        extract:
+            #userToken: 'userToken":"(.*?)","retailVersion'
+        #-   userToken: content.body.content.userToken
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "$code"
+        -   eq:
+            - content.body.code
+            - "2000000"
+        setup_hooks:
+            - ${hook_print(setup)}
+        teardown_hooks:
+            - ${hook_print(teardown)}
+-   test:
+        name: /synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clinicEmploy":{"clientVersion":""},"sysLableDetail":{"clientVersion":"1536370639973"},"sysLableMain":{"clientVersion":"1111111111111"},"allClinicEmploy":{"clientVersion":""},"dictionary":{"clientVersion":"1111111111111"},"template":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"workbench","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.13:8080/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /youZhan/login
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clinicEmploy":{"clientVersion":""},"sysLableDetail":{"clientVersion":"1111111111111"},"sysLableMain":{"clientVersion":"1111111111111"},"allClinicEmploy":{"clientVersion":""},"template":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":"$currentTime","type":"3"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.13:8080/youZhan/login
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /SysMonitor/uploadPosition
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"ip":"4fa256e1c5bcf010","x":"1","y":"1","a1":"02:00:00:00:00:00"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":"$currentTime","type":"3"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.13:8080/SysMonitor/uploadPosition
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+-   test:
+        name: /patientCenter/clinicPatient/syClinicPatient
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clientVersion":"1111111111111","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":"$currentTime","type":"3"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.76:8080/patientCenter/clinicPatient/syClinicPatient
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"chineseCommodity":"1111111111111","supplier":"1111111111111","clinicId":"ff8080815698e63501569c762c29001f","dic":"1111111111111","commondity":"1111111111111"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":"$currentTime","type":"3"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /workbench/synchronizeData/synchronizeData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"registration":{"clientVersion":"1111111111111"},"prescription":{"clientVersion":"1111111111111"},"retail":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"$userToken","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":"$currentTime","type":"3"}}'
+            headers:
+            method: POST
+            url: http://192.168.14.21:8080/workbench/synchronizeData/synchronizeData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"

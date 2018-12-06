@@ -1,0 +1,264 @@
+-   config:
+        name: 账号管理
+        request:
+            base_url: 'http://bt-usercenter.yunzhenshi.com.cn'
+            #base_url: http://192.168.14.76:8080/pharmacy
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   name: ${gen_random_string(6)}
+        -   currentTime: ${get_dataTime()}
+        -   id: ${gen_random_string(32)}
+        -   version: '1.243'
+        #-   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /login/beforeLogin/----登陆前获取地址信息
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{},"synCode":""},"header":{"v":"$version","doctorMainId":"","userToken":"","clinicId":"","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /login/beforeLogin
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /device/checkClinicDeviceNo/----检查登陆设备号(返回绑定诊所ID)
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"deviceNo":"T10116BD00018"},"synCode":""},"header":{"v":"1.243","doctorMainId":"","userToken":"","clinicId":"","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /device/checkClinicDeviceNo
+        validate:
+        -   eq:
+            - content.body.content.clinicId
+            - $clinicId
+-   test:
+        name: /login/login/----正常登陆
+        parameters:
+        -   loginName-password-deviceNo-code:
+              - ['18331926597','e10adc3949ba59abbe56e057f20f883e','T10116BD00018','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"device":{"branch":"t1host","brand":"SUNMI","clientMac":"","deviceName":"t1host","deviceNo":"$deviceNo","deviceType":"1","ratio":"1920x1080","sysVersion":"6.0.1"},"loginName":"$loginName","password":"$password"},"synCode":""},"header":{"v":"$version","doctorMainId":"","userToken":"","clinicId":"","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /login/login
+        extract:
+        -   userToken: content.body.content.userToken
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /login/login/----异常登陆
+        parameters:
+        -   loginName-password-deviceNo-code:
+              - ['','e10adc3949ba59abbe56e057f20f883e','T10116BD00018','2222222']
+              - ['18331926597','','T10116BD00018','2222222']
+              - ['','','T10116BD00018','2222222']
+              - ['12121212121','e10adc3949ba59abbe56e057f20f883e','T10116BD00018','2010105']
+              - ['18331926597','c8837b23ff8aaa8a2dde915473ce099','T10116BD00018','2010108']
+              - ['18331926597','e10adc3949ba59abbe56e057f20f883e','T10116BD00043','2010202']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"device":{"branch":"t1host","brand":"SUNMI","clientMac":"","deviceName":"t1host","deviceNo":"$deviceNo","deviceType":"1","ratio":"1920x1080","sysVersion":"6.0.1"},"loginName":"$loginName","password":"$password"},"synCode":""},"header":{"v":"$version","doctorMainId":"","userToken":"","clinicId":"","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /login/login
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /login/resetPassword/----登陆页面忘记密码重置密码接口
+        parameters:
+        -   checkCode-newPassword-phone-clinicId-code:
+              - ['2968','96e79218965eb72c92a549dd5a330112','18511086263','ff808081634a186a01634a5da8d10432','2010111']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"checkCode":"$checkCode","newPassword":"$newPassword","phone":"$phone"},"synCode":""},"header":{"v":"$version","doctorMainId":"","userToken":"","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /login/resetPassword
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /login/modifyPassWord/----修改登陆密码
+        parameters:
+        -   loginName-newPassword-password-deviceNo-code:
+              - ['18311111111','c33367701511b4f6020ec61ded352059','e10adc3949ba59abbe56e057f20f883e','T10116BD00018','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"newPassword":"$newPassword","loginName":"$loginName","password":"$password"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /login/modifyPassWord
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /login/login/----修改密码后登陆
+        parameters:
+        -   loginName-password-deviceNo-code:
+              - ['18311111111','c33367701511b4f6020ec61ded352059','T10116BD00018','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"device":{"branch":"t1host","brand":"SUNMI","clientMac":"","deviceName":"t1host","deviceNo":"$deviceNo","deviceType":"1","ratio":"1920x1080","sysVersion":"6.0.1"},"loginName":"$loginName","password":"$password"},"synCode":""},"header":{"v":"$version","doctorMainId":"","userToken":"","clinicId":"","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /login/login
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /login/modifyPassWord/----修改登陆密码
+        parameters:
+        -   loginName-newPassword-password-deviceNo-code:
+              - ['18311111111','e10adc3949ba59abbe56e057f20f883e','c33367701511b4f6020ec61ded352059','T10116BD00018','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"newPassword":"$newPassword","loginName":"$loginName","password":"$password"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: /login/modifyPassWord
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /clinic/findMyClinicInfo/----点击'我的'
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinic/findMyClinicInfo
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicBaseInfo/getByClinicId/----进入'诊所信息'
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicBaseInfo/getByClinicId
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinic/findBusinessScale/----详情中的基本信息、经营规模、用户协议
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{},"synCode":""},"header":{"v":"1.241","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinic/findBusinessScale
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicJurisdiction/getSysUserAndMenu/----人员管理
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicJurisdiction/getSysUserAndMenu
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinic/saveClinicNotice/-----保存诊所公告
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"notice":"我们这家诊所信用好，药品价格低，服务态度也好。"},"synCode":""},"header":{"v":"1.241","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinic/saveClinicNotice
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicEmploy/modifySettings/-----修改诊所信息
+        parameters:
+        #处方设置默认药方
+        -   param:
+              - [{"prescriptionType":"0"}]
+        #处方设置是否显示价格
+              - [{"showPrescriptionPriceType":"1"}]
+        #处方设置显示医生签名
+              - [{"autograph":"1"}]
+        #输液卡显示医生签名
+              - [{"injectionAutograph":"1"}]
+        #推送处方给患者
+              - [{"doseRemind":"1"}]
+        #零售卖药显示价格
+              - [{"showSellPriceType":"1"}]
+        #西药支持负库存
+              - [{"negativeStock":"1"}]
+        #中药支持负库存
+              - [{"chineseStock":"1"}]
+        #西药失效提醒阈值
+              - [{"loseEfficacy":"1"}]
+        #西药库存阈值
+              - [{"commodityThreshold":"30"}]
+        #声音设置
+              - [{"cueTone":"1"}]
+        #打印默认设置80
+              - [{"printType":"0"}]
+        #点击9次开启显示处方隐藏项
+              - [{"showInvalidPresc":"1"}]
+        #点击9次开启显示订单隐藏项
+              - [{"showInvalidRetail":"1"}]
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param": $param,"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: /clinicEmploy/modifySettings
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

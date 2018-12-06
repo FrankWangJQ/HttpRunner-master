@@ -1,0 +1,1291 @@
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reportTestForBetaYunZS - TestReport</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0 auto;
+      width: 960px;
+    }
+    #summary, #details {
+      width: 960px;
+      margin-bottom: 20px;
+    }
+    #summary th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #summary td {
+      background-color: lightblue;
+      text-align: center;
+      padding: 4px 8px;
+    }
+    #details th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #details td {
+      background-color: lightblue;
+      padding: 5px 12px;
+    }
+    #details .detail {
+      background-color: lightgrey;
+      font-size: smaller;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    #details .success {
+      background-color: greenyellow;
+    }
+    #details .error {
+      background-color: red;
+    }
+    #details .failure {
+      background-color: salmon;
+    }
+    #details .skipped {
+      background-color: gray;
+    }
+
+    .button {
+      font-size: 1em;
+      padding: 6px;
+      width: 4em;
+      text-align: center;
+      background-color: #06d85f;
+      border-radius: 20px/50px;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    a.button{
+      color: gray;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #2cffbd;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      width: 50%;
+      position: relative;
+      transition: all 3s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06d85f;
+    }
+    .popup .content {
+      max-height: 80%;
+      overflow: auto;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+      .popup {
+        width: 70%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Test Report: reportTestForBetaYunZS</h1>
+
+  <h2>Summary</h2>
+  <table id="summary">
+
+    <tr>
+      <th>START AT</th>
+      <td colspan="4">2018-12-03 16:06:32</td>
+    </tr>
+    <tr>
+      <th>DURATION</th>
+      <td colspan="4">3.000 seconds</td>
+    </tr>
+    <tr>
+      <th>PLATFORM</th>
+      <td>HttpRunner 1.4.8 </td>
+      <td>CPython 3.6.6 </td>
+      <td colspan="2">Darwin-18.0.0-x86_64-i386-64bit</td>
+    </tr>
+    <tr>
+      <th>TOTAL</th>
+      <th>SUCCESS</th>
+      <th>FAILED</th>
+      <th>ERROR</th>
+      <th>SKIPPED</th>
+      <!-- <th>ExpectedFailure</th>
+      <th>UnexpectedSuccess</th> -->
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <!-- <td>0</td>
+      <td>0</td> -->
+    </tr>
+  </table>
+
+  <h2>Details</h2>
+  <table id="details">
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Response Time</th>
+      <th>Detail</th>
+    </tr>
+    
+      <tr id="record_1">
+        <th class="success" style="width:5em;">success</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/----新增一个药品</td>
+        <td style="text-align:center;width:6em;">2613.78 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_1">log</a>
+          <div id="popup_log_1" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_1">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536224680638
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 1974
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B%22body%22%3A%7B%22code%22%3A%7B%7D%2C%22content%22%3A%7B%7D%2C%22param%22%3A%7B%22approvalNumber%22%3A%22%22%2C%22batches%22%3A%5B%7B%22amount%22%3A%2210002%22%2C%22baseVersion%22%3A%22%22%2C%22batchNo%22%3A%2256%22%2C%22commodityId%22%3A%22%22%2C%22commonCnt%22%3A%22%22%2C%22createTime%22%3A%22%22%2C%22id%22%3A%22%22%2C%22isDelete%22%3A%22%22%2C%22purchasePrice%22%3A%22785%22%2C%22remark%22%3A%22%22%2C%22status%22%3A%22%22%2C%22stockUnit%22%3A%22%22%2C%22supplierId%22%3A%22%22%2C%22supplierName%22%3A%22%22%2C%22validityDate%22%3A%222019-10-09%22%2C%22warehouseDate%22%3A%222018-10-09%22%7D%5D%2C%22commodityCode%22%3A%226933743792380%22%2C%22commodityName%22%3A%22qz7CG7%22%2C%22commoditySimpleName%22%3A%22%22%2C%22commoditySimpleSpell%22%3A%22%22%2C%22commoditySpell%22%3A%220ACJP%22%2C%22commodityType%22%3A%221%22%2C%22commonPrice%22%3A%221200%22%2C%22commonUnit%22%3A%22%E7%93%B6%22%2C%22direction%22%3A%22%E5%8F%A3%E6%9C%8D%22%2C%22factory%22%3A%22%E5%B9%BF%E4%B8%9C%E5%8D%97%E5%9B%BD%E8%8D%AF%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%22%2C%22id%22%3A%226ZSVJnGSzC085in6u2M1sbYbAgJ0OIi9%22%2C%22labels%22%3A%5B%7B%22labelId%22%3A%22ff80808165e65f2a01660ea7744336df%22%7D%5D%2C%22matrix%22%3A%2210%22%2C%22medicinalFormId%22%3A%2240288c2a5157239d0151573466850000%22%2C%22medicinalNo%22%3A%2211172440%22%2C%22minPrice%22%3A%22120%22%2C%22minUnit%22%3A%22%E7%89%87%22%2C%22quantum%22%3A%220%22%2C%22quantumUnit%22%3A%22%E7%89%87%22%2C%22rate%22%3A%22%E4%B8%80%E6%97%A54%E6%AC%A1%22%2C%22remark%22%3A%22%22%2C%22specifcations%22%3A%224%E7%89%87%22%2C%22threshold%22%3A%22800%22%2C%22thresholdUnit%22%3A%22%E7%93%B6%22%7D%2C%22synCode%22%3A%22%22%7D%2C%22header%22%3A%7B%22v%22%3A%221.231%22%2C%22doctorMainId%22%3A%22402885815285e0df015285e624900003%22%2C%22userToken%22%3A%22userCenter%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22imei%22%3A%224fa256e1c5bcf010%22%2C%22currentTime%22%3A1543824392904%2C%22type%22%3A%223%22%7D%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Mon, 03 Dec 2018 08:06:35 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "2000000",
+    "content": {
+      "commodityId": "ff808081676350fb0167731acb4402f6",
+      "labels": [
+        {
+          "clinicId": "402885815285e0df015285e33bb80000",
+          "clinicLabelId": "ff80808165e65f2a01660ea7744336df",
+          "groupObjId": "ff808081676350fb0167731acb4402f6",
+          "labelId": "ff80808165e65f2a01660ea7744336df",
+          "baseVersion": "1543824395178",
+          "isDelete": 0,
+          "clickNum": 0,
+          "orderNum": null,
+          "id": "2c92e0f36763cdd40167731acbaa001d",
+          "status": null
+        }
+      ]
+    },
+    "param": null,
+    "synCode": "commondity,sysLableDetail"
+  },
+  "header": {
+    "clinicId": "402885815285e0df015285e33bb80000",
+    "currentTime": "1543824392904",
+    "doctorMainId": "402885815285e0df015285e624900003",
+    "imei": "4fa256e1c5bcf010",
+    "type": "3",
+    "userToken": "userCenter",
+    "v": "1.231"
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>679</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>2613.78</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>594.762</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_2">
+        <th class="error" style="width:5em;">error</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/库存预占</td>
+        <td style="text-align:center;width:6em;">95.02 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_2">log</a>
+          <div id="popup_log_2" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_2">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/WorkBench/commodityStockHold</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536236193996
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 868
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=%7B+%22body%22%3A+%7B+%22code%22%3A+%22%22%2C+%22content%22%3A+null%2C+%22param%22%3A+%22%7B%22commodityList%22%3A%5B%7B%22amount%22%3A1%2C%22clinicCommodityId%22%3A%22ff808081676350fb0167731acb4402f6%22%2C%22clinicId%22%3A%22402885815285e0df015285e33bb80000%22%2C%22commodityType%22%3A1%2C%22prescriptionRetailId%22%3A%22%22%2C%22prescriptionRetailType%22%3A%220%22%2C%22requestId%22%3A%2220181203160635%2B593955840%22%2C%22stockUnit%22%3A%22g%22%7D%5D%2C%22commodityStockRegList%22%3A%5B%5D%2C%22stockDeductList%22%3A%5B%5D%7D%22+%7D%2C+%22header%22%3A+%7B+%22clinicId%22%3A+%22402885815285e0df015285e33bb80000%22%2C+%22currentTime%22%3A+%221543824392904%22%2C+%22doctorMainId%22%3A+%22402885815285e0df015285e624900003%22%2C+%22imei%22%3A+%22b344e429c323b136%22%2C+%22type%22%3A+%222%22%2C+%22userToken%22%3A+%22userCenter%22%2C+%22v%22%3A+%221.231%22+%7D+%7D</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        404
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Mon, 03 Dec 2018 08:06:35 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "3333333",
+    "content": "格式错误",
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": null,
+    "currentTime": null,
+    "doctorMainId": null,
+    "imei": null,
+    "type": null,
+    "userToken": null,
+    "v": null
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>196</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>95.02</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>92.257</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+            <a class="button" href="#popup_attachment_2">traceback</a>
+            <div id="popup_attachment_2" class="overlay">
+              <div class="popup">
+                <h2>Traceback Message</h2>
+                <a class="close" href="#record_2">&times;</a>
+                <div class="content"><pre>Traceback (most recent call last):
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/task.py", line 26, in runTest
+    self.test_runner.run_test(self.testcase_dict)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/runner.py", line 179, in run_test
+    extracted_variables_mapping = resp_obj.extract_response(extractors)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 167, in extract_response
+    extracted_variables_mapping[key] = self.extract_field(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 133, in extract_field
+    value = self._extract_field_with_delimiter(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 112, in _extract_field_with_delimiter
+    return utils.query_json(top_query_content, sub_query)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/utils.py", line 203, in query_json
+    "response content is in text format! failed to query key {}!".format(key))
+httprunner.exception.ParseResponseError: response content is in text format! failed to query key commodityId!
+</pre></div>
+              </div>
+            </div>
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_3">
+        <th class="error" style="width:5em;">error</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/库存预占</td>
+        <td style="text-align:center;width:6em;">59.01 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_3">log</a>
+          <div id="popup_log_3" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_3">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536236193996
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 7
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Mon, 03 Dec 2018 08:06:35 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "3333333",
+    "content": "格式错误",
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": null,
+    "currentTime": null,
+    "doctorMainId": null,
+    "imei": null,
+    "type": null,
+    "userToken": null,
+    "v": null
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>196</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>59.01</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>56.532</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+            <a class="button" href="#popup_attachment_3">traceback</a>
+            <div id="popup_attachment_3" class="overlay">
+              <div class="popup">
+                <h2>Traceback Message</h2>
+                <a class="close" href="#record_3">&times;</a>
+                <div class="content"><pre>Traceback (most recent call last):
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/task.py", line 26, in runTest
+    self.test_runner.run_test(self.testcase_dict)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/runner.py", line 179, in run_test
+    extracted_variables_mapping = resp_obj.extract_response(extractors)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 167, in extract_response
+    extracted_variables_mapping[key] = self.extract_field(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 133, in extract_field
+    value = self._extract_field_with_delimiter(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 112, in _extract_field_with_delimiter
+    return utils.query_json(top_query_content, sub_query)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/utils.py", line 203, in query_json
+    "response content is in text format! failed to query key {}!".format(key))
+httprunner.exception.ParseResponseError: response content is in text format! failed to query key commodityId!
+</pre></div>
+              </div>
+            </div>
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_4">
+        <th class="error" style="width:5em;">error</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/库存预占</td>
+        <td style="text-align:center;width:6em;">55.9 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_4">log</a>
+          <div id="popup_log_4" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_4">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536236193996
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 7
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Mon, 03 Dec 2018 08:06:35 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "3333333",
+    "content": "格式错误",
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": null,
+    "currentTime": null,
+    "doctorMainId": null,
+    "imei": null,
+    "type": null,
+    "userToken": null,
+    "v": null
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>196</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>55.9</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>53.778</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+            <a class="button" href="#popup_attachment_4">traceback</a>
+            <div id="popup_attachment_4" class="overlay">
+              <div class="popup">
+                <h2>Traceback Message</h2>
+                <a class="close" href="#record_4">&times;</a>
+                <div class="content"><pre>Traceback (most recent call last):
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/task.py", line 26, in runTest
+    self.test_runner.run_test(self.testcase_dict)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/runner.py", line 179, in run_test
+    extracted_variables_mapping = resp_obj.extract_response(extractors)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 167, in extract_response
+    extracted_variables_mapping[key] = self.extract_field(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 133, in extract_field
+    value = self._extract_field_with_delimiter(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 112, in _extract_field_with_delimiter
+    return utils.query_json(top_query_content, sub_query)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/utils.py", line 203, in query_json
+    "response content is in text format! failed to query key {}!".format(key))
+httprunner.exception.ParseResponseError: response content is in text format! failed to query key commodityId!
+</pre></div>
+              </div>
+            </div>
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_5">
+        <th class="error" style="width:5em;">error</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/库存预占</td>
+        <td style="text-align:center;width:6em;">54.77 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_5">log</a>
+          <div id="popup_log_5" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_5">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536236193996
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 7
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Mon, 03 Dec 2018 08:06:35 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "3333333",
+    "content": "格式错误",
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": null,
+    "currentTime": null,
+    "doctorMainId": null,
+    "imei": null,
+    "type": null,
+    "userToken": null,
+    "v": null
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>196</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>54.77</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>52.225</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+            <a class="button" href="#popup_attachment_5">traceback</a>
+            <div id="popup_attachment_5" class="overlay">
+              <div class="popup">
+                <h2>Traceback Message</h2>
+                <a class="close" href="#record_5">&times;</a>
+                <div class="content"><pre>Traceback (most recent call last):
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/task.py", line 26, in runTest
+    self.test_runner.run_test(self.testcase_dict)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/runner.py", line 179, in run_test
+    extracted_variables_mapping = resp_obj.extract_response(extractors)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 167, in extract_response
+    extracted_variables_mapping[key] = self.extract_field(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 133, in extract_field
+    value = self._extract_field_with_delimiter(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 112, in _extract_field_with_delimiter
+    return utils.query_json(top_query_content, sub_query)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/utils.py", line 203, in query_json
+    "response content is in text format! failed to query key {}!".format(key))
+httprunner.exception.ParseResponseError: response content is in text format! failed to query key commodityId!
+</pre></div>
+              </div>
+            </div>
+          
+
+        </td>
+      </tr>
+    
+      <tr id="record_6">
+        <th class="error" style="width:5em;">error</td>
+        <td>/pharmacy/clinicCommodity/createClinicCommodityAndBatches/库存预占</td>
+        <td style="text-align:center;width:6em;">55.84 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_6">log</a>
+          <div id="popup_log_6" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_6">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://bt-pharmacy.yunzhenshi.com.cn/clinicCommodity/createClinicCommodityAndBatches</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>POST</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>user-agent</strong>: okhttp/3.8.0
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/x-www-form-urlencoded
+                        </div>
+                        
+                        <div>
+                          <strong>date</strong>: 1536236193996
+                        </div>
+                        
+                        <div>
+                          <strong>Content-Length</strong>: 7
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <th>body</th>
+                      <td>
+                          <pre>detail=</pre>
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx/1.12.2
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Mon, 03 Dec 2018 08:06:35 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>X-Application-Context</strong>: application:production
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "body": {
+    "code": "3333333",
+    "content": "格式错误",
+    "param": null,
+    "synCode": null
+  },
+  "header": {
+    "clinicId": null,
+    "currentTime": null,
+    "doctorMainId": null,
+    "imei": null,
+    "type": null,
+    "userToken": null,
+    "v": null
+  }
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>196</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>55.84</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>53.405</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+            <a class="button" href="#popup_attachment_6">traceback</a>
+            <div id="popup_attachment_6" class="overlay">
+              <div class="popup">
+                <h2>Traceback Message</h2>
+                <a class="close" href="#record_6">&times;</a>
+                <div class="content"><pre>Traceback (most recent call last):
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/task.py", line 26, in runTest
+    self.test_runner.run_test(self.testcase_dict)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/runner.py", line 179, in run_test
+    extracted_variables_mapping = resp_obj.extract_response(extractors)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 167, in extract_response
+    extracted_variables_mapping[key] = self.extract_field(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 133, in extract_field
+    value = self._extract_field_with_delimiter(field)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/response.py", line 112, in _extract_field_with_delimiter
+    return utils.query_json(top_query_content, sub_query)
+  File "/Users/wangjianqing/PycharmProjects/HttpRunner-master/httprunner/utils.py", line 203, in query_json
+    "response content is in text format! failed to query key {}!".format(key))
+httprunner.exception.ParseResponseError: response content is in text format! failed to query key commodityId!
+</pre></div>
+              </div>
+            </div>
+          
+
+        </td>
+      </tr>
+    
+  </table>
+</body>

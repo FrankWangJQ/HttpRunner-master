@@ -1,0 +1,394 @@
+-   config:
+        name: 统计报表
+        request:
+            base_url: 'http://bt-report.yunzhenshi.com.cn'
+            headers:
+                User-Agent: Mozilla/5.0 (Linux; Android 6.0.1; t1host Build/S100;
+                    wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.73
+                    Safari/537.36 agentweb/4.0.2  UCBrowser/11.6.4.950
+        variables:
+        -   commodityName: ${gen_random_string(4)}
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+        -   version: '1.243'
+-   test:
+        name: /npadReport/menzhenliang-----门诊量统计页面
+        request:
+            headers:
+                X-Requested-With: com.hospital.Trial
+            method: GET
+            params:
+                clinicId: $clinicId
+                sysUserId: 2c92e0f366767c45016676909e1b0002
+            url: /npadReport/menzhenliang
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/menzhenliang----门诊量统计数据
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478774640'
+                clinicEmployNameRecordId: ''
+                clinicId: $clinicId
+                date: '1543478774527'
+                flag: ajax
+                length: '0'
+                payType: '6'
+                searchDate: '2018-11-29'
+                searchDateEnd: '2018-11-29'
+                sysUserId: 2c92e0f366767c45016676909e1b0002
+            url: /npadReport/menzhenliang
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/menzhenliang----门诊量统计最近一个月
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478797336'
+                clinicEmployNameRecordId: ''
+                clinicId: $clinicId
+                date: '1543478774527'
+                flag: ajax
+                length: '0'
+                payType: '6'
+                searchDate: '2018-10-30'
+                searchDateEnd: '2018-11-29'
+                sysUserId: 2c92e0f366767c45016676909e1b0002
+            url: /npadReport/menzhenliang
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/retailStatistics----零售统计页面
+        request:
+            headers:
+                X-Requested-With: com.hospital.Trial
+            method: GET
+            params:
+                clinicId: $clinicId
+                sysUserId: 2c92e0f366767c45016676909e1b0002
+            url: /npadReport/retailStatistics
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/retailStatistics-----零售统计数据
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478800041'
+                clinicEmployNameRecordId: ''
+                clinicId: $clinicId
+                date: '1543478799861'
+                flag: ajax
+                length: '0'
+                payType: '6'
+                searchDate: '2018-11-29'
+                searchDateEnd: '2018-11-29'
+                sysUserId: 2c92e0f366767c45016676909e1b0002
+            url: /npadReport/retailStatistics
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/retailStatistics----零售统计最近一个月
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478803231'
+                clinicEmployNameRecordId: ''
+                clinicId: $clinicId
+                date: '1543478799861'
+                flag: ajax
+                length: '0'
+                payType: '6'
+                searchDate: '2018-10-30'
+                searchDateEnd: '2018-11-29'
+                sysUserId: 2c92e0f366767c45016676909e1b0002
+            url: /npadReport/retailStatistics
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/salelist---销售明细页面
+        request:
+            headers:
+                X-Requested-With: com.hospital.Trial
+            method: GET
+            params:
+                clinicId: $clinicId
+                sysUserId: 2c92e0f366767c45016676909e1b0002
+            url: /npadReport/salelist
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/salelistSum----销售明细数据
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478806691'
+                clinicEmployNameRecordId: all
+                clinicId: $clinicId
+                commodityName: ''
+                flag: ajax
+                length: '0'
+                searchDate: '2018-11-29'
+                searchDateEnd: '2018-11-29'
+                sysUserId: ''
+            url: /npadReport/salelistSum
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/salelist----销售明细最近一个月
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478806695'
+                clinicEmployNameRecordId: all
+                clinicId: $clinicId
+                commodityName: ''
+                date: '1543478806572'
+                flag: ajax
+                length: '0'
+                searchDate: '2018-11-29'
+                searchDateEnd: '2018-11-29'
+                sysUserId: ''
+            url: /npadReport/salelist
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/salelistSum----销售明细
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478808334'
+                clinicEmployNameRecordId: all
+                clinicId: $clinicId
+                commodityName: ''
+                flag: ajax
+                length: '0'
+                searchDate: '2018-10-30'
+                searchDateEnd: '2018-11-29'
+                sysUserId: ''
+            url: /npadReport/salelistSum
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/salelist----销售明细
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478808339'
+                clinicEmployNameRecordId: all
+                clinicId: $clinicId
+                commodityName: ''
+                date: '1543478806572'
+                flag: ajax
+                length: '0'
+                searchDate: '2018-10-30'
+                searchDateEnd: '2018-11-29'
+                sysUserId: ''
+            url: /npadReport/salelist
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /outpatiantLog/getOutpatiantLog----门诊日志页面
+        request:
+            headers:
+                X-Requested-With: com.hospital.Trial
+            method: GET
+            params:
+                clinicId: $clinicId
+                sysUserId: 2c92e0f366767c45016676909e1b0002
+            url: /outpatiantLog/getOutpatiantLog
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /outpatiantLog/getOutpatiantLog----门诊日志
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478813333'
+                clinicId: $clinicId
+                date: '1543478812505'
+                flag: ajax
+                length: '0'
+                searchDate: '2018-11-29'
+                searchDateEnd: '2018-11-29'
+            url: /outpatiantLog/getOutpatiantLog
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /outpatiantLog/getOutpatiantLog----门诊日志最近一个月
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478816384'
+                clinicId: $clinicId
+                date: '1543478812505'
+                flag: ajax
+                length: '0'
+                searchDate: '2018-10-30'
+                searchDateEnd: '2018-11-29'
+            url: /outpatiantLog/getOutpatiantLog
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /npadReport/stocklist----库存明细
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                clinicId: $clinicId
+                date: '1543478822555'
+                flag: ajax
+                length: '0'
+                medicineName: ''
+                type: ''
+            url: /npadReport/stocklist
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /inboundLog/getInboundLog----库存明细
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478826712'
+                clinicId: $clinicId
+                date: '1543478826549'
+                flag: ajax
+                length: '0'
+                medicineName: ''
+                searchDate: '2018-11-29'
+                searchDateEnd: '2018-11-29'
+                supplierName: ''
+                type: ''
+            url: /inboundLog/getInboundLog
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8
+-   test:
+        name: /inboundLog/getInboundLog---入库日志
+        request:
+            headers:
+                X-Requested-With: XMLHttpRequest
+            method: GET
+            params:
+                _: '1543478828682'
+                clinicId: $clinicId
+                date: '1543478826549'
+                flag: ajax
+                length: '0'
+                medicineName: ''
+                searchDate: '2018-10-30'
+                searchDateEnd: '2018-11-29'
+                supplierName: ''
+                type: ''
+            url: /inboundLog/getInboundLog
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - text/html;charset=utf-8

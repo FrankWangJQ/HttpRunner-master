@@ -1,0 +1,118 @@
+-   config:
+        name: 同步诊所信息
+        request:
+            base_url: ''
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.242'
+        -   userToken: "userCenter"
+        -   doctorMainId: '402885815285e0df015285e624900003'
+        -   clinicId: '402885815285e0df015285e33bb80000'
+-   test:
+        name: /login/login/登陆
+        parameters:
+        -   loginName-password-deviceNo-code:
+              - ['18331926597','e10adc3949ba59abbe56e057f20f883e','T10116BD00018','2000000']
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"device":{"branch":"t1host","brand":"SUNMI","clientMac":"","deviceName":"t1host","deviceNo":"$deviceNo","deviceType":"1","ratio":"1920x1080","sysVersion":"6.0.1"},"loginName":"$loginName","password":"$password"},"synCode":""},"header":{"v":"$version","doctorMainId":"","userToken":"","clinicId":"","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://bt-usercenter.yunzhenshi.com.cn/login/login
+        validate:
+        -   eq:
+            - content.body.code
+            - $code
+-   test:
+        name: /sysNotice/sendSysNotice/同步账号信息
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: http://bt-usercenter.yunzhenshi.com.cn/sysNotice/sendSysNotice
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /synchronizeData/synchronizeData/同步账号信息
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clinicEmploy":{"clientVersion":""},"sysLableDetail":{"clientVersion":"1111111111111"},"sysLableMain":{"clientVersion":"1111111111111"},"allClinicEmploy":{"clientVersion":""},"dictionary":{"clientVersion":"1111111111111"},"template":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: http://bt-usercenter.yunzhenshi.com.cn/synchronizeData/synchronizeData
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /SysMonitor/uploadPosition/同步账号信息
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"ip":"4fa256e1c5bcf010","x":"116.508057","y":"39.783995","a1":"02:00:00:00:00:00"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: http://bt-usercenter.yunzhenshi.com.cn/SysMonitor/uploadPosition
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '0000'
+-   test:
+        name: /synchro/synPharmacyData/同步药房
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"chineseCommodity":"1111111111111","supplier":"1111111111111","clinicId":"$clinicId","dic":"1111111111111","commondity":"1111111111111"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: http://bt-pharmacy.yunzhenshi.com.cn/synchro/synPharmacyData
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /clinicPatient/syClinicPatient/同步患者
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"clientVersion":"1111111111111","clinicId":"$clinicId"},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: http://bt-patientcenter.yunzhenshi.com.cn/clinicPatient/syClinicPatient
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'
+-   test:
+        name: /synchronizeData/synchronizeData/同步工作台
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"registration":{"clientVersion":"1111111111111"},"prescription":{"clientVersion":"1111111111111"},"retail":{"clientVersion":"1111111111111"}},"synCode":""},"header":{"v":"$version","doctorMainId":"$doctorMainId","userToken":"$userToken","clinicId":"$clinicId","imei":"4fa256e1c5bcf010","currentTime":$currentTime,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536224680638'
+            method: POST
+            url: http://bt-workbench.yunzhenshi.com.cn/synchronizeData/synchronizeData
+        extract:
+        validate:
+        -   eq:
+            - content.body.code
+            - '2000000'

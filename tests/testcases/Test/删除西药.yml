@@ -1,0 +1,52 @@
+-   config:
+        name: 删除西药
+        request:
+            base_url: ''
+            headers:
+                User-Agent: okhttp/3.8.0
+        variables:
+        -   currentTime: ${get_dataTime()}
+        -   version: '1.230'
+        -   medicineShortName: ${gen_random_string(2)}
+        -   userToken: "userCenter"
+        -   rodemString: ${gen_random_string(6)}
+#删除西药（诊所ID 和药品ID 更改为变量，删除对应诊所下的对应药品）
+-   test:
+        name: /pharmacy/clinicCommodity/modifyCommodityStatus
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"id":"40288ecc65add13f0165ae201fe7000b","status":"0"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"20180827021249476y9e5w70","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":1536235840019,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+                date: '1536235840035'
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/clinicCommodity/modifyCommodityStatus
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
+-   test:
+        name: /pharmacy/synchro/synPharmacyData
+        request:
+            data:
+                detail: '{"body":{"code":{},"content":{},"param":{"commondity":"1536224665576","clinicId":"ff8080815698e63501569c762c29001f"},"synCode":""},"header":{"v":"1.230","doctorMainId":"ff8080815698e63501569c7751220022","userToken":"20180827021249476y9e5w70","clinicId":"ff8080815698e63501569c762c29001f","imei":"4fa256e1c5bcf010","currentTime":1536235844009,"type":"3"}}'
+            headers:
+                Content-Type: application/x-www-form-urlencoded
+            method: POST
+            url: http://192.168.14.76:8080/pharmacy/synchro/synPharmacyData
+        validate:
+        -   eq:
+            - status_code
+            - 200
+        -   eq:
+            - headers.Content-Type
+            - application/json;charset=UTF-8
+        -   eq:
+            - content.body.code
+            - "2000000"
